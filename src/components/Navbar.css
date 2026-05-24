@@ -42,16 +42,16 @@
 }
 .header-logo:hover { opacity: 0.7; }
 .header-logo img {
-  height: 38px;
+  height: 57px;
   width: auto;
   transition: height 0.4s var(--easing);
 }
-.header.scrolled .header-logo img { height: 30px; }
+.header.scrolled .header-logo img { height: 45px; }
 .header-logo-mark {
   font-family: var(--font-display);
   font-style: italic;
   font-weight: 400;
-  font-size: 1.25rem;
+  font-size: 1.75rem;
   letter-spacing: -0.02em;
   color: var(--ink);
   display: none;
@@ -217,8 +217,8 @@ html[dir="rtl"] .nav-quote-btn { margin-right: 0; margin-left: 10px; }
 
 @media (max-width: 640px) {
   .header { padding: 0 18px; gap: 8px; }
-  .header-logo img { height: 32px; }
-  .header.scrolled .header-logo img { height: 28px; }
+  .header-logo img { height: 48px; }
+  .header.scrolled .header-logo img { height: 42px; }
   .hdr-btn { width: 40px; height: 40px; }
 }
 

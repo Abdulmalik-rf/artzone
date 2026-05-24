@@ -1,0 +1,56 @@
+:root {
+  --fp-h: calc(100vh - 60px);
+}
+
+.fp-root {
+  height: var(--fp-h);
+  overflow: hidden;
+  position: relative;
+}
+
+.fp-track {
+  height: 100%;
+  transition: transform 1s cubic-bezier(0.76, 0, 0.24, 1);
+  will-change: transform;
+}
+
+.fp-section {
+  height: var(--fp-h);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Side dots */
+.fp-dots {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 200;
+}
+
+.fp-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(45, 17, 85, 0.4);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, transform 0.2s, border-color 0.2s;
+}
+
+.fp-dot:hover {
+  border-color: var(--purple);
+  background: rgba(124, 58, 237, 0.3);
+}
+
+.fp-dot--active {
+  background: var(--purple-dark);
+  border-color: var(--purple-dark);
+  transform: scale(1.35);
+}

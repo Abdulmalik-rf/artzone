@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Hostinger deploy artifacts
+artzone_*.zip
+*.zip
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

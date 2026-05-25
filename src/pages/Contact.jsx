@@ -3,6 +3,7 @@ import useLanguage from '../i18n/useLanguage';
 import Reveal, { StaggerGroup, StaggerItem } from '../components/Reveal';
 import { Magnetic } from '../components/Interactions';
 import { WhatsAppIcon } from '../components/WhatsApp';
+import { getAssetUrl } from '../utils/paths';
 import './Contact.css';
 
 export default function Contact() {
@@ -55,10 +56,10 @@ export default function Contact() {
 
           <Reveal variant="scale" duration={0.9} className="contact-hero-right">
             <div className="contact-hero-tile">
-              <img src="/portfolio/p76.jpeg" alt="Art Zone press" loading="eager" />
+              <img src={getAssetUrl('/portfolio/p76.jpeg')} alt="Art Zone press" loading="eager" />
             </div>
             <div className="contact-hero-tile">
-              <img src="/portfolio/p77.jpeg" alt="Showroom" loading="eager" />
+              <img src={getAssetUrl('/portfolio/p77.jpeg')} alt="Showroom" loading="eager" />
             </div>
           </Reveal>
         </div>

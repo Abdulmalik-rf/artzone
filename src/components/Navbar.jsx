@@ -3,6 +3,7 @@ import { Menu, X, Globe } from 'lucide-react';
 import { WhatsAppIcon } from './WhatsApp';
 import { useState, useEffect } from 'react';
 import useLanguage from '../i18n/useLanguage';
+import { getAssetUrl } from '../utils/paths';
 import './Navbar.css';
 
 const NAV_LINKS = [
@@ -34,7 +35,7 @@ const Navbar = () => {
       <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
         {/* Left — logo */}
         <Link to="/" className="header-logo">
-          <img src="/logo.webp?v=2" alt="Art Zone Logo" />
+          <img src={getAssetUrl('/logo.webp?v=2')} alt="Art Zone Logo" />
           <span className="header-logo-mark">Art&nbsp;Zone</span>
         </Link>
 

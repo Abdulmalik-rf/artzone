@@ -6,6 +6,7 @@ import useLanguage from '../i18n/useLanguage';
 import Reveal from '../components/Reveal';
 import { Magnetic, TickerCounter } from '../components/Interactions';
 import { WhatsAppIcon } from '../components/WhatsApp';
+import { getAssetUrl } from '../utils/paths';
 import './Portfolio.css';
 
 const PROJECTS = [
@@ -191,16 +192,16 @@ export default function Portfolio() {
 
           <Reveal variant="scale" duration={0.9} className="port-hero-right">
             <div className="port-hero-tile">
-              <img src="/portfolio/p80.jpeg" alt="Café cup collection" loading="eager" />
+              <img src={getAssetUrl('/portfolio/p80.jpeg')} alt="Café cup collection" loading="eager" />
             </div>
             <div className="port-hero-tile">
-              <img src="/portfolio/p88.jpeg" alt="Île Rousseau cup" loading="eager" />
+              <img src={getAssetUrl('/portfolio/p88.jpeg')} alt="Île Rousseau cup" loading="eager" />
             </div>
             <div className="port-hero-tile">
-              <img src="/portfolio/p19.jpeg" alt="Rigid gift boxes" loading="eager" />
+              <img src={getAssetUrl('/portfolio/p19.jpeg')} alt="Rigid gift boxes" loading="eager" />
             </div>
             <div className="port-hero-tile">
-              <img src="/portfolio/p89.jpeg" alt="Rue Du Rhône cup" loading="eager" />
+              <img src={getAssetUrl('/portfolio/p89.jpeg')} alt="Rue Du Rhône cup" loading="eager" />
             </div>
           </Reveal>
         </div>
@@ -225,7 +226,7 @@ export default function Portfolio() {
               viewport={{ once: true, amount: 0.1, margin: '0px 0px -40px 0px' }}
               transition={{ duration: 0.6, delay: Math.min(i * 0.035, 0.5), ease: [0.2, 0.8, 0.2, 1] }}
             >
-              <img src={project.src} alt="" loading="lazy" />
+              <img src={getAssetUrl(project.src)} alt="" loading="lazy" />
               <div className="port-tile-overlay">
                 <span className="port-tile-arrow">
                   <ArrowUpRight size={14} />
@@ -270,7 +271,7 @@ export default function Portfolio() {
           <button className="port-modal-close" onClick={closeModal} aria-label="Close"><X size={22} /></button>
           <button className="port-modal-prev" onClick={(e) => { e.stopPropagation(); prevModal(); }} aria-label="Previous"><ChevronLeft size={26} /></button>
           <button className="port-modal-next" onClick={(e) => { e.stopPropagation(); nextModal(); }} aria-label="Next"><ChevronRight size={26} /></button>
-          <img className="port-modal-img-only" src={modal.src} alt="" onClick={e => e.stopPropagation()} />
+          <img className="port-modal-img-only" src={getAssetUrl(modal.src)} alt="" onClick={e => e.stopPropagation()} />
         </div>
       )}
     </div>

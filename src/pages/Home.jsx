@@ -5,6 +5,7 @@ import useLanguage from '../i18n/useLanguage';
 import Reveal, { StaggerGroup, StaggerItem } from '../components/Reveal';
 import { Magnetic, SplitText, TickerCounter } from '../components/Interactions';
 import { WhatsAppIcon } from '../components/WhatsApp';
+import { getAssetUrl } from '../utils/paths';
 import './Home.css';
 
 // ── Word rotor for hero headline ───────────────────────────────────────────
@@ -112,7 +113,7 @@ export default function Home() {
           </div>
 
           <Reveal variant="scale" duration={0.9} className="hero-right">
-            <img className="hero-logo-display" src="/logo-full.webp?v=2" alt="Art Zone Printing" loading="eager" />
+            <img className="hero-logo-display" src={getAssetUrl('/logo-full.webp?v=2')} alt="Art Zone Printing" loading="eager" />
           </Reveal>
         </div>
 

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Phone, Mail, ShieldCheck, Truck, Award } from 'lucide-react';
 import { WhatsAppIcon } from './WhatsApp';
 import useLanguage from '../i18n/useLanguage';
+import { getAssetUrl } from '../utils/paths';
 import './Footer.css';
 
 const Footer = () => {
@@ -30,7 +31,7 @@ const Footer = () => {
       <div className="footer-content">
         <div className="footer-col">
           <div className="footer-brand">
-            <img src="/logo-full.webp?v=2" alt="Art Zone Printing" />
+            <img src={getAssetUrl('/logo-full.webp?v=2')} alt="Art Zone Printing" />
           </div>
           <p>{t('footer.description')}</p>
           <div className="footer-seals">

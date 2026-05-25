@@ -42,11 +42,11 @@
 }
 .header-logo:hover { opacity: 0.7; }
 .header-logo img {
-  height: 57px;
+  height: 85px;
   width: auto;
   transition: height 0.4s var(--easing);
 }
-.header.scrolled .header-logo img { height: 45px; }
+.header.scrolled .header-logo img { height: 68px; }
 .header-logo-mark {
   font-family: var(--font-display);
   font-style: italic;
@@ -217,8 +217,8 @@ html[dir="rtl"] .nav-quote-btn { margin-right: 0; margin-left: 10px; }
 
 @media (max-width: 640px) {
   .header { padding: 0 18px; gap: 8px; }
-  .header-logo img { height: 48px; }
-  .header.scrolled .header-logo img { height: 42px; }
+  .header-logo img { height: 72px; }
+  .header.scrolled .header-logo img { height: 63px; }
   .hdr-btn { width: 40px; height: 40px; }
 }
 

@@ -1,0 +1,230 @@
+/* ===================================================================
+   INDUSTRIES — "the client ledger"
+   A typographic, editorial manifest of the sectors we run for.
+   Numbered entries on dashed cutlines — deliberately card-free to
+   balance the card-heavy sections around it.
+   =================================================================== */
+
+.nd {
+  padding-block: 96px;
+  background: var(--paper);
+  overflow: hidden;
+}
+
+/* decorative halftone patch tucked behind the header plate */
+.nd-dots {
+  position: absolute;
+  top: 88px;
+  inset-inline-end: max(24px, calc((100% - var(--container)) / 2));
+  width: 250px;
+  height: 130px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* ---------- header ---------- */
+.nd-head {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 36px;
+}
+
+/* small registration plate — decorative job code */
+.nd-plate {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--white);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-hard-sm);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+}
+
+[dir='rtl'] .nd-plate {
+  letter-spacing: 0;
+}
+
+.nd-reg {
+  display: block;
+  color: var(--magenta);
+  flex: 0 0 auto;
+}
+
+/* ---------- the ledger ---------- */
+.nd-ledger {
+  list-style: none;
+  margin: 64px 0 0;
+  padding: 0;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: clamp(48px, 7vw, 96px);
+  border-block-start: 1.5px dashed var(--line-strong);
+}
+
+/* dashed spine between the two ledger columns */
+.nd-ledger::before {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 50%;
+  border-inline-start: 1px dashed var(--line);
+  pointer-events: none;
+}
+
+/* ---------- entries ---------- */
+.nd-entry {
+  position: relative;
+  padding-block: 30px 32px;
+  border-block-end: 1.5px dashed var(--line-strong);
+}
+
+/* magenta press-marker — stamps in on hover */
+.nd-entry::before {
+  content: '';
+  position: absolute;
+  inset-block: 30px 32px;
+  inset-inline-start: 0;
+  width: 5px;
+  background: var(--magenta);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.22s ease;
+}
+
+.nd-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 22px;
+  transition: transform 0.22s ease;
+}
+
+.nd-entry:hover::before {
+  transform: scaleY(1);
+}
+
+.nd-entry:hover .nd-row {
+  transform: translateX(16px);
+}
+
+[dir='rtl'] .nd-entry:hover .nd-row {
+  transform: translateX(-16px);
+}
+
+/* index number + spot-color chip */
+.nd-no {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding-top: 7px;
+  min-width: 2ch;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  transition: color 0.2s ease;
+}
+
+.nd-entry:hover .nd-no {
+  color: var(--magenta);
+}
+
+.nd-chip {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--ink);
+}
+
+.nd-entry:nth-child(3n + 1) .nd-chip { background: var(--cyan); }
+.nd-entry:nth-child(3n + 2) .nd-chip { background: var(--magenta); }
+.nd-entry:nth-child(3n) .nd-chip { background: var(--yellow); }
+
+/* copy */
+.nd-name {
+  font-size: clamp(1.3rem, 2.3vw, 1.6rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+[dir='rtl'] .nd-name {
+  letter-spacing: 0;
+  line-height: 1.4;
+}
+
+.nd-desc {
+  margin-top: 10px;
+  max-width: 48ch;
+  color: var(--ink-soft);
+  font-size: 0.97rem;
+  line-height: 1.6;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 1020px) {
+  .nd-ledger {
+    column-gap: 40px;
+  }
+
+  .nd-dots {
+    width: 180px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 720px) {
+  .nd {
+    padding-block: 64px;
+  }
+
+  .nd-dots,
+  .nd-plate {
+    display: none;
+  }
+
+  .nd-ledger {
+    grid-template-columns: 1fr;
+    margin-top: 44px;
+  }
+
+  .nd-ledger::before {
+    display: none;
+  }
+
+  .nd-entry {
+    padding-block: 24px 26px;
+  }
+
+  .nd-entry::before {
+    inset-block: 24px 26px;
+  }
+
+  .nd-row {
+    column-gap: 16px;
+  }
+
+  .nd-entry:hover .nd-row {
+    transform: translateX(10px);
+  }
+
+  [dir='rtl'] .nd-entry:hover .nd-row {
+    transform: translateX(-10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nd-row,
+  .nd-no,
+  .nd-entry::before {
+    transition: none;
+  }
+}

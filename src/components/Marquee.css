@@ -1,0 +1,61 @@
+.mq {
+  display: flex;
+  overflow: hidden;
+  background: var(--ink);
+  color: var(--paper);
+  border-block: 1.5px solid var(--ink);
+  padding-block: 13px;
+  user-select: none;
+}
+
+.mq-track {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  animation: mq-scroll 28s linear infinite;
+}
+
+.mq:hover .mq-track {
+  animation-play-state: paused;
+}
+
+.mq-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 22px;
+  padding-inline: 11px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+[dir='rtl'] .mq-item {
+  letter-spacing: 0;
+}
+
+.mq-star {
+  font-style: normal;
+  font-size: 0.8rem;
+}
+
+.mq-track:first-child .mq-item:nth-child(4n + 1) .mq-star,
+.mq-track:last-child .mq-item:nth-child(4n + 1) .mq-star { color: var(--cyan); }
+.mq-track:first-child .mq-item:nth-child(4n + 2) .mq-star,
+.mq-track:last-child .mq-item:nth-child(4n + 2) .mq-star { color: var(--magenta); }
+.mq-track:first-child .mq-item:nth-child(4n + 3) .mq-star,
+.mq-track:last-child .mq-item:nth-child(4n + 3) .mq-star { color: var(--yellow); }
+.mq-track:first-child .mq-item:nth-child(4n + 4) .mq-star,
+.mq-track:last-child .mq-item:nth-child(4n + 4) .mq-star { color: var(--paper); }
+
+@keyframes mq-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mq-track {
+    animation: none;
+  }
+}

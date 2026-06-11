@@ -1,0 +1,266 @@
+/* ===================================================================
+   CAPABILITIES — the product catalog laid out as press sheets
+   prefix: cp-
+   =================================================================== */
+
+.cp {
+  padding-block: 96px;
+}
+
+/* ---------- header ---------- */
+.cp-head {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.cp-head-text {
+  position: relative;
+  z-index: 1;
+}
+
+/* halftone patch tucked behind the sheet code, like ink on the table */
+.cp-dots {
+  position: absolute;
+  top: -22px;
+  inset-inline-end: -10px;
+  width: 230px;
+  height: 138px;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+/* decorative press-sheet code */
+.cp-head-code {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 auto;
+  margin-bottom: 6px;
+  padding: 7px 13px;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--paper);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--ink-soft);
+}
+
+[dir='rtl'] .cp-head-code {
+  letter-spacing: 0;
+}
+
+/* ---------- grid ---------- */
+.cp-grid {
+  margin-top: 52px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* spot color per card, cycling C → M → Y like plates on the press */
+.cp-card:nth-child(3n + 1) {
+  --cp-spot: var(--cyan);
+}
+
+.cp-card:nth-child(3n + 2) {
+  --cp-spot: var(--magenta);
+}
+
+.cp-card:nth-child(3n) {
+  --cp-spot: var(--yellow);
+}
+
+/* outer card only carries the scroll-reveal — hover lives on the sheet,
+   so the two transforms never fight over one transition */
+.cp-card {
+  display: flex;
+  min-width: 0;
+}
+
+/* ---------- the press sheet ---------- */
+.cp-sheet {
+  position: relative;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--white);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+/* corner crop marks — appear when the sheet is picked up */
+.cp-sheet::before,
+.cp-sheet::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease;
+}
+
+.cp-sheet::before {
+  top: -8.5px;
+  inset-inline-start: -8.5px;
+  border-bottom: 1.5px solid var(--ink);
+  border-inline-end: 1.5px solid var(--ink);
+}
+
+.cp-sheet::after {
+  bottom: -8.5px;
+  inset-inline-end: -8.5px;
+  border-top: 1.5px solid var(--ink);
+  border-inline-start: 1.5px solid var(--ink);
+}
+
+.cp-card:hover .cp-sheet {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--shadow-hard);
+}
+
+.cp-card:hover .cp-sheet::before,
+.cp-card:hover .cp-sheet::after {
+  opacity: 1;
+}
+
+/* thin CMYK control strip along the sheet's top edge */
+.cp-bar {
+  flex: 0 0 auto;
+  height: 5px;
+  overflow: hidden;
+  border-start-start-radius: calc(var(--radius) - 1.5px);
+  border-start-end-radius: calc(var(--radius) - 1.5px);
+}
+
+.cp-body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 24px 26px;
+}
+
+/* ---------- tag row ---------- */
+.cp-tag-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cp-tag {
+  font-size: 1.85rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  transition: text-shadow 0.18s ease;
+}
+
+[dir='rtl'] .cp-tag {
+  letter-spacing: 0;
+}
+
+/* hover: plates go slightly out of register */
+.cp-card:hover .cp-tag {
+  text-shadow: 2px 2px 0 var(--cp-spot);
+}
+
+.cp-dot {
+  flex: 0 0 auto;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--cp-spot);
+  transition: transform 0.18s ease;
+}
+
+.cp-card:hover .cp-dot {
+  transform: scale(1.25);
+}
+
+.cp-rule {
+  flex: 1 1 auto;
+  border-top: 1.5px dashed var(--line);
+}
+
+/* ---------- copy ---------- */
+.cp-name {
+  margin-top: 18px;
+  font-size: 1.22rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+[dir='rtl'] .cp-name {
+  letter-spacing: 0;
+  line-height: 1.35;
+}
+
+.cp-desc {
+  margin-top: 10px;
+  margin-bottom: 22px;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.62;
+}
+
+/* ---------- spec chips ---------- */
+.cp-specs {
+  list-style: none;
+  margin: 0;
+  margin-top: auto;
+  padding: 18px 0 0;
+  border-top: 1.5px dashed var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cp-spec {
+  padding: 4px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 3px;
+  background: var(--paper);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 1020px) {
+  .cp-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .cp {
+    padding-block: 64px;
+  }
+
+  .cp-head {
+    display: block;
+  }
+
+  .cp-head-code,
+  .cp-dots {
+    display: none;
+  }
+
+  .cp-grid {
+    margin-top: 36px;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .cp-body {
+    padding: 20px 20px 22px;
+  }
+}

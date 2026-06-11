@@ -1,0 +1,419 @@
+/* ===================================================================
+   ProductionLine — THE dark band. Ink floor, five lit stations on a
+   dashed conveyor with flow arrowheads. Prefix: pl-
+   Desktop: horizontal conveyor · <1020px: vertical timeline w/ rail
+   =================================================================== */
+
+.pl {
+  background: var(--ink);
+  color: var(--paper);
+  padding-block: 96px;
+  overflow: hidden;
+}
+
+/* ---------- background print marks (light, low opacity) ---------- */
+
+.pl-dots {
+  position: absolute;
+  top: 70px;
+  inset-inline-end: -50px;
+  width: 340px;
+  height: 190px;
+  background-image: radial-gradient(rgba(246, 243, 236, 0.6) 1.3px, transparent 1.3px);
+  background-size: 13px 13px;
+  opacity: 0.1;
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 35%, transparent 78%);
+  mask-image: radial-gradient(ellipse at center, #000 35%, transparent 78%);
+}
+
+.pl-reg {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  color: var(--paper);
+  opacity: 0.14;
+  pointer-events: none;
+}
+
+.pl-reg--end {
+  top: 36px;
+  inset-inline-end: 40px;
+}
+
+.pl-reg--start {
+  bottom: 32px;
+  inset-inline-start: 30px;
+  width: 32px;
+  height: 32px;
+}
+
+/* ---------- header ---------- */
+
+.pl-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 68px;
+}
+
+.pl-head-copy {
+  min-width: 0;
+}
+
+/* kicker sits on dark here — lighten it and swap the K dot to paper */
+.pl-kicker {
+  color: rgba(246, 243, 236, 0.72);
+}
+
+.pl-kicker::before {
+  background:
+    radial-gradient(circle 4.5px at 4.5px 50%, var(--cyan) 99%, transparent),
+    radial-gradient(circle 4.5px at 13px 50%, var(--magenta) 99%, transparent),
+    radial-gradient(circle 4.5px at 21.5px 50%, var(--yellow) 99%, transparent),
+    radial-gradient(circle 4.5px at 30px 50%, var(--paper) 99%, transparent);
+}
+
+.pl-title {
+  max-width: 24ch;
+}
+
+/* decorative plate code, end of the header row */
+.pl-code {
+  flex: 0 0 auto;
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: rgba(246, 243, 236, 0.5);
+  border: 1px dashed rgba(246, 243, 236, 0.3);
+  border-radius: var(--radius);
+  padding: 9px 14px;
+  margin-bottom: 8px;
+  white-space: nowrap;
+}
+
+[dir='rtl'] .pl-code {
+  letter-spacing: 0;
+}
+
+/* ---------- the conveyor ---------- */
+
+.pl-track {
+  --pl-gap: 22px;
+  --pl-gap-v: 28px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--pl-gap);
+}
+
+.pl-station {
+  position: relative;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* accent plate per station: C → M → Y, repeating */
+.pl-station--c { --pl-ac: var(--cyan); }
+.pl-station--m { --pl-ac: var(--magenta); }
+.pl-station--y { --pl-ac: var(--yellow); }
+
+/* conveyor rail — two dashed segments meeting behind the station tag */
+.pl-station::before,
+.pl-station::after {
+  content: '';
+  position: absolute;
+  top: 14px;
+  border-top: 1.5px dashed rgba(246, 243, 236, 0.35);
+  pointer-events: none;
+}
+
+.pl-station::before {
+  inset-inline-start: calc(var(--pl-gap) / -2);
+  inset-inline-end: 50%;
+}
+
+.pl-station::after {
+  inset-inline-start: 50%;
+  inset-inline-end: calc(var(--pl-gap) / -2);
+}
+
+.pl-station:first-child::before,
+.pl-station:last-child::after {
+  display: none;
+}
+
+/* flow arrowhead, sits at the gap midpoint, points inline-end (RTL-safe) */
+.pl-arrow {
+  position: absolute;
+  z-index: 1;
+  width: 0;
+  height: 0;
+  top: 15px;
+  margin-top: -5px;
+  inset-inline-start: calc(var(--pl-gap) / -2);
+  margin-inline-start: -5px;
+  border-block-start: 5px solid transparent;
+  border-block-end: 5px solid transparent;
+  border-inline-start: 9px solid rgba(246, 243, 236, 0.7);
+  border-inline-end: 0 solid transparent;
+}
+
+/* station tag riding the rail */
+.pl-node {
+  position: relative;
+  z-index: 1;
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  padding-inline: 13px;
+  background: var(--ink);
+  border: 1.5px solid var(--pl-ac);
+  border-radius: var(--radius);
+  color: var(--pl-ac);
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  transition: background 0.16s ease, color 0.16s ease;
+}
+
+/* ---------- station card ---------- */
+
+.pl-card {
+  flex: 1;
+  background: var(--ink-2);
+  border: 1.5px solid rgba(246, 243, 236, 0.25);
+  border-radius: var(--radius);
+  padding: 22px 20px 24px;
+  transition: transform 0.16s ease, border-color 0.16s ease;
+}
+
+/* small spot-color tick, widens mechanically on hover */
+.pl-card::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 3px;
+  background: var(--pl-ac);
+  margin-bottom: 16px;
+  transition: width 0.2s ease;
+}
+
+.pl-name {
+  font-size: 1.12rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+[dir='rtl'] .pl-name {
+  letter-spacing: 0;
+  line-height: 1.45;
+}
+
+.pl-desc {
+  margin-top: 10px;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: rgba(246, 243, 236, 0.72);
+}
+
+/* mechanical hover: card lifts, border + tag flip to the station accent */
+.pl-station:hover .pl-card {
+  transform: translate(-1px, -1px);
+  border-color: var(--pl-ac);
+}
+
+.pl-station:hover .pl-card::before {
+  width: 46px;
+}
+
+.pl-station:hover .pl-node {
+  background: var(--pl-ac);
+  color: var(--ink);
+}
+
+/* ---------- closing note, stamped tag ---------- */
+
+.pl-foot {
+  display: flex;
+  justify-content: center;
+  margin-top: 68px;
+}
+
+.pl-note {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 12px;
+  max-width: 100%;
+  padding: 13px 24px;
+  border: 1.5px solid var(--yellow);
+  border-radius: var(--radius);
+  outline: 1px solid rgba(244, 196, 29, 0.4);
+  outline-offset: 4px;
+  color: var(--paper);
+  font-size: 0.86rem;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  transform: rotate(-1.2deg);
+}
+
+[dir='rtl'] .pl-note {
+  letter-spacing: 0;
+  transform: rotate(1.2deg);
+}
+
+.pl-note-mark {
+  color: var(--yellow);
+  line-height: 1.5;
+}
+
+.pl-note-txt {
+  min-width: 0;
+  line-height: 1.5;
+}
+
+/* ===================================================================
+   <1020px — conveyor rotates into a vertical timeline with side rail
+   =================================================================== */
+
+@media (max-width: 1020px) {
+  .pl-head {
+    margin-bottom: 52px;
+  }
+
+  .pl-track {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pl-gap-v);
+  }
+
+  .pl-station {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .pl-node {
+    flex: 0 0 auto;
+    align-self: flex-start;
+    width: 54px;
+    padding-inline: 0;
+    margin-bottom: 0;
+  }
+
+  /* rail segments turn vertical, running through the tag column */
+  .pl-station::before,
+  .pl-station::after {
+    border-top: none;
+    border-inline-start: 1.5px dashed rgba(246, 243, 236, 0.35);
+    inset-inline-start: 26px;
+    inset-inline-end: auto;
+    width: 0;
+  }
+
+  .pl-station::before {
+    top: calc(var(--pl-gap-v) / -2);
+    bottom: calc(100% - 15px);
+  }
+
+  .pl-station::after {
+    top: 15px;
+    bottom: calc(var(--pl-gap-v) / -2);
+  }
+
+  /* arrowhead points down the line */
+  .pl-arrow {
+    top: calc(var(--pl-gap-v) / -2);
+    margin-top: -5px;
+    inset-inline-start: 26px;
+    margin-inline-start: -5px;
+    border-block-start: 9px solid rgba(246, 243, 236, 0.7);
+    border-block-end: 0 solid transparent;
+    border-inline-start: 5px solid transparent;
+    border-inline-end: 5px solid transparent;
+  }
+
+  .pl-card {
+    flex: 1;
+  }
+}
+
+/* ===================================================================
+   <720px — tighten
+   =================================================================== */
+
+@media (max-width: 720px) {
+  .pl {
+    padding-block: 64px;
+  }
+
+  .pl-dots,
+  .pl-code {
+    display: none;
+  }
+
+  .pl-reg--end {
+    top: 24px;
+    inset-inline-end: 22px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .pl-reg--start {
+    bottom: 20px;
+    inset-inline-start: 18px;
+    width: 26px;
+    height: 26px;
+  }
+
+  .pl-head {
+    margin-bottom: 44px;
+  }
+
+  .pl-track {
+    --pl-gap-v: 24px;
+  }
+
+  .pl-station {
+    gap: 14px;
+  }
+
+  .pl-node {
+    width: 48px;
+  }
+
+  .pl-station::before,
+  .pl-station::after {
+    inset-inline-start: 23px;
+  }
+
+  .pl-arrow {
+    inset-inline-start: 23px;
+  }
+
+  .pl-card {
+    padding: 18px 16px 20px;
+  }
+
+  .pl-name {
+    font-size: 1.05rem;
+  }
+
+  .pl-foot {
+    margin-top: 52px;
+  }
+
+  .pl-note {
+    font-size: 0.78rem;
+    padding: 12px 18px;
+    gap: 10px;
+  }
+}

@@ -1,0 +1,116 @@
+/* ===================================================================
+   WorkPreview — three gallery pieces on the home page
+   prefix: wp-
+   =================================================================== */
+
+.wp {
+  padding-block: 96px;
+  background: var(--paper);
+}
+
+.wp-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.wp-cta {
+  flex: 0 0 auto;
+  margin-block-end: 6px;
+}
+
+.wp-cta-mobile {
+  display: none;
+}
+
+.wp-grid {
+  margin-block-start: 48px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.wp-card {
+  display: block;
+}
+
+.wp-frame {
+  display: block;
+  padding: 10px;
+  background: var(--white);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.wp-card:hover .wp-frame {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--shadow-hard);
+}
+
+.wp-img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 3px;
+  border: 1px solid var(--line);
+}
+
+.wp-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-block-start: 14px;
+  padding-inline: 2px;
+}
+
+.wp-cat {
+  flex: 0 0 auto;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--magenta);
+}
+
+[dir='rtl'] .wp-cat {
+  letter-spacing: 0;
+}
+
+.wp-name {
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.wp-card:hover .wp-name {
+  color: var(--magenta);
+}
+
+@media (max-width: 1020px) {
+  .wp-grid {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 720px) {
+  .wp {
+    padding-block: 64px;
+  }
+
+  .wp-head .wp-cta {
+    display: none;
+  }
+
+  .wp-cta-mobile {
+    display: inline-flex;
+    margin-block-start: 36px;
+  }
+
+  .wp-grid {
+    margin-block-start: 36px;
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}

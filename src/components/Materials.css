@@ -1,0 +1,286 @@
+/* ===================================================================
+   MATERIALS — the swatch library wall (prefix mt-)
+   Pantone-style material chips: a swatch block on top, mono code,
+   name, spec. White cards, ink borders, hard offset shadows.
+   =================================================================== */
+
+.mt {
+  padding-block: 96px;
+  background: var(--paper);
+}
+
+/* decorative halftone patch, top corner */
+.mt-dots {
+  position: absolute;
+  top: 88px;
+  inset-inline-end: 0;
+  width: 220px;
+  height: 130px;
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+/* ---------- header row ---------- */
+.mt-head {
+  position: relative; /* paint above the absolute .mt-dots patch */
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+/* the library index plate — decorative code range */
+.mt-range {
+  flex: 0 0 auto;
+  padding: 9px 14px;
+  background: var(--white);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-hard-sm);
+  font-size: 0.8rem;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--ink);
+}
+
+/* ---------- swatch grid ---------- */
+.mt-grid {
+  list-style: none;
+  margin: 56px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+}
+
+.mt-cell {
+  display: grid; /* stretches the chip to equal row height */
+}
+
+.mt-chip {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.mt-chip:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-hard);
+}
+
+/* ---------- the material swatch block ---------- */
+.mt-swatch {
+  position: relative;
+  height: 88px;
+  border-bottom: 1.5px solid var(--ink);
+}
+
+/* punched binder hole — swatch-book feel */
+.mt-swatch::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  inset-inline-start: 8px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+  transition: border-color 0.15s ease;
+}
+
+.mt-chip:hover .mt-swatch::after {
+  border-color: var(--magenta);
+}
+
+/* 01 — coated art paper: bright stock with a hard gloss band */
+.mt-swatch--1 {
+  background: linear-gradient(135deg, #ebe7db 0 38%, #fbf9f2 38% 62%, #ebe7db 62%);
+}
+
+/* 02 — natural kraft: warm brown with fibre speckle */
+.mt-swatch--2 {
+  background-color: #b08d57;
+  background-image: radial-gradient(rgba(107, 76, 35, 0.38) 1px, transparent 1px);
+  background-size: 7px 7px;
+}
+
+/* 03 — textured linen: fine crosshatch on cream */
+.mt-swatch--3 {
+  background-color: #f0ead9;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(22, 19, 46, 0.07) 0 1px, transparent 1px 4px),
+    repeating-linear-gradient(90deg, rgba(22, 19, 46, 0.07) 0 1px, transparent 1px 4px);
+}
+
+/* 04 — soft-touch laminate: deep velvet matte */
+.mt-swatch--4 {
+  background: var(--ink-2);
+}
+
+/* 05 — clear & white vinyl: transparency checkerboard */
+.mt-swatch--5 {
+  background-color: var(--white);
+  background-image:
+    linear-gradient(45deg, #d9d6cc 25%, transparent 25%, transparent 75%, #d9d6cc 75%),
+    linear-gradient(45deg, #d9d6cc 25%, transparent 25%, transparent 75%, #d9d6cc 75%);
+  background-size: 14px 14px;
+  background-position: 0 0, 7px 7px;
+}
+
+/* 06 — holographic foil: the ONE allowed gradient */
+.mt-swatch--6 {
+  background: linear-gradient(115deg, #a9e6f2, #cdbcf5 26%, #f5b3d5 50%, #f4e3a0 74%, #abefcd);
+}
+
+/* 07 — corrugated board: kraft with vertical flutes */
+.mt-swatch--7 {
+  background-color: #c19a63;
+  background-image: repeating-linear-gradient(90deg, rgba(107, 76, 35, 0.32) 0 2px, transparent 2px 9px);
+}
+
+/* 08 — canvas & fabric: heavier open weave */
+.mt-swatch--8 {
+  background-color: #e8debf;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(138, 117, 76, 0.24) 0 1.5px, transparent 1.5px 6px),
+    repeating-linear-gradient(90deg, rgba(138, 117, 76, 0.24) 0 1.5px, transparent 1.5px 6px);
+}
+
+/* 09 — acrylic & rigid media: two flat frosted panes, hard edge */
+.mt-swatch--9 {
+  background: linear-gradient(135deg, #e9f7fa 0 55%, #c8ebf3 55%);
+}
+
+/* 10 — cotton & blends: heathered speckle */
+.mt-swatch--10 {
+  background-color: #f4f2ec;
+  background-image:
+    radial-gradient(rgba(74, 71, 104, 0.26) 1px, transparent 1px),
+    radial-gradient(rgba(74, 71, 104, 0.14) 1px, transparent 1px);
+  background-size: 6px 6px, 9px 9px;
+  background-position: 0 0, 3px 4px;
+}
+
+/* ---------- chip text ---------- */
+.mt-chip-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 13px 14px 14px;
+}
+
+.mt-chip-code {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  transition: color 0.15s ease;
+}
+
+.mt-chip:hover .mt-chip-code {
+  color: var(--magenta);
+}
+
+.mt-chip-name {
+  margin-top: 5px;
+  margin-bottom: 12px;
+  font-size: 0.97rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+[dir='rtl'] .mt-chip-name {
+  letter-spacing: 0;
+}
+
+.mt-chip-spec {
+  margin-top: auto;
+  padding-top: 9px;
+  font-size: 0.73rem;
+  color: var(--ink-soft);
+  border-top: 1px dashed var(--line);
+}
+
+/* ---------- footer: cut-here line + CTA ---------- */
+.mt-foot {
+  position: relative;
+  margin-top: 64px;
+  display: flex;
+  justify-content: center;
+}
+
+.mt-foot-line {
+  position: absolute;
+  top: 50%;
+  inset-inline: 0;
+  border-top: 1.5px dashed var(--line-strong);
+}
+
+.mt-scissor {
+  position: absolute;
+  top: 50%;
+  inset-inline-start: 4%;
+  transform: translateY(-55%);
+  padding-inline: 8px;
+  background: var(--paper);
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+[dir='rtl'] .mt-scissor {
+  transform: translateY(-55%) scaleX(-1);
+}
+
+.mt-cta {
+  position: relative;
+  background: var(--paper);
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 1020px) {
+  .mt-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .mt-dots {
+    display: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .mt {
+    padding-block: 64px;
+  }
+
+  .mt-range {
+    display: none;
+  }
+
+  .mt-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 40px;
+  }
+
+  .mt-swatch {
+    height: 72px;
+  }
+
+  .mt-chip-body {
+    padding: 12px;
+  }
+
+  .mt-foot {
+    margin-top: 48px;
+  }
+
+  .mt-scissor {
+    display: none;
+  }
+}

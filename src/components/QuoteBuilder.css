@@ -1,0 +1,438 @@
+/* ===================================================================
+   QuoteBuilder — "spec your job" band (prefix qb-)
+   Form on the left, live job ticket on the right.
+   =================================================================== */
+
+.qb {
+  background: var(--paper-2);
+  border-block: 1px solid var(--line);
+  padding-block: 96px;
+}
+
+/* ---------- decorations ---------- */
+.qb-decor {
+  position: absolute;
+  top: 84px;
+  inset-inline-end: 0;
+  width: min(320px, 28vw);
+  height: 190px;
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.qb-reg {
+  position: absolute;
+  bottom: 56px;
+  inset-inline-start: 28px;
+  width: 44px;
+  height: 44px;
+  color: var(--ink);
+  opacity: 0.16;
+  pointer-events: none;
+}
+
+/* ---------- layout ---------- */
+.qb-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  gap: 36px;
+  align-items: start;
+  margin-top: 52px;
+}
+
+/* ===================================================================
+   LEFT — the form card
+   =================================================================== */
+.qb-form {
+  background: var(--white);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-hard);
+  padding: 30px;
+  display: grid;
+  gap: 20px;
+}
+
+.qb-row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.qb-field {
+  min-width: 0;
+}
+
+/* mono spec labels, numbered like ticket fields */
+.qb-label {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+[dir='rtl'] .qb-label {
+  letter-spacing: 0;
+}
+
+.qb-label-idx {
+  font-style: normal;
+  font-weight: 500;
+  color: var(--magenta);
+}
+
+/* ---------- controls ---------- */
+.qb-control {
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--white);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-size: 1rem; /* ≥16px — prevents iOS Safari focus auto-zoom */
+  line-height: 1.4;
+  color: var(--ink);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.qb-control::placeholder {
+  color: rgba(22, 19, 46, 0.38);
+}
+
+.qb-control:focus {
+  outline: none;
+  border-color: var(--magenta);
+  box-shadow: 2px 2px 0 var(--magenta);
+}
+
+.qb-select-wrap {
+  position: relative;
+}
+
+.qb-select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-inline-end: 42px;
+  cursor: pointer;
+}
+
+/* chevron — vertically symmetric, safe in RTL */
+.qb-select-wrap::after {
+  content: '';
+  position: absolute;
+  inset-inline-end: 17px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none;
+}
+
+.qb-textarea {
+  resize: vertical;
+  min-height: 96px;
+}
+
+/* ---------- segmented deadline pills ---------- */
+.qb-seg {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.qb-pill {
+  padding: 10px 20px;
+  background: var(--white);
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--ink);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease,
+    color 0.15s ease, border-color 0.15s ease;
+}
+
+.qb-pill:hover {
+  border-color: var(--magenta);
+  color: var(--magenta);
+  transform: translate(-1px, -1px);
+  box-shadow: 2px 2px 0 var(--magenta);
+}
+
+.qb-pill:focus-visible {
+  outline: 2px solid var(--magenta);
+  outline-offset: 2px;
+}
+
+.qb-pill.is-on,
+.qb-pill.is-on:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+  box-shadow: var(--shadow-hard-sm);
+  transform: none;
+}
+
+/* ---------- submit ---------- */
+.qb-submit {
+  width: 100%;
+  margin-top: 4px;
+  padding-block: 16px;
+  font-size: 1rem;
+}
+
+.qb-hint {
+  margin-top: -8px;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+/* ===================================================================
+   RIGHT — live job-ticket preview
+   =================================================================== */
+.qb-ticket-wrap {
+  position: sticky;
+  top: calc(var(--nav-h) + 28px);
+}
+
+.qb-ticket {
+  background: var(--white);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-hard);
+}
+
+.qb-ticket-bar {
+  border-start-start-radius: calc(var(--radius) - 1.5px);
+  border-start-end-radius: calc(var(--radius) - 1.5px);
+  overflow: hidden;
+}
+
+.qb-ticket-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 16px;
+  padding: 20px 26px 16px;
+  border-bottom: 1.5px dashed var(--line-strong);
+}
+
+.qb-ticket-heading {
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+[dir='rtl'] .qb-ticket-heading {
+  letter-spacing: 0;
+}
+
+.qb-ticket-no {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--magenta);
+}
+
+/* ---------- spec rows ---------- */
+.qb-ticket-rows {
+  margin: 0;
+  padding: 4px 26px 16px;
+}
+
+.qb-ticket-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+  padding-block: 13px;
+  border-bottom: 1.5px dashed var(--line);
+}
+
+.qb-ticket-row:last-child {
+  border-bottom: none;
+}
+
+.qb-ticket-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+[dir='rtl'] .qb-ticket-label {
+  letter-spacing: 0;
+}
+
+/* registration dot — inks up as the field is filled */
+.qb-ticket-dot {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  border: 1.5px solid var(--line-strong);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.qb-ticket-row.is-filled:nth-child(4n + 1) .qb-ticket-dot {
+  background: var(--cyan);
+  border-color: var(--cyan);
+}
+
+.qb-ticket-row.is-filled:nth-child(4n + 2) .qb-ticket-dot {
+  background: var(--magenta);
+  border-color: var(--magenta);
+}
+
+.qb-ticket-row.is-filled:nth-child(4n + 3) .qb-ticket-dot {
+  background: var(--yellow);
+  border-color: var(--yellow);
+}
+
+.qb-ticket-row.is-filled:nth-child(4n + 4) .qb-ticket-dot {
+  background: var(--key);
+  border-color: var(--key);
+}
+
+.qb-ticket-value {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: end;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  transition: color 0.2s ease;
+}
+
+.qb-ticket-row:not(.is-filled) .qb-ticket-value {
+  font-weight: 500;
+  color: rgba(22, 19, 46, 0.32);
+}
+
+/* ---------- ticket footer: fill meter + barcode ---------- */
+.qb-ticket-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 26px 20px;
+  border-top: 1.5px dashed var(--line-strong);
+}
+
+.qb-ticket-meter {
+  display: inline-flex;
+  gap: 7px;
+  flex: 0 0 auto;
+}
+
+.qb-ticket-meter i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line-strong);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.qb-ticket-meter i.is-on:nth-child(4n + 1) {
+  background: var(--cyan);
+  border-color: var(--cyan);
+}
+
+.qb-ticket-meter i.is-on:nth-child(4n + 2) {
+  background: var(--magenta);
+  border-color: var(--magenta);
+}
+
+.qb-ticket-meter i.is-on:nth-child(4n + 3) {
+  background: var(--yellow);
+  border-color: var(--yellow);
+}
+
+.qb-ticket-meter i.is-on:nth-child(4n + 4) {
+  background: var(--key);
+  border-color: var(--key);
+}
+
+.qb-barcode {
+  height: 24px;
+  flex: 1 1 auto;
+  max-width: 170px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--ink) 0 2px,
+    transparent 2px 5px,
+    var(--ink) 5px 6px,
+    transparent 6px 11px,
+    var(--ink) 11px 14px,
+    transparent 14px 17px
+  );
+  opacity: 0.85;
+}
+
+/* ===================================================================
+   responsive
+   =================================================================== */
+@media (max-width: 1020px) {
+  .qb-grid {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+
+  .qb-ticket-wrap {
+    position: static;
+  }
+
+  .qb-decor {
+    height: 140px;
+    opacity: 0.3;
+  }
+}
+
+@media (max-width: 720px) {
+  .qb {
+    padding-block: 64px;
+  }
+
+  .qb-grid {
+    margin-top: 38px;
+    gap: 36px;
+  }
+
+  .qb-form {
+    padding: 22px 18px;
+  }
+
+  .qb-ticket-head,
+  .qb-ticket-foot {
+    padding-inline: 18px;
+  }
+
+  .qb-ticket-rows {
+    padding-inline: 18px;
+  }
+
+  .qb-reg {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .qb-row2 {
+    grid-template-columns: 1fr;
+  }
+}

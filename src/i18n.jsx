@@ -67,8 +67,8 @@ const dict = {
 
     caps: {
       kicker: 'What we print',
-      title: 'From a business card to a storefront sign.',
-      sub: 'The catalog we actually run — every piece below is printed, finished and packed on our own floor in Dammam. And if your product is not on the list, bring it anyway: custom is our favorite job.',
+      title: 'If it carries your logo, we make it.',
+      sub: 'From the first proof to the last piece out the door, every step happens on our own floor in Dammam. Pick your product below and send the order on WhatsApp — we handle the rest.',
       items: [
         {
           tag: '01',
@@ -416,8 +416,8 @@ const dict = {
 
     caps: {
       kicker: 'ماذا نطبع',
-      title: 'من الكرت الشخصي إلى لوحة المحل.',
-      sub: 'هذا ليس كتالوجاً للعرض، بل شغلنا اليومي: كل قطعة هنا تُطبع وتُشطّب وتُغلّف تحت سقف مصنعنا في الدمام. وإن لم تجد منتجك في القائمة، حدّثنا عنه — فالطلبات الخاصة أحب الشغل إلى قلوبنا.',
+      title: 'كل ما يحمل شعارك، نصنعه بأنفسنا.',
+      sub: 'من أول بروفة إلى آخر قطعة تغادر المصنع، كل خطوة تتم تحت سقفنا في الدمام. اختر منتجك من الأقسام التالية وأرسل طلبك عبر واتساب — والباقي علينا.',
       items: [
         {
           tag: '01',
@@ -563,7 +563,7 @@ const dict = {
     quote: {
       kicker: 'تسعيرة فورية',
       title: 'حدّد مواصفاتك. خذ تسعيرتك.',
-      sub: 'عبّئ أمر التشغيل بالأسفل — يفتح في واتساب موجّهاً لفريق الإنتاج مباشرة، والتسعيرة تصلك خلال دقائق في أوقات الدوام.',
+      sub: 'عبّئ الطلب بالأسفل — يفتح في واتساب موجّهاً لفريق الإنتاج مباشرة، والتسعيرة تصلك خلال دقائق في أوقات الدوام.',
       product: 'ماذا نطبع لك؟',
       productOptions: [
         'كروت شخصية',
@@ -584,12 +584,12 @@ const dict = {
       deadlineOptions: ['مرن', 'خلال أسبوع', 'مستعجل'],
       notes: 'ملاحظات / مقاسات (اختياري)',
       notesPlaceholder: 'أي تفاصيل تفيد فريق الإنتاج…',
-      submit: 'أرسل أمر التشغيل عبر واتساب',
-      hint: 'بلا نماذج وبلا تسجيل — أمر التشغيل يفتح عندك في واتساب، وما عليك إلا ضغطة إرسال.',
-      previewHeading: 'معاينة أمر التشغيل',
+      submit: 'أرسل الطلب عبر واتساب',
+      hint: 'بلا نماذج وبلا تسجيل — الطلب يفتح عندك في واتساب، وما عليك إلا ضغطة إرسال.',
+      previewHeading: 'معاينة الطلب',
       previewEmpty: '—',
       msg: {
-        greeting: 'مرحباً آرت زون — أمر تشغيل جديد:',
+        greeting: 'مرحباً آرت زون — طلب جديد:',
         product: 'المنتج',
         qty: 'الكمية',
         material: 'الخامة / التشطيب',
@@ -634,7 +634,7 @@ const dict = {
       jobLabel: 'JOB',
       ready: {
         title: 'تريد عملك على هذا الجدار؟',
-        sub: 'أرسل أمر تشغيل، وتصلك التسعيرة خلال دقائق.',
+        sub: 'أرسل طلبك، وتصلك التسعيرة خلال دقائق.',
         cta: 'جهّز تسعيرتك',
       },
     },
@@ -660,7 +660,7 @@ const dict = {
       ],
       cta: {
         title: 'تعال شاهد بنفسك.',
-        sub: 'زرنا في الدمام — أو ابدأ من مكانك بأمر تشغيل.',
+        sub: 'زرنا في الدمام — أو ابدأ من مكانك بإرسال طلبك.',
         primary: 'اطلب تسعيرة',
         secondary: 'كلّم المصنع',
       },
@@ -677,7 +677,7 @@ const dict = {
       ],
       quoteNudge: {
         title: 'مواصفاتك جاهزة؟',
-        sub: 'اختصر الطريق: عبّئ أمر التشغيل وأرسله لفريق الإنتاج مباشرة.',
+        sub: 'اختصر الطريق: عبّئ طلبك وأرسله لفريق الإنتاج مباشرة.',
         cta: 'جهّز تسعيرتك',
       },
       faqKicker: 'إجابات سريعة',
@@ -715,7 +715,7 @@ export function LangProvider({ children }) {
       /* storage blocked (privacy mode / sandboxed iframe) — fall through */
     }
     if (saved === 'en' || saved === 'ar') return saved
-    return navigator.language?.startsWith('ar') ? 'ar' : 'en'
+    return 'ar'
   })
 
   useEffect(() => {

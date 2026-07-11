@@ -38,7 +38,7 @@ const dict = {
       kicker: 'Print manufacturer · Dammam, Saudi Arabia',
       titleA: 'Every print process.',
       titleB: 'One factory floor.',
-      sub: 'Offset, digital, large format, packaging, labels and merch — manufactured under one roof in Dammam and delivered to every city in the Kingdom.',
+      sub: 'Digital and offset printing for all paper prints, plain and full-color; custom acrylic and Forex signage; project hoardings and banner installation; a dedicated lightbox division with a seasoned crew; a dedicated packaging line for restaurants and cafés — cups and boxes; and a dedicated promotional-gifts division.',
       ctaQuote: 'Build your quote',
       ctaWa: 'Talk to production',
       showcase: {
@@ -387,7 +387,7 @@ const dict = {
       kicker: 'مصنع طباعة · الدمام، السعودية',
       titleA: 'كل تقنيات الطباعة.',
       titleB: 'تحت سقف واحد.',
-      sub: 'أوفست، ديجيتال، بنرات ولوحات، تغليف، ستيكرات وهدايا دعائية — كلها تُصنع داخل مصنعنا في الدمام، وتصلك أينما كنت في المملكة.',
+      sub: 'طباعة ديجتال واوفست لجميع المطبوعات الورقية العادية والملونة، وتنفيذ مجسمات اكراليك وفوركس بالشكل المطلوب، وتنفيذ أسوار مشاريع وتركيب البنر، وقسم خاص للوحات المضيئة بطقم عمالة متمرسين، وقسم خاص لبكجات المطاعم والمقاهي من اكواب وبوكسات، وقسم خاص للهدايا الدعائية.',
       ctaQuote: 'جهّز تسعيرتك',
       ctaWa: 'كلّم فريق الإنتاج',
       showcase: {

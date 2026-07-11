@@ -78,9 +78,9 @@ const dict = {
         },
         {
           tag: '02',
-          name: 'Cups & Sleeves',
-          desc: 'Single and double-wall paper cups, sleeves and branded lids — food-safe and built for the morning rush.',
-          specs: ['Single & double wall', 'Food-safe inks', 'Cafés & events'],
+          name: 'Restaurant & Café Packaging',
+          desc: 'Paper and plastic cups in every size, printed with SFDA-approved food-safe ink, plus all kinds of paper boxes, wraps and greaseproof paper.',
+          specs: ['Cups, all sizes', 'SFDA-approved ink', 'Boxes & food wraps'],
         },
         {
           tag: '03',
@@ -427,9 +427,9 @@ const dict = {
         },
         {
           tag: '02',
-          name: 'الأكواب والأكمام',
-          desc: 'أكواب ورقية بجدار مفرد أو مزدوج، وأكمام وأغطية بشعارك — آمنة غذائياً وصامدة في زحمة الصباح.',
-          specs: ['جدار مفرد ومزدوج', 'أحبار آمنة غذائياً', 'كافيهات وفعاليات'],
+          name: 'بكجات ومطبوعات المطاعم والكافيهات',
+          desc: 'نتميز بطباعة الأكواب بجميع المقاسات، الورقية والبلاستيكية، بحبر موافق لهيئة الغذاء والدواء، وتنفيذ جميع البوكسات الورقية وأوراق التغليف والزبدة.',
+          specs: ['أكواب بكل المقاسات', 'حبر معتمد من الغذاء والدواء', 'بوكسات وأوراق تغليف'],
         },
         {
           tag: '03',

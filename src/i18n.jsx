@@ -72,9 +72,9 @@ const dict = {
       items: [
         {
           tag: '01',
-          name: 'Business Cards & Stationery',
-          desc: 'Cards with foil, emboss and heavy stocks, plus letterheads, envelopes, folders and full corporate sets.',
-          specs: ['Foil & emboss', 'Heavy stocks', 'Corporate sets'],
+          name: 'Business Cards & Paper Prints',
+          desc: 'Business cards on standard or premium stock, with a dedicated foil and spot-UV line, plus letterheads, envelopes, profiles, brochures and folders.',
+          specs: ['Foil & spot-UV', 'Standard & premium stock', 'Letterheads & envelopes'],
         },
         {
           tag: '02',
@@ -421,9 +421,9 @@ const dict = {
       items: [
         {
           tag: '01',
-          name: 'الكروت الشخصية والقرطاسية',
-          desc: 'كروت بالفويل والنقش البارز على ورق فاخر سميك، مع أوراق رسمية وأظرف وفولدرات وأطقم شركات متكاملة.',
-          specs: ['فويل ونقش بارز', 'جراماج عالي', 'أطقم شركات'],
+          name: 'الكروت الشخصية والمطبوعات الورقية',
+          desc: 'كروت شخصية متوفرة بالورق العادي والفاخر، ويوجد قسم خاص بطباعة البصمة واليوﭬي، وطباعة الأوراق الرسمية والأظرف والبروفايلات والبروشورات والفولدرات.',
+          specs: ['بصمة ويوﭬي', 'ورق عادي وفاخر', 'أوراق رسمية وأظرف'],
         },
         {
           tag: '02',

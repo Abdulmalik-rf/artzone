@@ -216,7 +216,7 @@ const dict = {
         },
         {
           name: 'Corporate & offices',
-          desc: 'Stationery systems, reports, onboarding kits and branded giveaways for teams of any size.',
+          desc: 'We fit out new office locations end to end — acrylic wall signs, nameplates and building wayfinding signage.',
         },
         {
           name: 'Clinics & beauty',
@@ -583,7 +583,7 @@ const dict = {
         },
         {
           name: 'الشركات والمكاتب',
-          desc: 'قرطاسية موحدة، تقارير، حقائب ترحيبية للموظفين الجدد، وهدايا دعائية للفريق الصغير والشركة الكاملة.',
+          desc: 'نؤمّن كافة التجهيزات للمواقع المكتبية الجديدة، من اللوحات الجدارية بالأكريليك واللوحات التعريفية واللوحات الإرشادية للمبنى.',
         },
         {
           name: 'العيادات والتجميل',

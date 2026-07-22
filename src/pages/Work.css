@@ -121,6 +121,14 @@
   justify-content: flex-end;
 }
 
+/* named caption (e.g. canvas prints) — readable, not a mono code */
+.gl-code--label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--ink);
+}
+
 .gl-dot {
   width: 8px;
   height: 8px;

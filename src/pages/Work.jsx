@@ -1,9 +1,12 @@
 import { useI18n } from '../i18n.jsx'
 import './Work.css'
 
-/* curated order: real photographed jobs only — no digital mockups,
-   no stock renders. Equipment shots (p75-p79) live on the About page. */
+/* Wall items are either a plain id string (a real photographed job from
+   /portfolio, captioned with its JOB code) or an object with an explicit
+   src + caption (e.g. canvas art prints). Equipment shots (p75-p79) live
+   on the About page. */
 const WALL = [
+  { src: './img/canvas/canvas-1.jpeg', caption: 'لوحات كانفاس', ar: true },
   'p80', 'p85', 'p5', 'p86', 'p81', 'p18', 'p87', 'p88', 'p19', 'p82',
   'p89', 'p1', 'p83', 'p84', 'p20', 'p4', 'p33', 'p34', 'p29', 'p36',
   'p37',
@@ -41,27 +44,36 @@ export default function Work() {
       <section className="gl-wall-band">
         <div className="container">
           <div className="gl-wall">
-            {WALL.map((id, i) => (
-              <figure
-                key={id}
-                className="gl-piece"
-                data-reveal
-                style={{ transitionDelay: `${Math.min(i % 9, 6) * 50}ms` }}
-              >
-                <span className="gl-frame">
-                  <img
-                    src={`./img/portfolio/${id}.jpeg`}
-                    alt={`${t.gallery.jobLabel} ${String(i + 1).padStart(2, '0')}`}
-                    className="gl-img"
-                    loading="lazy"
-                  />
-                </span>
-                <figcaption className="gl-code mono" dir="ltr">
-                  <i className="gl-dot" aria-hidden="true" />
-                  {t.gallery.jobLabel} {String(i + 1).padStart(2, '0')}
-                </figcaption>
-              </figure>
-            ))}
+            {WALL.map((item, i) => {
+              const custom = typeof item === 'object'
+              const src = custom ? item.src : `./img/portfolio/${item}.jpeg`
+              const code = `${t.gallery.jobLabel} ${String(i + 1).padStart(2, '0')}`
+              const caption = custom ? item.caption : code
+              return (
+                <figure
+                  key={custom ? item.src : item}
+                  className="gl-piece"
+                  data-reveal
+                  style={{ transitionDelay: `${Math.min(i % 9, 6) * 50}ms` }}
+                >
+                  <span className="gl-frame">
+                    <img
+                      src={src}
+                      alt={caption}
+                      className="gl-img"
+                      loading={i > 1 ? 'lazy' : 'eager'}
+                    />
+                  </span>
+                  <figcaption
+                    className={`gl-code${custom ? ' gl-code--label' : ' mono'}`}
+                    dir={custom && item.ar ? 'rtl' : 'ltr'}
+                  >
+                    <i className="gl-dot" aria-hidden="true" />
+                    {caption}
+                  </figcaption>
+                </figure>
+              )
+            })}
           </div>
         </div>
       </section>

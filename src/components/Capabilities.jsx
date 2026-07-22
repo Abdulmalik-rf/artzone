@@ -15,7 +15,7 @@ export default function Capabilities() {
             <p className="sec-sub">{t.caps.sub}</p>
           </div>
           <span className="cp-head-code mono" aria-hidden="true">
-            AZ·CAT/09
+            AZ·CAT/12
           </span>
         </header>
 

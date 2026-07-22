@@ -204,11 +204,11 @@ const dict = {
       items: [
         {
           name: 'Cafés & restaurants',
-          desc: 'Cups, sleeves, food wraps, menus and delivery bags with brand color that stays consistent across every reorder.',
+          desc: 'Everything restaurants and cafés need — cups, brochures and all kinds of food-grade boxes.',
         },
         {
-          name: 'Retail & e-commerce',
-          desc: 'Mailer boxes, tissue, closure seals and thank-you cards built to survive the unboxing video.',
+          name: 'Home businesses',
+          desc: 'We support home businesses with small runs — wrapping paper, boxes and abaya packaging in low quantities.',
         },
         {
           name: 'Events & exhibitions',
@@ -571,11 +571,11 @@ const dict = {
       items: [
         {
           name: 'المقاهي والمطاعم',
-          desc: 'أكواب وأكمام وتغليف وجبات ومنيوهات وأكياس توصيل — بلون علامتك نفسه، طلباً بعد طلب.',
+          desc: 'لدينا جميع طلبات واحتياجات المطاعم والكافيهات من الأكواب والبروشورات وجميع البوكسات الخاصة بالمواد الغذائية.',
         },
         {
-          name: 'التجزئة والمتاجر الإلكترونية',
-          desc: 'علب شحن وورق حرير وأختام إغلاق وبطاقات شكر تجعل لحظة فتح الصندوق تستحق التصوير.',
+          name: 'الأسر المنتجة',
+          desc: 'ندعم الأسر المنتجة بالكميات الصغيرة، ونوفر لها ورق التغليف والبوكسات وبكجات العبايات بأقل الكميات.',
         },
         {
           name: 'الفعاليات والمعارض',

@@ -212,7 +212,7 @@ const dict = {
         },
         {
           name: 'Events & exhibitions',
-          desc: 'Backdrops, badges, lanyards, gift kits and signage — delivered before the doors open.',
+          desc: 'A dedicated division for designing and building large-scale exhibitions and events, with a full crew specialized in booths and exhibition fit-out.',
         },
         {
           name: 'Corporate & offices',
@@ -579,7 +579,7 @@ const dict = {
         },
         {
           name: 'الفعاليات والمعارض',
-          desc: 'باك دروب، بطاقات تعريف، لانيارد، أكياس هدايا ولوحات — تصلك قبل فتح الأبواب.',
+          desc: 'قسم خاص لتصميم وتنفيذ المعارض والفعاليات الضخمة، لدينا كادر كامل مختص ببناء البوثات ولوازم المعارض.',
         },
         {
           name: 'الشركات والمكاتب',

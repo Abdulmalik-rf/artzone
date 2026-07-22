@@ -168,7 +168,7 @@ const dict = {
         {
           no: 'S4',
           name: 'Finishing',
-          desc: 'Cutting, creasing, folding, lamination, foil and binding — where print becomes product.',
+          desc: 'We finish your job to the exact spec — adding a protective coat, shaping it as required, then cutting it to its final form.',
         },
         {
           no: 'S5',
@@ -535,7 +535,7 @@ const dict = {
         {
           no: 'S4',
           name: 'التشطيب',
-          desc: 'قص وتكسير وطي وسلوفان وفويل وتجليد — هنا يتحول المطبوع إلى منتج.',
+          desc: 'نجهّز طلبك حسب المواصفات المطلوبة: وضع مادة الحماية والتشكيل بالشكل المطلوب، ثم القص ليأخذ شكله النهائي.',
         },
         {
           no: 'S5',

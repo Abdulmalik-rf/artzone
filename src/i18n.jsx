@@ -220,7 +220,7 @@ const dict = {
         },
         {
           name: 'Clinics & beauty',
-          desc: 'Soft-touch boxes, gold-foil labels and packaging that feels as premium as what is inside it.',
+          desc: 'We supply clinics and hospitals with waste bags and labels, sourcing the newest, best-looking models available.',
         },
         {
           name: 'Startups & founders',
@@ -587,7 +587,7 @@ const dict = {
         },
         {
           name: 'العيادات والتجميل',
-          desc: 'علب بملمس مخملي وليبلات بفويل ذهبي وتغليف يليق بفخامة ما بداخله.',
+          desc: 'نؤمّن متطلبات المستوصفات والمشافي من أكياس النفايات والملصقات، ونورّد أجمل وأحدث الموديلات المتوفرة.',
         },
         {
           name: 'المشاريع الناشئة',

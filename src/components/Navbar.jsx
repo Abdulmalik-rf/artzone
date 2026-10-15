@@ -28,7 +28,7 @@ export default function Navbar() {
         <a href="#top" className="nb-brand" onClick={() => setOpen(false)}>
           <img src="./logo.png" alt="Art Zone Printing" className="nb-logo" />
           <span className="nb-wordmark">
-            ART ZONE<i className="mono">PRESS &amp; PRINT WORKS</i>
+            {t.brand.name}<i className="mono">{t.brand.tag}</i>
           </span>
         </a>
 

@@ -18,7 +18,7 @@ export default function Footer() {
             <a href="#top" className="ft-id">
               <img src="./logo.png" alt="Art Zone Printing" className="ft-logo" />
               <span className="ft-wordmark">
-                ART ZONE<i className="mono">PRESS &amp; PRINT WORKS</i>
+                {t.brand.name}<i className="mono">{t.brand.tag}</i>
               </span>
             </a>
             <p className="ft-line">{t.footer.line}</p>

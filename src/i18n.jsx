@@ -27,6 +27,8 @@ const dict = {
       menuLabel: 'Menu',
     },
 
+    brand: { name: 'ART ZONE', tag: 'PRESS & PRINT WORKS' },
+
     titles: {
       home: 'Art Zone Printing — Print Manufacturer, Dammam',
       work: 'Our Work — Art Zone Printing',
@@ -393,6 +395,8 @@ const dict = {
       langLabel: 'EN',
       menuLabel: 'القائمة',
     },
+
+    brand: { name: 'ارت زون', tag: 'للطباعة' },
 
     titles: {
       home: 'آرت زون للطباعة — مصنع طباعة وتغليف متكامل في الدمام',

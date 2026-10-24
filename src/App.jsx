@@ -20,6 +20,8 @@ import Contact from './pages/Contact.jsx'
 import NotFound from './pages/NotFound.jsx'
 import Services from './pages/Services.jsx'
 import Service from './pages/Service.jsx'
+import Guides from './pages/Guides.jsx'
+import Guide from './pages/Guide.jsx'
 
 function WhatsAppGlyph({ size = 26 }) {
   return (
@@ -48,6 +50,8 @@ const PAGES = {
   home: Home,
   services: Services,
   service: Service,
+  guides: Guides,
+  guide: Guide,
   work: Work,
   about: About,
   contact: Contact,

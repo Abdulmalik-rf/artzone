@@ -43,6 +43,7 @@ export default function Work() {
             {GALLERY.map((item, i) => {
               const code = `${t.gallery.jobLabel} ${String(i + 1).padStart(2, '0')}`
               const caption = item.label ? item.label[lang] : code
+              const cat = !item.label && item.service ? t.gallery.cats[item.service] : null
               return (
                 <figure
                   key={item.file}
@@ -66,7 +67,21 @@ export default function Work() {
                     dir={item.label ? 'rtl' : 'ltr'}
                   >
                     <i className="gl-dot" aria-hidden="true" />
-                    {caption}
+                    {item.label && item.service ? (
+                      <a href={href(`/services/${item.service}/`)} className="gl-cat">
+                        {caption}
+                      </a>
+                    ) : (
+                      caption
+                    )}
+                    {cat && (
+                      <>
+                        <span className="gl-sep" aria-hidden="true">·</span>
+                        <a href={href(`/services/${item.service}/`)} className="gl-cat" dir="auto">
+                          {cat}
+                        </a>
+                      </>
+                    )}
                   </figcaption>
                 </figure>
               )

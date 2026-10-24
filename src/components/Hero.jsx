@@ -30,14 +30,16 @@ export default function Hero() {
         <div className="hr-grid">
           {/* ---- copy column ---- */}
           <div className="hr-copy">
-            <p className="kicker" data-reveal>
+            {/* the descriptive line (brand + what + where) is the page's h1;
+                the big slogan below is display type */}
+            <h1 className="kicker" data-reveal>
               {t.hero.kicker}
-            </p>
+            </h1>
 
-            <h1 className="hr-title" data-reveal style={{ transitionDelay: '70ms' }}>
+            <p className="hr-title" data-reveal style={{ transitionDelay: '70ms' }}>
               <span className="hr-title-line">{t.hero.titleA}</span>
               <span className="hr-title-line hr-title-mark">{t.hero.titleB}</span>
-            </h1>
+            </p>
 
             <p className="hr-sub" data-reveal style={{ transitionDelay: '140ms' }}>
               {t.hero.sub}

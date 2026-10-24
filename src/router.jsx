@@ -1,5 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { SERVICE_SLUGS } from './data/services.js'
+import { GUIDE_SLUGS } from './data/guides.js'
 
 /* ===================================================================
    Path router (prerender-friendly).
@@ -7,6 +8,7 @@ import { SERVICE_SLUGS } from './data/services.js'
      /            /en/            -> home
      /services/   /en/services/   -> services hub
      /services/paper-cups/        -> one service page (slugs in data/services.js)
+     /guides/     /guides/<slug>/ -> buyer guides (slugs in data/guides.js)
      /work/       /en/work/       -> gallery
      /about/      /en/about/      -> about
      /contact/    /en/contact/    -> contact
@@ -21,6 +23,7 @@ export const DEFAULT_LANG = 'ar'
 export const PAGE_PATHS = {
   home: '/',
   services: '/services/',
+  guides: '/guides/',
   work: '/work/',
   about: '/about/',
   contact: '/contact/',
@@ -29,8 +32,11 @@ export const PAGE_PATHS = {
 /* legacy hash routes from the first build ('#/work') */
 const LEGACY = { '#/work': 'work', '#/about': 'about', '#/contact': 'contact' }
 
+/* detail pages: page key -> [url prefix, valid slugs] */
+const DETAIL = { service: ['services', SERVICE_SLUGS], guide: ['guides', GUIDE_SLUGS] }
+
 export function pathFor(page, lang, slug) {
-  const base = page === 'service' ? `/services/${slug}/` : PAGE_PATHS[page] || '/'
+  const base = DETAIL[page] ? `/${DETAIL[page][0]}/${slug}/` : PAGE_PATHS[page] || '/'
   return lang === 'en' ? `/en${base}` : base
 }
 
@@ -43,8 +49,11 @@ export function parseLocation(pathname, hash = '') {
   }
   if (!p.endsWith('/')) p += '/'
   const anchor = hash.match(/^#([a-z-]+)$/)?.[1] || null
-  const svc = p.match(/^\/services\/([a-z0-9-]+)\/$/)
-  if (svc && SERVICE_SLUGS.includes(svc[1])) return { lang, page: 'service', slug: svc[1], anchor }
+  const m = p.match(/^\/([a-z]+)\/([a-z0-9-]+)\/$/)
+  if (m) {
+    const page = Object.keys(DETAIL).find((k) => DETAIL[k][0] === m[1])
+    if (page && DETAIL[page][1].includes(m[2])) return { lang, page, slug: m[2], anchor }
+  }
   const page = Object.keys(PAGE_PATHS).find((k) => PAGE_PATHS[k] === p) || 'notfound'
   return { lang, page, slug: null, anchor }
 }

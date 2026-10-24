@@ -1,5 +1,5 @@
 import { useI18n } from '../i18n.jsx'
-import { WA_DISPLAY, PHONE_HREF } from '../lib/wa.js'
+import { WA_DISPLAY, PHONE_HREF, MAPS_URL } from '../lib/wa.js'
 import { useHref } from '../router.jsx'
 import './Footer.css'
 
@@ -24,6 +24,17 @@ export default function Footer() {
               </span>
             </a>
             <p className="ft-line">{t.footer.line}</p>
+            {/* name / address / phone, identical on every page */}
+            <address className="ft-nap">
+              <strong className="ft-nap-name">{t.footer.napName}</strong>
+              <span>{t.contact.address}</span>
+              <a href={PHONE_HREF} dir="ltr" className="ft-nap-phone mono">
+                {WA_DISPLAY}
+              </a>
+              <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" className="ft-nap-map">
+                {t.contact.mapCta}
+              </a>
+            </address>
           </div>
 
           <nav className="ft-nav" aria-label={t.nav.menuLabel}>

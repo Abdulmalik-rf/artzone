@@ -192,6 +192,30 @@
   transform: translate(-1px, -1px);
 }
 
+/* product label in the caption -> links to the service page */
+.gl-sep {
+  color: var(--ink-soft);
+}
+
+.gl-cat {
+  font-family: var(--font-ar);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--ink);
+  border-bottom: 1px dashed var(--line-strong);
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+:lang(en) .gl-cat {
+  font-family: var(--font-en);
+}
+
+.gl-cat:hover {
+  color: var(--magenta-text);
+  border-color: var(--magenta-text);
+}
+
 /* ---------- responsive ---------- */
 @media (max-width: 1020px) {
   .gl-wall {

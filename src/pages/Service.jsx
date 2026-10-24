@@ -3,6 +3,7 @@ import { useHref, useRoute } from '../router.jsx'
 import { waLink } from '../lib/wa.js'
 import { getService } from '../data/services.js'
 import { photoByFile } from '../data/gallery.js'
+import { guidesForService } from '../data/guides.js'
 import NotFound from './NotFound.jsx'
 import './Service.css'
 
@@ -17,6 +18,7 @@ export default function Service() {
   const ui = t.serviceUi
   const photos = s.images.map(photoByFile).filter(Boolean)
   const related = s.related.map(getService).filter(Boolean)
+  const guides = guidesForService(s.slug)
 
   return (
     <div className="sd">
@@ -135,6 +137,17 @@ export default function Service() {
               </details>
             ))}
           </div>
+
+          {guides.length > 0 && (
+            <div className="sd-guides" data-reveal>
+              <span className="sd-guides-label mono">{t.guideUi.readAlso}</span>
+              {guides.map((g) => (
+                <a key={g.slug} href={href(`/guides/${g.slug}/`)} className="sd-guide">
+                  {g[lang].h1}
+                </a>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

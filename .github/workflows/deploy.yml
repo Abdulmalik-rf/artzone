@@ -34,3 +34,24 @@ jobs:
           git add -A
           git commit -m "Deploy ${GITHUB_SHA::7}"
           git push --force "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" hostinger-deploy
+
+      # Tell IndexNow engines (Bing, Yandex, Seznam…) about every URL in the
+      # sitemap once Hostinger has pulled the new build. The key file
+      # (public/<key>.txt) is public by design. Never fails the deploy.
+      - name: Ping IndexNow
+        continue-on-error: true
+        env:
+          INDEXNOW_KEY: 84bf4f0b64daee890425763338d0292e
+          SITE: https://art-zone-print.com
+        run: |
+          for i in $(seq 1 18); do
+            if curl -fs "$SITE/$INDEXNOW_KEY.txt" | grep -q "$INDEXNOW_KEY"; then break; fi
+            sleep 10
+          done
+          urls=$(grep -o '<loc>[^<]*' dist/sitemap.xml | sed 's/<loc>//' | jq -R . | jq -sc .)
+          body=$(jq -nc --arg host "${SITE#https://}" --arg key "$INDEXNOW_KEY" \
+            --arg loc "$SITE/$INDEXNOW_KEY.txt" --argjson urls "$urls" \
+            '{host: $host, key: $key, keyLocation: $loc, urlList: $urls}')
+          code=$(curl -s -o /dev/null -w '%{http_code}' -X POST https://api.indexnow.org/indexnow \
+            -H 'Content-Type: application/json; charset=utf-8' -d "$body")
+          echo "IndexNow responded $code for $(echo "$urls" | jq length) URLs"

@@ -31,14 +31,16 @@ const OG_IMAGE = { url: `${SITE}/img/og-image.jpg`, width: 1200, height: 630 }
 const TODAY = new Date().toISOString().slice(0, 10)
 
 const ssr = await import(pathToFileURL(join(SSR_DIR, 'entry-server.js')).href)
-const { render, dict, GALLERY, PAGE_PATHS, pathFor, SERVICES, SLUG_BY_CAP, pageMeta } = ssr
+const { render, dict, GALLERY, PAGE_PATHS, pathFor, SERVICES, SLUG_BY_CAP, GUIDES, pageMeta } = ssr
 const PAGES = Object.keys(PAGE_PATHS)
 /* every indexable route: fixed pages + one per service */
 const ROUTES = [
   ...PAGES.map((page) => ({ page, slug: null })),
   ...SERVICES.map((s) => ({ page: 'service', slug: s.slug })),
+  ...GUIDES.map((g) => ({ page: 'guide', slug: g.slug })),
 ]
 const SERVICE_BY_SLUG = Object.fromEntries(SERVICES.map((s) => [s.slug, s]))
+const GUIDE_BY_SLUG = Object.fromEntries(GUIDES.map((g) => [g.slug, g]))
 const PHOTO = Object.fromEntries(GALLERY.map((g) => [g.file, g]))
 
 const template = readFileSync(join(DIST, 'index.html'), 'utf8')
@@ -134,6 +136,8 @@ const PAGE_TYPE = {
   home: 'WebPage',
   services: 'CollectionPage',
   service: 'WebPage',
+  guides: 'CollectionPage',
+  guide: 'WebPage',
   work: 'CollectionPage',
   about: 'AboutPage',
   contact: 'ContactPage',
@@ -164,6 +168,9 @@ function graphFor(page, lang, slug) {
     if (page === 'service') {
       crumbs.push({ name: t.serviceUi.services, item: abs(pathFor('services', lang)) })
       crumbs.push({ name: SERVICE_BY_SLUG[slug][lang].name, item: url })
+    } else if (page === 'guide') {
+      crumbs.push({ name: t.guideUi.guides, item: abs(pathFor('guides', lang)) })
+      crumbs.push({ name: GUIDE_BY_SLUG[slug][lang].h1, item: url })
     } else {
       crumbs.push({ name: t.titles[page], item: url })
     }
@@ -185,6 +192,53 @@ function graphFor(page, lang, slug) {
         url: abs(pathFor('service', lang, svc.slug)),
       })),
     }
+  }
+
+  if (page === 'guides') {
+    webPage.mainEntity = {
+      '@type': 'ItemList',
+      itemListElement: GUIDES.map((g, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: g[lang].h1,
+        url: abs(pathFor('guide', lang, g.slug)),
+      })),
+    }
+  }
+
+  if (page === 'guide') {
+    const g = GUIDE_BY_SLUG[slug]
+    const c = g[lang]
+    const image = abs(`/img/work/${g.image}.webp`)
+    webPage.mainEntity = { '@id': `${url}#article` }
+    webPage.primaryImageOfPage = { '@type': 'ImageObject', url: image }
+    graph.push(
+      {
+        '@type': 'Article',
+        '@id': `${url}#article`,
+        headline: c.h1,
+        description: c.description,
+        abstract: c.summary,
+        inLanguage: HREFLANG[lang],
+        datePublished: g.published,
+        dateModified: g.updated,
+        image,
+        mainEntityOfPage: { '@id': `${url}#webpage` },
+        author: { '@id': `${SITE}/#business` },
+        publisher: { '@id': `${SITE}/#business` },
+        about: g.services.map((sl) => ({ '@id': `${abs(pathFor('service', lang, sl))}#service` })),
+      },
+      {
+        '@type': 'FAQPage',
+        '@id': `${url}#faq`,
+        inLanguage: HREFLANG[lang],
+        mainEntity: c.faq.map((f) => ({
+          '@type': 'Question',
+          name: f.q,
+          acceptedAnswer: { '@type': 'Answer', text: f.a },
+        })),
+      },
+    )
   }
 
   if (page === 'service') {
@@ -287,7 +341,12 @@ function headFor(page, lang, slug, { notFound = false } = {}) {
   const { title, description: desc } = pageMeta(t, page, slug, lang)
   const url = abs(pathFor(page, lang, slug))
   // service pages share their first real job photo; everything else the brand card
-  const svcImage = page === 'service' ? serviceImages(SERVICE_BY_SLUG[slug])[0] : null
+  const svcImage =
+    page === 'service'
+      ? serviceImages(SERVICE_BY_SLUG[slug])[0]
+      : page === 'guide'
+        ? abs(`/img/work/${GUIDE_BY_SLUG[slug].image}.webp`)
+        : null
   const ogImage = svcImage ? { url: svcImage } : OG_IMAGE
   const tags = [
     `<title>${esc(title)}</title>`,
@@ -301,7 +360,7 @@ function headFor(page, lang, slug, { notFound = false } = {}) {
       `<link rel="canonical" href="${url}" />`,
       ...LANGS.map((l) => `<link rel="alternate" hreflang="${HREFLANG[l]}" href="${abs(pathFor(page, l, slug))}" />`),
       `<link rel="alternate" hreflang="x-default" href="${abs(pathFor(page, 'ar', slug))}" />`,
-      `<meta property="og:type" content="website" />`,
+      `<meta property="og:type" content="${page === 'guide' ? 'article' : 'website'}" />`,
       `<meta property="og:site_name" content="${lang === 'ar' ? 'آرت زون للطباعة' : 'Art Zone Printing'}" />`,
       `<meta property="og:title" content="${esc(title)}" />`,
       `<meta property="og:description" content="${esc(desc)}" />`,
@@ -371,11 +430,13 @@ const urlEntries = ROUTES.flatMap(({ page, slug }) =>
           ? [imageTag(abs('/img/hero-products.webp'))]
           : page === 'service'
             ? serviceImages(SERVICE_BY_SLUG[slug]).map(imageTag)
-            : []
+            : page === 'guide'
+              ? [imageTag(abs(`/img/work/${GUIDE_BY_SLUG[slug].image}.webp`))]
+              : []
     return [
       '  <url>',
       `    <loc>${abs(pathFor(page, lang, slug))}</loc>`,
-      `    <lastmod>${TODAY}</lastmod>`,
+      `    <lastmod>${page === 'guide' ? GUIDE_BY_SLUG[slug].updated : TODAY}</lastmod>`,
       ...alternates,
       ...images,
       '  </url>',
@@ -421,6 +482,9 @@ ${en.caps.items
   })
   .join('\n')}
 - Banner & Wide-Format Printing (${SERVICE_BY_SLUG.banners.ar.name}): ${SERVICE_BY_SLUG.banners.en.short} — ${abs(pathFor('service', 'en', 'banners'))}
+
+## Guides
+${GUIDES.map((g) => `- [${g.en.h1}](${abs(pathFor('guide', 'en', g.slug))}): ${g.en.summary}`).join('\n')}
 
 ## Industries served
 ${en.industries.items.map((i) => `- ${i.name}: ${i.desc}`).join('\n')}

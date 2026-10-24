@@ -77,6 +77,37 @@
   max-width: 40ch;
 }
 
+/* name / address / phone */
+.ft-nap {
+  margin-block-start: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  font-style: normal;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(246, 243, 236, 0.72);
+}
+
+.ft-nap-name {
+  color: var(--paper);
+  font-weight: 600;
+}
+
+.ft-nap-phone,
+.ft-nap-map {
+  color: var(--paper);
+  border-bottom: 1px dashed rgba(246, 243, 236, 0.4);
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.ft-nap-phone:hover,
+.ft-nap-map:hover {
+  color: var(--yellow);
+  border-color: var(--yellow);
+}
+
 /* mini nav */
 .ft-nav {
   display: flex;

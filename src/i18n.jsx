@@ -18,6 +18,7 @@ const dict = {
       ],
       footerLinks: [
         ['/services/', 'What we print'],
+        ['/guides/', 'Print guides'],
         ['#production', 'Production'],
         ['/work/', 'Our Work'],
         ['/about/', 'About'],
@@ -34,6 +35,7 @@ const dict = {
     titles: {
       home: 'Art Zone Printing — Print Manufacturer, Dammam',
       services: 'Printing & Packaging Services in Dammam — Art Zone Printing',
+      guides: 'Print & Packaging Guides — Art Zone Printing',
       work: 'Our Work — Art Zone Printing',
       about: 'About the Plant — Art Zone Printing',
       contact: 'Contact — Art Zone Printing',
@@ -44,6 +46,7 @@ const dict = {
     seo: {
       home: 'Art Zone Printing is a print and packaging factory in Dammam, Saudi Arabia, since 2016: paper cups, boxes, bags, business cards, labels, signage and corporate gifts, delivered Kingdom-wide.',
       services: 'Every print and packaging service at the Art Zone Printing plant in Dammam: paper cups, boxes, paper bags, business cards, stickers, signage, banners and corporate gifts.',
+      guides: 'Practical print and packaging guides from the Art Zone Printing prepress team: paper cup sizes, offset vs digital printing, and preparing print-ready files.',
       work: 'Real jobs from the Art Zone Printing plant in Dammam: branded paper cups, food packaging, illuminated signs and corporate gifts for clients across Saudi Arabia.',
       about: 'Inside the Art Zone Printing plant in Al Badiyah, Dammam: digital, offset, wide-format and finishing lines under one roof since 2016, trusted by 500+ brands.',
       contact: 'Contact Art Zone Printing in Dammam: WhatsApp or call +966 53 573 8136, 18th Street, Al Badiyah. Fast quotes and delivery to every city in Saudi Arabia.',
@@ -57,6 +60,26 @@ const dict = {
       cardCta: 'Service details',
       moreTitle: 'More from the plant',
       moreSub: 'Also produced in-house — ask the sales desk on WhatsApp.',
+    },
+
+    guidesPage: {
+      kicker: 'Guides',
+      title: 'Print and packaging guides.',
+      sub: 'Straight answers from our prepress team to the questions buyers ask before they order.',
+      readMore: 'Read the guide',
+    },
+
+    guideUi: {
+      home: 'Home',
+      guides: 'Guides',
+      byline: 'Art Zone Printing prepress team',
+      published: 'Published',
+      updated: 'Updated',
+      faq: 'Quick answers',
+      services: 'Related services',
+      readAlso: 'Guides on this topic',
+      ctaWa: 'Ask the prepress team on WhatsApp',
+      waMsg: 'Hello Art Zone, I have a question after reading:',
     },
 
     serviceUi: {
@@ -97,7 +120,7 @@ const dict = {
     },
 
     hero: {
-      kicker: 'Print manufacturer · Dammam, Saudi Arabia',
+      kicker: 'Art Zone Printing · Print, packaging & signage factory in Dammam',
       titleA: 'Every print process.',
       titleB: 'One factory floor.',
       sub: 'Digital and offset printing for all paper prints, plain and full-color; custom acrylic and Forex signage; project hoardings and banner installation; a dedicated lightbox division with a seasoned crew; a dedicated packaging line for restaurants and cafés — cups and boxes; and a dedicated promotional-gifts division.',
@@ -343,6 +366,7 @@ const dict = {
     footer: {
       line: 'Print manufacturer, Dammam — every process under one roof since 2016.',
       rights: 'Art Zone Printing. All rights reserved.',
+      napName: 'Art Zone Printing',
       backToTop: 'Back to top',
     },
 
@@ -363,6 +387,15 @@ const dict = {
       title: 'Proof, not promises.',
       sub: 'Real jobs for real clients, straight from the floor in Dammam — cups, packaging, signage, menus and more.',
       jobLabel: 'JOB',
+      /* short product label per service page, shown in photo captions */
+      cats: {
+        'paper-cups': 'Paper cups',
+        boxes: 'Boxes',
+        'paper-bags': 'Paper bags',
+        signage: 'Signage',
+        'corporate-gifts': 'Corporate gifts',
+        banners: 'Wide-format',
+      },
       ready: {
         title: 'Want yours on this wall?',
         sub: 'Send a ticket — a quote comes back in minutes.',
@@ -447,6 +480,7 @@ const dict = {
       ],
       footerLinks: [
         ['/services/', 'خدمات الطباعة والتصنيع'],
+        ['/guides/', 'أدلة الطباعة'],
         ['#production', 'خطوط الإنتاج'],
         ['/work/', 'معرض الأعمال'],
         ['/about/', 'عن المصنع'],
@@ -463,6 +497,7 @@ const dict = {
     titles: {
       home: 'آرت زون للطباعة — مصنع طباعة وتغليف متكامل في الدمام',
       services: 'خدمات الطباعة والتغليف في الدمام — آرت زون للطباعة',
+      guides: 'أدلة الطباعة والتغليف — آرت زون للطباعة',
       work: 'معرض الأعمال — آرت زون للطباعة',
       about: 'عن المصنع — آرت زون للطباعة',
       contact: 'تواصل معنا — آرت زون للطباعة',
@@ -473,6 +508,7 @@ const dict = {
     seo: {
       home: 'آرت زون للطباعة: مصنع طباعة وتغليف في الدمام منذ 2016. أكواب ورقية، علب وبوكسات، أكياس، بطاقات أعمال، ملصقات، لوحات إعلانية وهدايا دعائية مع الشحن لكافة مناطق المملكة.',
       services: 'خدمات مصنع آرت زون للطباعة في الدمام: طباعة الأكواب الورقية، العلب والبوكسات، الأكياس الورقية، الكروت الشخصية، الاستيكرات، اللوحات المضيئة، البنرات والهدايا الدعائية.',
+      guides: 'أدلة عملية من فريق التدقيق الفني في آرت زون للطباعة: مقاسات الأكواب الورقية، الفرق بين الأوفست والطباعة الرقمية، وتجهيز ملفات التصميم للطباعة.',
       work: 'معرض أعمال آرت زون للطباعة: نماذج حقيقية من إنتاج مصنعنا في الدمام تشمل الأكواب الورقية المطبوعة، علب التغليف، اللوحات المضيئة والهدايا الترويجية.',
       about: 'تعرّف على مصنع آرت زون للطباعة في حي البادية بالدمام: خطوط طباعة رقمية وأوفست وطباعة عريضة وتشطيب تحت سقف واحد منذ 2016، بثقة أكثر من 500 علامة تجارية.',
       contact: 'تواصل مع آرت زون للطباعة في الدمام عبر واتساب أو الاتصال على 0535738136، شارع 18، حي البادية. عروض أسعار سريعة وشحن لكافة مناطق المملكة.',
@@ -486,6 +522,26 @@ const dict = {
       cardCta: 'تفاصيل الخدمة',
       moreTitle: 'خدمات أخرى من المصنع',
       moreSub: 'ننفذها أيضاً داخل المصنع — تواصلوا مع إدارة المبيعات عبر واتساب.',
+    },
+
+    guidesPage: {
+      kicker: 'أدلة الطباعة',
+      title: 'أدلة الطباعة والتغليف.',
+      sub: 'إجابات مباشرة من فريق التدقيق الفني على الأسئلة التي يطرحها العملاء قبل الطلب.',
+      readMore: 'قراءة الدليل',
+    },
+
+    guideUi: {
+      home: 'الرئيسية',
+      guides: 'أدلة الطباعة',
+      byline: 'فريق التدقيق الفني — آرت زون للطباعة',
+      published: 'تاريخ النشر',
+      updated: 'آخر تحديث',
+      faq: 'إجابات سريعة',
+      services: 'خدمات ذات صلة',
+      readAlso: 'أدلة حول هذه الخدمة',
+      ctaWa: 'استشر فريق التدقيق الفني عبر واتساب',
+      waMsg: 'السلام عليكم، لدي استفسار بعد قراءة:',
     },
 
     serviceUi: {
@@ -526,7 +582,7 @@ const dict = {
     },
 
     hero: {
-      kicker: 'مصنع طباعة وتصنيع وطني · الدمام، المملكة العربية السعودية',
+      kicker: 'آرت زون للطباعة · مطبعة ومصنع تغليف ولوحات إعلانية في الدمام',
       titleA: 'كافة تقنيات الطباعة والتغليف.',
       titleB: 'تحت سقف تصنيعي واحد.',
       sub: 'طباعة رقمية (ديجيتال) وأوفست لكافة المطبوعات الورقية الفاخرة والملونة، تصنيع وتشكيل مجسمات الأكريليك والفوركس بأعلى دقة، تنفيذ أسوار المشاريع الإنشائية وتركيب البنرات، قسم متخصص للوحات الإعلانية والمضيئة بكوادر فنية متمرسة، خطوط إنتاج متطورة لتغليف وبكجات المطاعم والمقاهي (أكواب وبوكسات)، وقسم متكامل للهدايا الدعائية والترويجية للشركات.',
@@ -772,6 +828,7 @@ const dict = {
     footer: {
       line: 'مصنع طباعة وتغليف وطني في الدمام — كافة مراحل الإنتاج تحت سقف واحد منذ عام 2016.',
       rights: 'آرت زون للطباعة. جميع الحقوق محفوظة.',
+      napName: 'آرت زون للطباعة',
       backToTop: 'العودة للأعلى',
     },
 
@@ -792,6 +849,15 @@ const dict = {
       title: 'جودة نبرهن عليها... وإتقان نلتزم به.',
       sub: 'نماذج حية من إنتاج مصنعنا بالدمام لشركاء نجاحنا في مختلف مناطق المملكة — من حلول التغليف والطباعة الفاخرة إلى اللوحات والتجهيزات المتكاملة.',
       jobLabel: 'JOB',
+      /* تصنيف مختصر لكل خدمة يظهر في تعليق الصورة */
+      cats: {
+        'paper-cups': 'أكواب ورقية',
+        boxes: 'علب وبوكسات',
+        'paper-bags': 'أكياس ورقية',
+        signage: 'لوحات مضيئة',
+        'corporate-gifts': 'هدايا دعائية',
+        banners: 'طباعة عريضة',
+      },
       ready: {
         title: 'هل ترغب في انضمام علامتكم التجارية لشركاء نجاحنا؟',
         sub: 'شاركونا تفاصيل طلبكم، وسيقوم فريق المبيعات والإنتاج بتزويدكم بعرض السعر في أسرع وقت.',

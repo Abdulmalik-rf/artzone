@@ -31,8 +31,15 @@ const OG_IMAGE = { url: `${SITE}/img/og-image.jpg`, width: 1200, height: 630 }
 const TODAY = new Date().toISOString().slice(0, 10)
 
 const ssr = await import(pathToFileURL(join(SSR_DIR, 'entry-server.js')).href)
-const { render, dict, GALLERY, PAGE_PATHS, pathFor } = ssr
+const { render, dict, GALLERY, PAGE_PATHS, pathFor, SERVICES, SLUG_BY_CAP, pageMeta } = ssr
 const PAGES = Object.keys(PAGE_PATHS)
+/* every indexable route: fixed pages + one per service */
+const ROUTES = [
+  ...PAGES.map((page) => ({ page, slug: null })),
+  ...SERVICES.map((s) => ({ page: 'service', slug: s.slug })),
+]
+const SERVICE_BY_SLUG = Object.fromEntries(SERVICES.map((s) => [s.slug, s]))
+const PHOTO = Object.fromEntries(GALLERY.map((g) => [g.file, g]))
 
 const template = readFileSync(join(DIST, 'index.html'), 'utf8')
 const assets = readdirSync(join(DIST, 'assets'))
@@ -101,7 +108,12 @@ function businessNode(lang) {
       name: t.caps.kicker,
       itemListElement: t.caps.items.map((item) => ({
         '@type': 'Offer',
-        itemOffered: { '@type': 'Service', name: item.name, description: item.desc },
+        itemOffered: {
+          '@type': 'Service',
+          name: item.name,
+          description: item.desc,
+          ...(SLUG_BY_CAP[item.tag] && { url: abs(pathFor('service', lang, SLUG_BY_CAP[item.tag])) }),
+        },
       })),
     },
   }
@@ -118,17 +130,28 @@ function websiteNode(lang) {
   }
 }
 
-const PAGE_TYPE = { home: 'WebPage', work: 'CollectionPage', about: 'AboutPage', contact: 'ContactPage' }
+const PAGE_TYPE = {
+  home: 'WebPage',
+  services: 'CollectionPage',
+  service: 'WebPage',
+  work: 'CollectionPage',
+  about: 'AboutPage',
+  contact: 'ContactPage',
+}
 
-function graphFor(page, lang) {
+// all service images live in /img/work/ (gallery photos + plant shots)
+const serviceImages = (svc) => svc.images.map((f) => abs(`/img/work/${f}.webp`))
+
+function graphFor(page, lang, slug) {
   const t = dict[lang]
-  const url = abs(pathFor(page, lang))
+  const url = abs(pathFor(page, lang, slug))
+  const meta = pageMeta(t, page, slug, lang)
   const webPage = {
     '@type': PAGE_TYPE[page],
     '@id': `${url}#webpage`,
     url,
-    name: t.titles[page],
-    description: t.seo[page],
+    name: meta.title,
+    description: meta.description,
     inLanguage: HREFLANG[lang],
     isPartOf: { '@id': `${SITE}/#website` },
     about: { '@id': `${SITE}/#business` },
@@ -137,15 +160,70 @@ function graphFor(page, lang) {
   const graph = [businessNode(lang), websiteNode(lang), webPage]
 
   if (page !== 'home') {
+    const crumbs = [{ name: t.serviceUi.home, item: abs(pathFor('home', lang)) }]
+    if (page === 'service') {
+      crumbs.push({ name: t.serviceUi.services, item: abs(pathFor('services', lang)) })
+      crumbs.push({ name: SERVICE_BY_SLUG[slug][lang].name, item: url })
+    } else {
+      crumbs.push({ name: t.titles[page], item: url })
+    }
     webPage.breadcrumb = { '@id': `${url}#breadcrumb` }
     graph.push({
       '@type': 'BreadcrumbList',
       '@id': `${url}#breadcrumb`,
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: t.titles.home, item: abs(pathFor('home', lang)) },
-        { '@type': 'ListItem', position: 2, name: t.titles[page], item: url },
-      ],
+      itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, ...c })),
     })
+  }
+
+  if (page === 'services') {
+    webPage.mainEntity = {
+      '@type': 'ItemList',
+      itemListElement: SERVICES.map((svc, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: svc[lang].name,
+        url: abs(pathFor('service', lang, svc.slug)),
+      })),
+    }
+  }
+
+  if (page === 'service') {
+    const svc = SERVICE_BY_SLUG[slug]
+    const c = svc[lang]
+    const images = serviceImages(svc)
+    webPage.mainEntity = { '@id': `${url}#service` }
+    if (images.length) webPage.primaryImageOfPage = { '@type': 'ImageObject', url: images[0] }
+    graph.push(
+      {
+        '@type': 'Service',
+        '@id': `${url}#service`,
+        name: c.name,
+        serviceType: c.name,
+        description: c.summary,
+        url,
+        provider: { '@id': `${SITE}/#business` },
+        areaServed: [
+          { '@type': 'City', name: CITIES[lang][0] },
+          { '@type': 'Country', name: lang === 'ar' ? 'المملكة العربية السعودية' : 'Saudi Arabia' },
+        ],
+        ...(images.length && { image: images }),
+        hasOfferCatalog: {
+          '@type': 'OfferCatalog',
+          name: c.name,
+          itemListElement: c.options.map((o) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: o } })),
+        },
+      },
+      {
+        '@type': 'FAQPage',
+        '@id': `${url}#faq`,
+        inLanguage: HREFLANG[lang],
+        mainEntity: c.faq.map((f) => ({
+          '@type': 'Question',
+          name: f.q,
+          acceptedAnswer: { '@type': 'Answer', text: f.a },
+        })),
+      },
+    )
   }
 
   if (page === 'work') {
@@ -204,11 +282,13 @@ function fontPreloads(lang) {
     .map((f) => `<link rel="preload" href="/assets/${f}" as="font" type="font/woff2" crossorigin />`)
 }
 
-function headFor(page, lang, { notFound = false } = {}) {
+function headFor(page, lang, slug, { notFound = false } = {}) {
   const t = dict[lang]
-  const title = t.titles[page]
-  const desc = t.seo[page]
-  const url = abs(pathFor(page, lang))
+  const { title, description: desc } = pageMeta(t, page, slug, lang)
+  const url = abs(pathFor(page, lang, slug))
+  // service pages share their first real job photo; everything else the brand card
+  const svcImage = page === 'service' ? serviceImages(SERVICE_BY_SLUG[slug])[0] : null
+  const ogImage = svcImage ? { url: svcImage } : OG_IMAGE
   const tags = [
     `<title>${esc(title)}</title>`,
     `<meta name="description" content="${esc(desc)}" />`,
@@ -219,24 +299,28 @@ function headFor(page, lang, { notFound = false } = {}) {
   } else {
     tags.push(
       `<link rel="canonical" href="${url}" />`,
-      ...LANGS.map((l) => `<link rel="alternate" hreflang="${HREFLANG[l]}" href="${abs(pathFor(page, l))}" />`),
-      `<link rel="alternate" hreflang="x-default" href="${abs(pathFor(page, 'ar'))}" />`,
+      ...LANGS.map((l) => `<link rel="alternate" hreflang="${HREFLANG[l]}" href="${abs(pathFor(page, l, slug))}" />`),
+      `<link rel="alternate" hreflang="x-default" href="${abs(pathFor(page, 'ar', slug))}" />`,
       `<meta property="og:type" content="website" />`,
       `<meta property="og:site_name" content="${lang === 'ar' ? 'آرت زون للطباعة' : 'Art Zone Printing'}" />`,
       `<meta property="og:title" content="${esc(title)}" />`,
       `<meta property="og:description" content="${esc(desc)}" />`,
       `<meta property="og:url" content="${url}" />`,
-      `<meta property="og:image" content="${OG_IMAGE.url}" />`,
-      `<meta property="og:image:width" content="${OG_IMAGE.width}" />`,
-      `<meta property="og:image:height" content="${OG_IMAGE.height}" />`,
-      `<meta property="og:image:alt" content="${esc(t.hero.showcase.alt)}" />`,
+      `<meta property="og:image" content="${ogImage.url}" />`,
+      ...(ogImage.width
+        ? [
+            `<meta property="og:image:width" content="${ogImage.width}" />`,
+            `<meta property="og:image:height" content="${ogImage.height}" />`,
+            `<meta property="og:image:alt" content="${esc(t.hero.showcase.alt)}" />`,
+          ]
+        : []),
       `<meta property="og:locale" content="${OG_LOCALE[lang]}" />`,
       `<meta property="og:locale:alternate" content="${OG_LOCALE[lang === 'ar' ? 'en' : 'ar']}" />`,
       `<meta name="twitter:card" content="summary_large_image" />`,
       `<meta name="twitter:title" content="${esc(title)}" />`,
       `<meta name="twitter:description" content="${esc(desc)}" />`,
-      `<meta name="twitter:image" content="${OG_IMAGE.url}" />`,
-      jsonLd(graphFor(page, lang)),
+      `<meta name="twitter:image" content="${ogImage.url}" />`,
+      jsonLd(graphFor(page, lang, slug)),
     )
   }
 
@@ -248,11 +332,11 @@ function headFor(page, lang, { notFound = false } = {}) {
 
 /* ---------- pages ---------- */
 
-function writePage(file, pathname, page, lang, opts) {
+function writePage(file, pathname, page, lang, slug, opts) {
   const { html } = render(pathname)
   const out = template
     .replace('<html lang="ar" dir="rtl">', `<html lang="${lang}" dir="${lang === 'ar' ? 'rtl' : 'ltr'}">`)
-    .replace('<!--app-head-->', headFor(page, lang, opts))
+    .replace('<!--app-head-->', headFor(page, lang, slug, opts))
     .replace('<!--app-html-->', html)
   mkdirSync(dirname(file), { recursive: true })
   writeFileSync(file, out)
@@ -260,36 +344,37 @@ function writePage(file, pathname, page, lang, opts) {
 
 const written = []
 for (const lang of LANGS) {
-  for (const page of PAGES) {
-    const path = pathFor(page, lang)
-    writePage(join(DIST, path, 'index.html'), path, page, lang)
+  for (const { page, slug } of ROUTES) {
+    const path = pathFor(page, lang, slug)
+    writePage(join(DIST, path, 'index.html'), path, page, lang, slug)
     written.push(path)
   }
 }
 
 // 404: Arabic (site default); any unknown path renders the notfound page
-writePage(join(DIST, '404.html'), '/404/', 'notfound', 'ar', { notFound: true })
+writePage(join(DIST, '404.html'), '/404/', 'notfound', 'ar', null, { notFound: true })
 written.push('404.html')
 
 /* ---------- sitemap.xml ---------- */
 
-const urlEntries = PAGES.flatMap((page) =>
+const imageTag = (loc) => `    <image:image><image:loc>${loc}</image:loc></image:image>`
+const urlEntries = ROUTES.flatMap(({ page, slug }) =>
   LANGS.map((lang) => {
     const alternates = [
-      ...LANGS.map((l) => `    <xhtml:link rel="alternate" hreflang="${HREFLANG[l]}" href="${abs(pathFor(page, l))}"/>`),
-      `    <xhtml:link rel="alternate" hreflang="x-default" href="${abs(pathFor(page, 'ar'))}"/>`,
+      ...LANGS.map((l) => `    <xhtml:link rel="alternate" hreflang="${HREFLANG[l]}" href="${abs(pathFor(page, l, slug))}"/>`),
+      `    <xhtml:link rel="alternate" hreflang="x-default" href="${abs(pathFor(page, 'ar', slug))}"/>`,
     ]
     const images =
       page === 'work'
-        ? GALLERY.map(
-            (g) => `    <image:image><image:loc>${abs(`/img/work/${g.file}.webp`)}</image:loc></image:image>`,
-          )
+        ? GALLERY.map((g) => imageTag(abs(`/img/work/${g.file}.webp`)))
         : page === 'home'
-          ? [`    <image:image><image:loc>${abs('/img/hero-products.webp')}</image:loc></image:image>`]
-          : []
+          ? [imageTag(abs('/img/hero-products.webp'))]
+          : page === 'service'
+            ? serviceImages(SERVICE_BY_SLUG[slug]).map(imageTag)
+            : []
     return [
       '  <url>',
-      `    <loc>${abs(pathFor(page, lang))}</loc>`,
+      `    <loc>${abs(pathFor(page, lang, slug))}</loc>`,
       `    <lastmod>${TODAY}</lastmod>`,
       ...alternates,
       ...images,
@@ -328,7 +413,14 @@ Print, packaging and signage manufacturer based in Dammam, Eastern Province, Sau
 - Delivery: every city in Saudi Arabia
 
 ## Services
-${en.caps.items.map((i, n) => `- ${i.name} (${ar.caps.items[n].name}): ${i.desc}`).join('\n')}
+${en.caps.items
+  .map((i, n) => {
+    const slug = SLUG_BY_CAP[i.tag]
+    const link = slug ? ` — ${abs(pathFor('service', 'en', slug))}` : ''
+    return `- ${i.name} (${ar.caps.items[n].name}): ${i.desc}${link}`
+  })
+  .join('\n')}
+- Banner & Wide-Format Printing (${SERVICE_BY_SLUG.banners.ar.name}): ${SERVICE_BY_SLUG.banners.en.short} — ${abs(pathFor('service', 'en', 'banners'))}
 
 ## Industries served
 ${en.industries.items.map((i) => `- ${i.name}: ${i.desc}`).join('\n')}

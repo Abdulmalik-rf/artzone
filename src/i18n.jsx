@@ -11,12 +11,13 @@ const dict = {
   en: {
     nav: {
       links: [
+        ['/services/', 'Services'],
         ['/work/', 'Our Work'],
         ['/about/', 'About'],
         ['/contact/', 'Contact'],
       ],
       footerLinks: [
-        ['#capabilities', 'What we print'],
+        ['/services/', 'What we print'],
         ['#production', 'Production'],
         ['/work/', 'Our Work'],
         ['/about/', 'About'],
@@ -32,6 +33,7 @@ const dict = {
 
     titles: {
       home: 'Art Zone Printing — Print Manufacturer, Dammam',
+      services: 'Printing & Packaging Services in Dammam — Art Zone Printing',
       work: 'Our Work — Art Zone Printing',
       about: 'About the Plant — Art Zone Printing',
       contact: 'Contact — Art Zone Printing',
@@ -41,10 +43,46 @@ const dict = {
     /* meta descriptions (search & link previews) */
     seo: {
       home: 'Art Zone Printing is a print and packaging factory in Dammam, Saudi Arabia, since 2016: paper cups, boxes, bags, business cards, labels, signage and corporate gifts, delivered Kingdom-wide.',
+      services: 'Every print and packaging service at the Art Zone Printing plant in Dammam: paper cups, boxes, paper bags, business cards, stickers, signage, banners and corporate gifts.',
       work: 'Real jobs from the Art Zone Printing plant in Dammam: branded paper cups, food packaging, illuminated signs and corporate gifts for clients across Saudi Arabia.',
       about: 'Inside the Art Zone Printing plant in Al Badiyah, Dammam: digital, offset, wide-format and finishing lines under one roof since 2016, trusted by 500+ brands.',
       contact: 'Contact Art Zone Printing in Dammam: WhatsApp or call +966 53 573 8136, 18th Street, Al Badiyah. Fast quotes and delivery to every city in Saudi Arabia.',
       notfound: 'This page does not exist. Browse Art Zone Printing services, our work, or contact the production desk in Dammam.',
+    },
+
+    servicesPage: {
+      kicker: 'Services',
+      title: 'Printing and packaging services in Dammam.',
+      sub: 'Every product below is made on our own floor in Dammam and delivered to every city in Saudi Arabia. Pick a service for options, materials and answers to common questions.',
+      cardCta: 'Service details',
+      moreTitle: 'More from the plant',
+      moreSub: 'Also produced in-house — ask the sales desk on WhatsApp.',
+    },
+
+    serviceUi: {
+      home: 'Home',
+      services: 'Services',
+      options: 'What we make',
+      materials: 'Materials & finishes',
+      audience: 'Who it is for',
+      process: 'How ordering works',
+      processSteps: [
+        'Send the product, quantity and your logo or file on WhatsApp.',
+        'Get a quote and timeline during working hours.',
+        'Approve a digital proof before anything is printed.',
+        'Production runs on our floor in Dammam, then quality check.',
+        'Delivery to any city in Saudi Arabia.',
+      ],
+      faq: 'Questions about this service',
+      related: 'Related services',
+      photos: 'From the floor',
+      ctaWa: 'Request a quote on WhatsApp',
+      ctaQuote: 'Build a job ticket',
+      waMsg: 'Hello Art Zone, I would like a quote for:',
+      ready: {
+        title: 'Ready to price your order?',
+        sub: 'Send the product, quantity and deadline — the sales desk replies during working hours.',
+      },
     },
 
     notFound: {
@@ -402,12 +440,13 @@ const dict = {
   ar: {
     nav: {
       links: [
+        ['/services/', 'الخدمات'],
         ['/work/', 'معرض الأعمال'],
         ['/about/', 'عن المصنع'],
         ['/contact/', 'تواصل معنا'],
       ],
       footerLinks: [
-        ['#capabilities', 'خدمات الطباعة والتصنيع'],
+        ['/services/', 'خدمات الطباعة والتصنيع'],
         ['#production', 'خطوط الإنتاج'],
         ['/work/', 'معرض الأعمال'],
         ['/about/', 'عن المصنع'],
@@ -423,6 +462,7 @@ const dict = {
 
     titles: {
       home: 'آرت زون للطباعة — مصنع طباعة وتغليف متكامل في الدمام',
+      services: 'خدمات الطباعة والتغليف في الدمام — آرت زون للطباعة',
       work: 'معرض الأعمال — آرت زون للطباعة',
       about: 'عن المصنع — آرت زون للطباعة',
       contact: 'تواصل معنا — آرت زون للطباعة',
@@ -432,10 +472,46 @@ const dict = {
     /* أوصاف الصفحات لمحركات البحث ومعاينة الروابط */
     seo: {
       home: 'آرت زون للطباعة: مصنع طباعة وتغليف في الدمام منذ 2016. أكواب ورقية، علب وبوكسات، أكياس، بطاقات أعمال، ملصقات، لوحات إعلانية وهدايا دعائية مع الشحن لكافة مناطق المملكة.',
+      services: 'خدمات مصنع آرت زون للطباعة في الدمام: طباعة الأكواب الورقية، العلب والبوكسات، الأكياس الورقية، الكروت الشخصية، الاستيكرات، اللوحات المضيئة، البنرات والهدايا الدعائية.',
       work: 'معرض أعمال آرت زون للطباعة: نماذج حقيقية من إنتاج مصنعنا في الدمام تشمل الأكواب الورقية المطبوعة، علب التغليف، اللوحات المضيئة والهدايا الترويجية.',
       about: 'تعرّف على مصنع آرت زون للطباعة في حي البادية بالدمام: خطوط طباعة رقمية وأوفست وطباعة عريضة وتشطيب تحت سقف واحد منذ 2016، بثقة أكثر من 500 علامة تجارية.',
       contact: 'تواصل مع آرت زون للطباعة في الدمام عبر واتساب أو الاتصال على 0535738136، شارع 18، حي البادية. عروض أسعار سريعة وشحن لكافة مناطق المملكة.',
       notfound: 'الصفحة المطلوبة غير موجودة. تصفّح خدمات آرت زون للطباعة أو معرض الأعمال أو تواصل مع إدارة المبيعات في الدمام.',
+    },
+
+    servicesPage: {
+      kicker: 'الخدمات',
+      title: 'خدمات الطباعة والتغليف في الدمام.',
+      sub: 'تُصنَّع جميع المنتجات التالية داخل مصنعنا في الدمام، مع الشحن لكافة مدن المملكة. اختر الخدمة للاطلاع على الخيارات والخامات وإجابات الأسئلة الشائعة.',
+      cardCta: 'تفاصيل الخدمة',
+      moreTitle: 'خدمات أخرى من المصنع',
+      moreSub: 'ننفذها أيضاً داخل المصنع — تواصلوا مع إدارة المبيعات عبر واتساب.',
+    },
+
+    serviceUi: {
+      home: 'الرئيسية',
+      services: 'الخدمات',
+      options: 'ما ننفذه',
+      materials: 'الخامات والتشطيبات',
+      audience: 'القطاعات المستفيدة',
+      process: 'خطوات الطلب',
+      processSteps: [
+        'أرسلوا نوع المنتج والكمية والشعار أو الملف عبر واتساب.',
+        'يصلكم عرض السعر وموعد التسليم خلال ساعات العمل.',
+        'تعتمدون البروفة الرقمية قبل بدء الطباعة.',
+        'يُنفَّذ الطلب في مصنعنا بالدمام ثم يخضع لفحص الجودة.',
+        'نشحن الطلب إلى أي مدينة في المملكة.',
+      ],
+      faq: 'أسئلة شائعة عن هذه الخدمة',
+      related: 'خدمات ذات صلة',
+      photos: 'من أعمال المصنع',
+      ctaWa: 'طلب عرض سعر عبر واتساب',
+      ctaQuote: 'تعبئة نموذج الطلب',
+      waMsg: 'السلام عليكم، أرغب في عرض سعر لـ:',
+      ready: {
+        title: 'هل أنتم جاهزون لتسعير طلبكم؟',
+        sub: 'أرسلوا نوع المنتج والكمية والموعد المطلوب، ويرد فريق المبيعات خلال ساعات العمل.',
+      },
     },
 
     notFound: {
@@ -797,7 +873,7 @@ export const LANG_PREF_KEY = 'az-lang'
    language version is its own crawlable page. The toggle navigates to the
    counterpart URL and remembers the choice for the next visit to "/". */
 export function LangProvider({ children }) {
-  const { lang, page, navigate } = useRoute()
+  const { lang, page, slug, navigate } = useRoute()
 
   useEffect(() => {
     document.documentElement.lang = lang
@@ -811,7 +887,7 @@ export function LangProvider({ children }) {
     } catch {
       /* storage blocked (privacy mode / sandboxed iframe) — non-fatal */
     }
-    navigate(pathFor(page === 'notfound' ? 'home' : page, next))
+    navigate(pathFor(page === 'notfound' ? 'home' : page, next, slug))
   }
 
   return (

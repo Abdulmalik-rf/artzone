@@ -1,9 +1,12 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import { SERVICE_SLUGS } from './data/services.js'
 
 /* ===================================================================
    Path router (prerender-friendly).
    Arabic lives at the root, English under /en/:
      /            /en/            -> home
+     /services/   /en/services/   -> services hub
+     /services/paper-cups/        -> one service page (slugs in data/services.js)
      /work/       /en/work/       -> gallery
      /about/      /en/about/      -> about
      /contact/    /en/contact/    -> contact
@@ -17,6 +20,7 @@ export const DEFAULT_LANG = 'ar'
 /* page key -> path (without language prefix) */
 export const PAGE_PATHS = {
   home: '/',
+  services: '/services/',
   work: '/work/',
   about: '/about/',
   contact: '/contact/',
@@ -25,8 +29,8 @@ export const PAGE_PATHS = {
 /* legacy hash routes from the first build ('#/work') */
 const LEGACY = { '#/work': 'work', '#/about': 'about', '#/contact': 'contact' }
 
-export function pathFor(page, lang) {
-  const base = PAGE_PATHS[page] || '/'
+export function pathFor(page, lang, slug) {
+  const base = page === 'service' ? `/services/${slug}/` : PAGE_PATHS[page] || '/'
   return lang === 'en' ? `/en${base}` : base
 }
 
@@ -38,9 +42,11 @@ export function parseLocation(pathname, hash = '') {
     p = p.slice(3) || '/'
   }
   if (!p.endsWith('/')) p += '/'
+  const anchor = hash.match(/^#([a-z-]+)$/)?.[1] || null
+  const svc = p.match(/^\/services\/([a-z0-9-]+)\/$/)
+  if (svc && SERVICE_SLUGS.includes(svc[1])) return { lang, page: 'service', slug: svc[1], anchor }
   const page = Object.keys(PAGE_PATHS).find((k) => PAGE_PATHS[k] === p) || 'notfound'
-  const anchor = hash.match(/^#([a-z-]+)$/)
-  return { lang, page, anchor: anchor ? anchor[1] : null }
+  return { lang, page, slug: null, anchor }
 }
 
 /* '#/work' -> '/work/' (or '/en/work/'); null when not a legacy link */
@@ -54,8 +60,8 @@ export function localize(href, lang) {
   if (href.startsWith('#')) return `${pathFor('home', lang)}${href}`
   if (href.startsWith('/')) {
     const [path, hash] = href.split('#')
-    const { page } = parseLocation(path)
-    return pathFor(page === 'notfound' ? 'home' : page, lang) + (hash ? `#${hash}` : '')
+    const { page, slug } = parseLocation(path)
+    return pathFor(page === 'notfound' ? 'home' : page, lang, slug) + (hash ? `#${hash}` : '')
   }
   return href
 }

@@ -3,6 +3,7 @@ import { useI18n } from './i18n.jsx'
 import { useRoute } from './router.jsx'
 import { waLink } from './lib/wa.js'
 import { track } from './lib/track.js'
+import { pageMeta } from './lib/meta.js'
 import Navbar from './components/Navbar.jsx'
 import Hero from './components/Hero.jsx'
 import Marquee from './components/Marquee.jsx'
@@ -17,6 +18,8 @@ import Work from './pages/Work.jsx'
 import About from './pages/About.jsx'
 import Contact from './pages/Contact.jsx'
 import NotFound from './pages/NotFound.jsx'
+import Services from './pages/Services.jsx'
+import Service from './pages/Service.jsx'
 
 function WhatsAppGlyph({ size = 26 }) {
   return (
@@ -41,20 +44,27 @@ function Home() {
   )
 }
 
-const PAGES = { home: Home, work: Work, about: About, contact: Contact, notfound: NotFound }
+const PAGES = {
+  home: Home,
+  services: Services,
+  service: Service,
+  work: Work,
+  about: About,
+  contact: Contact,
+  notfound: NotFound,
+}
 
 export default function App() {
   const { lang, t } = useI18n()
-  const { page, anchor } = useRoute()
+  const { page, slug, anchor } = useRoute()
 
   /* per-page title + description on client-side navigation (the full
      <head> for each URL is prerendered at build time) */
   useEffect(() => {
-    document.title = t.titles[page] || t.titles.home
-    document
-      .querySelector('meta[name="description"]')
-      ?.setAttribute('content', t.seo[page] || t.seo.home)
-  }, [t, page])
+    const meta = pageMeta(t, page, slug, lang)
+    document.title = meta.title
+    document.querySelector('meta[name="description"]')?.setAttribute('content', meta.description)
+  }, [t, page, slug, lang])
 
   /* conversion tracking: every WhatsApp / phone link on the site */
   useEffect(() => {
@@ -72,10 +82,10 @@ export default function App() {
   /* scroll management: pages open at top; home anchors scroll to section.
      Same-page anchor clicks scroll smoothly; arriving from another page
      jumps straight to the target instead of gliding past whole sections. */
-  const prevPage = useRef(page)
+  const prevPage = useRef(`${page}:${slug}`)
   useEffect(() => {
-    const changedPage = prevPage.current !== page
-    prevPage.current = page
+    const changedPage = prevPage.current !== `${page}:${slug}`
+    prevPage.current = `${page}:${slug}`
     if (page === 'home' && anchor) {
       document
         .getElementById(anchor)
@@ -83,7 +93,7 @@ export default function App() {
     } else {
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
     }
-  }, [page, anchor])
+  }, [page, slug, anchor])
 
   /* scroll-reveal: observe everything tagged data-reveal */
   useEffect(() => {
@@ -101,7 +111,7 @@ export default function App() {
     )
     els.forEach((el) => io.observe(el))
     return () => io.disconnect()
-  }, [lang, page])
+  }, [lang, page, slug])
 
   const Page = PAGES[page] || Home
 

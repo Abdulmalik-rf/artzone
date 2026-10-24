@@ -222,6 +222,27 @@
   gap: 8px;
 }
 
+/* link to the service's own page */
+.cp-more {
+  align-self: flex-start;
+  margin-top: 18px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink);
+  border-bottom: 1.5px solid var(--cp-spot);
+  padding-bottom: 2px;
+  transition: color 0.15s ease;
+}
+
+.cp-more:hover {
+  color: var(--magenta);
+}
+
+[dir='rtl'] .cp-more span[aria-hidden] {
+  display: inline-block;
+  transform: scaleX(-1);
+}
+
 .cp-spec {
   padding: 4px 10px;
   border: 1px solid var(--line-strong);

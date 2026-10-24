@@ -3,6 +3,28 @@
    browser can reserve space (no layout shift). `label` replaces the JOB code
    caption where a job has a named product line. */
 
+/* Plant / equipment shots (also in /img/work/) used on service pages, not on
+   the gallery wall. */
+export const PLANT = [
+  {
+    file: 'large-format-printer-operator', w: 1280, h: 720,
+    alt: { ar: 'فني يشغّل ماكينة الطباعة العريضة في مصنع آرت زون بالدمام', en: 'Technician running the large-format printer at the Art Zone plant in Dammam' },
+  },
+  {
+    file: 'wide-format-printer-plant', w: 1280, h: 720,
+    alt: { ar: 'ماكينة الطباعة العريضة للبنرات في مصنع آرت زون', en: 'Wide-format banner printer at the Art Zone plant' },
+  },
+  {
+    file: 'vinyl-cutting-plotter-stickers', w: 1280, h: 720,
+    alt: { ar: 'ماكينة قص الفينيل أثناء قص الملصقات في مصنع آرت زون', en: 'Vinyl cutting plotter cutting stickers at the Art Zone plant' },
+  },
+]
+
+/* every photo by file name: gallery wall + plant shots */
+export function photoByFile(file) {
+  return GALLERY.find((g) => g.file === file) || PLANT.find((g) => g.file === file) || null
+}
+
 export const GALLERY = [
   {
     file: 'canvas-art-print-heron', w: 629, h: 1100,

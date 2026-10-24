@@ -1,8 +1,11 @@
 import { useI18n } from '../i18n.jsx'
+import { useHref } from '../router.jsx'
+import { SLUG_BY_CAP } from '../data/services.js'
 import './Capabilities.css'
 
 export default function Capabilities() {
   const { t } = useI18n()
+  const href = useHref()
 
   return (
     <section id="capabilities" className="cp">
@@ -52,6 +55,13 @@ export default function Capabilities() {
                       </li>
                     ))}
                   </ul>
+
+                  {SLUG_BY_CAP[item.tag] && (
+                    <a href={href(`/services/${SLUG_BY_CAP[item.tag]}/`)} className="cp-more mono">
+                      {t.servicesPage.cardCta} <span aria-hidden="true">→</span>
+                      <span className="visually-hidden">: {item.name}</span>
+                    </a>
+                  )}
                 </div>
               </div>
             </article>

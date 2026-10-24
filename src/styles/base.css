@@ -17,6 +17,7 @@
   /* CMYK accents (from the Art Zone logo splash) */
   --cyan: #0fb5d8;
   --magenta: #e62a76;
+  --magenta-text: #c2185b; /* small magenta text: passes 4.5:1 on white and paper */
   --yellow: #f4c41d;
   --key: #16132e;
 
@@ -322,4 +323,17 @@ section {
 
 .wa-float:hover {
   transform: translateY(-3px);
+}
+
+/* text for screen readers only (e.g. which card a "details" link belongs to) */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }

@@ -23,3 +23,5 @@ export { dict }
 export { GALLERY } from './data/gallery.js'
 export { PAGE_PATHS, pathFor } from './router.jsx'
 export { WA_NUMBER, MAPS_URL } from './lib/wa.js'
+export { SERVICES, SLUG_BY_CAP } from './data/services.js'
+export { pageMeta } from './lib/meta.js'

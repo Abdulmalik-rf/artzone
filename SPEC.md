@@ -54,14 +54,20 @@ Breakpoints: 1020px (tablet), 720px (mobile). Grids collapse gracefully; no hori
 
 ## Page briefs (multi-page era)
 
-The site is multi-page via a hash micro-router (`src/router.jsx`): `#/work`, `#/about`, `#/contact`
-are pages; `#capabilities` / `#quote` etc. are home anchors (work from any page). Pages are React
+The site is multi-page via a path router (`src/router.jsx`): `/work/`, `/about/`, `/contact/` are
+pages, Arabic at the root and English under `/en/` (e.g. `/en/work/`); `#capabilities` / `#quote`
+etc. are home anchors. Write links language-neutral (`'/work/'`, `'#quote'`) and pass them through
+`useHref()` so they get the right language prefix. Every route is prerendered to static HTML at build
+time (`scripts/prerender.mjs`), so components must render without touching `window`/`document`
+outside effects. New pages also need an entry in `PAGE_PATHS` plus `titles`/`seo` copy. Pages are React
 components in `src/pages/`, mounted inside `<main>` by App.jsx with Navbar above and the shared
 `Footer.jsx` below — pages must NOT render Navbar/Footer themselves. Page roots: a wrapper
 `<div className="<prefix>">` containing several `<section>`s. The first section must clear the fixed
 navbar: `padding-block-start: calc(var(--nav-h) + clamp(40px, 7vw, 72px))`.
 
-**Images** live in `public/img/` and are referenced as `./img/<name>.webp`. Always wrap photos in a
+**Images** live in `public/img/` and are referenced with absolute paths: `/img/<name>.webp` (real job
+photos: `/img/work/<descriptive-name>.webp`, listed with size + AR/EN alt in `src/data/gallery.js`).
+Give every `<img>` `width`/`height` attributes and a descriptive alt in the page language. Always wrap photos in a
 white "press proof" frame: white card, 10px padding, `1.5px solid var(--ink)` border, radius 6px,
 `cropmarks` where tasteful, `object-fit: cover` with a fixed aspect-ratio. Every `<img>` needs `alt`
 (use the item name from i18n) and `loading="lazy"`. Hover on photo cards: translate(-3px,-3px) +

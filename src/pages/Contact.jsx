@@ -1,5 +1,6 @@
 import { useI18n } from '../i18n.jsx'
 import { WA_DISPLAY, PHONE_HREF, MAPS_URL, MAPS_EMBED, waLink } from '../lib/wa.js'
+import { useHref } from '../router.jsx'
 import './Contact.css'
 
 function WaGlyph({ size = 18 }) {
@@ -12,6 +13,7 @@ function WaGlyph({ size = 18 }) {
 
 export default function Contact() {
   const { t } = useI18n()
+  const href = useHref()
   const c = t.contactPage
 
   const channelMeta = {
@@ -98,7 +100,7 @@ export default function Contact() {
               <div className="cn-nudge-body">
                 <h2 className="cn-nudge-title">{c.quoteNudge.title}</h2>
                 <p className="cn-nudge-sub">{c.quoteNudge.sub}</p>
-                <a href="#quote" className="btn btn--ink cn-nudge-cta">
+                <a href={href('#quote')} className="btn btn--ink cn-nudge-cta">
                   {c.quoteNudge.cta}
                 </a>
               </div>

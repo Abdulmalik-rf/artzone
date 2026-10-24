@@ -1,19 +1,15 @@
 import { useI18n } from '../i18n.jsx'
+import { useHref } from '../router.jsx'
+import { GALLERY } from '../data/gallery.js'
 import './Work.css'
 
-/* Wall items are either a plain id string (a real photographed job from
-   /portfolio, captioned with its JOB code) or an object with an explicit
-   src + caption (e.g. canvas art prints). Equipment shots (p75-p79) live
-   on the About page. */
-const WALL = [
-  { src: './img/canvas/canvas-1.jpeg', caption: 'لوحات كانفاس', ar: true },
-  'p80', 'p85', 'p5', 'p86', 'p81', 'p18', 'p87', 'p88', 'p19', 'p82',
-  'p89', 'p1', 'p83', 'p84', 'p20', 'p4', 'p33', 'p34', 'p29', 'p36',
-  'p37',
-]
+/* Wall items are real photographed jobs (see src/data/gallery.js), captioned
+   with their JOB code unless they carry a named product label (e.g. canvas
+   art prints). Equipment shots live on the About page. */
 
 export default function Work() {
-  const { t } = useI18n()
+  const { t, lang } = useI18n()
+  const href = useHref()
 
   return (
     <div className="gl">
@@ -35,7 +31,7 @@ export default function Work() {
           <div className="gl-sub-row" data-reveal style={{ transitionDelay: '120ms' }}>
             <p className="sec-sub gl-sub">{t.gallery.sub}</p>
             <span className="gl-plate mono" dir="ltr">
-              AZ-ARCHIVE / {WALL.length}
+              AZ-ARCHIVE / {GALLERY.length}
             </span>
           </div>
         </div>
@@ -44,29 +40,30 @@ export default function Work() {
       <section className="gl-wall-band">
         <div className="container">
           <div className="gl-wall">
-            {WALL.map((item, i) => {
-              const custom = typeof item === 'object'
-              const src = custom ? item.src : `./img/portfolio/${item}.jpeg`
+            {GALLERY.map((item, i) => {
               const code = `${t.gallery.jobLabel} ${String(i + 1).padStart(2, '0')}`
-              const caption = custom ? item.caption : code
+              const caption = item.label ? item.label[lang] : code
               return (
                 <figure
-                  key={custom ? item.src : item}
+                  key={item.file}
                   className="gl-piece"
                   data-reveal
                   style={{ transitionDelay: `${Math.min(i % 9, 6) * 50}ms` }}
                 >
                   <span className="gl-frame">
                     <img
-                      src={src}
-                      alt={caption}
+                      src={`/img/work/${item.file}.webp`}
+                      alt={item.alt[lang]}
+                      width={item.w}
+                      height={item.h}
                       className="gl-img"
                       loading={i > 1 ? 'lazy' : 'eager'}
+                      decoding="async"
                     />
                   </span>
                   <figcaption
-                    className={`gl-code${custom ? ' gl-code--label' : ' mono'}`}
-                    dir={custom && item.ar ? 'rtl' : 'ltr'}
+                    className={`gl-code${item.label ? ' gl-code--label' : ' mono'}`}
+                    dir={item.label ? 'rtl' : 'ltr'}
                   >
                     <i className="gl-dot" aria-hidden="true" />
                     {caption}
@@ -87,7 +84,7 @@ export default function Work() {
             <h2 className="gl-ready-title">{t.gallery.ready.title}</h2>
             <p className="gl-ready-sub">{t.gallery.ready.sub}</p>
           </div>
-          <a href="#quote" className="btn btn--ink gl-ready-cta" data-reveal>
+          <a href={href('#quote')} className="btn btn--ink gl-ready-cta" data-reveal>
             {t.gallery.ready.cta}
           </a>
         </div>

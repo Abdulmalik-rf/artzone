@@ -1,4 +1,5 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext, useEffect } from 'react'
+import { pathFor, useRoute } from './router.jsx'
 
 /* ===================================================================
    ART ZONE PRESS — bilingual copy deck (EN / AR)
@@ -10,16 +11,16 @@ const dict = {
   en: {
     nav: {
       links: [
-        ['#/work', 'Our Work'],
-        ['#/about', 'About'],
-        ['#/contact', 'Contact'],
+        ['/work/', 'Our Work'],
+        ['/about/', 'About'],
+        ['/contact/', 'Contact'],
       ],
       footerLinks: [
         ['#capabilities', 'What we print'],
         ['#production', 'Production'],
-        ['#/work', 'Our Work'],
-        ['#/about', 'About'],
-        ['#/contact', 'Contact'],
+        ['/work/', 'Our Work'],
+        ['/about/', 'About'],
+        ['/contact/', 'Contact'],
       ],
       quote: 'Get a quote',
       whatsapp: 'WhatsApp',
@@ -34,6 +35,27 @@ const dict = {
       work: 'Our Work — Art Zone Printing',
       about: 'About the Plant — Art Zone Printing',
       contact: 'Contact — Art Zone Printing',
+      notfound: 'Page not found — Art Zone Printing',
+    },
+
+    /* meta descriptions (search & link previews) */
+    seo: {
+      home: 'Art Zone Printing is a print and packaging factory in Dammam, Saudi Arabia, since 2016: paper cups, boxes, bags, business cards, labels, signage and corporate gifts, delivered Kingdom-wide.',
+      work: 'Real jobs from the Art Zone Printing plant in Dammam: branded paper cups, food packaging, illuminated signs and corporate gifts for clients across Saudi Arabia.',
+      about: 'Inside the Art Zone Printing plant in Al Badiyah, Dammam: digital, offset, wide-format and finishing lines under one roof since 2016, trusted by 500+ brands.',
+      contact: 'Contact Art Zone Printing in Dammam: WhatsApp or call +966 53 573 8136, 18th Street, Al Badiyah. Fast quotes and delivery to every city in Saudi Arabia.',
+      notfound: 'This page does not exist. Browse Art Zone Printing services, our work, or contact the production desk in Dammam.',
+    },
+
+    notFound: {
+      kicker: 'Error 404',
+      title: 'This sheet never went to press.',
+      sub: 'The page you are looking for does not exist or has moved. Pick up from one of these instead:',
+      links: [
+        ['/', 'Home'],
+        ['/work/', 'Our Work'],
+        ['/contact/', 'Contact'],
+      ],
     },
 
     hero: {
@@ -292,9 +314,9 @@ const dict = {
       sub: 'Real jobs that left the plant — cups, menus and brand installations for clients across the Kingdom.',
       cta: 'View the full gallery',
       items: [
-        { img: 'portfolio/p80.jpeg', cat: 'F&B', name: 'Client cup families' },
-        { img: 'portfolio/p85.jpeg', cat: 'Cups', name: 'Double-wall hot cups' },
-        { img: 'portfolio/p34.jpeg', cat: 'Merch', name: 'Corporate gift USBs' },
+        { img: 'work/branded-paper-cups-cafe-collection.webp', cat: 'F&B', name: 'Client cup families' },
+        { img: 'work/double-wall-paper-cup-floral-print.webp', cat: 'Cups', name: 'Double-wall hot cups' },
+        { img: 'work/corporate-usb-gift-tins.webp', cat: 'Merch', name: 'Corporate gift USBs' },
       ],
     },
 
@@ -316,10 +338,11 @@ const dict = {
       lead: 'Art Zone started in 2016 with one promise: brands in Saudi Arabia should not have to choose between quality, speed and a fair price. So we built all three into one floor in Dammam.',
       p1: 'Most "printers" are brokers — they take your file, send it somewhere else, and add a margin. We took the opposite route: presses, die-cutters, finishing lines and a working materials library under one roof, run by people who care about a tenth of a millimeter.',
       p2: 'Today the floor turns out everything from business cards and cups to packaging, signage and merch, and ships to every city in the Kingdom. More than 500 brands trust us with the part of their identity you can actually touch.',
+      pressAlt: 'Print production line at the Art Zone Printing plant in Dammam',
       floorKicker: 'From the floor',
       photos: [
-        { img: 'portfolio/p75.jpeg', caption: 'The wide-format line' },
-        { img: 'portfolio/p77.jpeg', caption: 'The product wall' },
+        { img: 'work/wide-format-printer-plant.webp', caption: 'The wide-format line' },
+        { img: 'work/product-display-wall.webp', caption: 'The product wall' },
       ],
       valuesKicker: 'How we run',
       valuesTitle: 'Four rules on the wall.',
@@ -379,16 +402,16 @@ const dict = {
   ar: {
     nav: {
       links: [
-        ['#/work', 'معرض الأعمال'],
-        ['#/about', 'عن المصنع'],
-        ['#/contact', 'تواصل معنا'],
+        ['/work/', 'معرض الأعمال'],
+        ['/about/', 'عن المصنع'],
+        ['/contact/', 'تواصل معنا'],
       ],
       footerLinks: [
         ['#capabilities', 'خدمات الطباعة والتصنيع'],
         ['#production', 'خطوط الإنتاج'],
-        ['#/work', 'معرض الأعمال'],
-        ['#/about', 'عن المصنع'],
-        ['#/contact', 'تواصل معنا'],
+        ['/work/', 'معرض الأعمال'],
+        ['/about/', 'عن المصنع'],
+        ['/contact/', 'تواصل معنا'],
       ],
       quote: 'طلب عرض سعر',
       whatsapp: 'واتساب',
@@ -403,6 +426,27 @@ const dict = {
       work: 'معرض الأعمال — آرت زون للطباعة',
       about: 'عن المصنع — آرت زون للطباعة',
       contact: 'تواصل معنا — آرت زون للطباعة',
+      notfound: 'الصفحة غير موجودة — آرت زون للطباعة',
+    },
+
+    /* أوصاف الصفحات لمحركات البحث ومعاينة الروابط */
+    seo: {
+      home: 'آرت زون للطباعة: مصنع طباعة وتغليف في الدمام منذ 2016. أكواب ورقية، علب وبوكسات، أكياس، بطاقات أعمال، ملصقات، لوحات إعلانية وهدايا دعائية مع الشحن لكافة مناطق المملكة.',
+      work: 'معرض أعمال آرت زون للطباعة: نماذج حقيقية من إنتاج مصنعنا في الدمام تشمل الأكواب الورقية المطبوعة، علب التغليف، اللوحات المضيئة والهدايا الترويجية.',
+      about: 'تعرّف على مصنع آرت زون للطباعة في حي البادية بالدمام: خطوط طباعة رقمية وأوفست وطباعة عريضة وتشطيب تحت سقف واحد منذ 2016، بثقة أكثر من 500 علامة تجارية.',
+      contact: 'تواصل مع آرت زون للطباعة في الدمام عبر واتساب أو الاتصال على 0535738136، شارع 18، حي البادية. عروض أسعار سريعة وشحن لكافة مناطق المملكة.',
+      notfound: 'الصفحة المطلوبة غير موجودة. تصفّح خدمات آرت زون للطباعة أو معرض الأعمال أو تواصل مع إدارة المبيعات في الدمام.',
+    },
+
+    notFound: {
+      kicker: 'خطأ 404',
+      title: 'الصفحة المطلوبة غير متوفرة.',
+      sub: 'ربما تم نقل الصفحة أو حذفها. يمكنكم المتابعة عبر أحد الروابط التالية:',
+      links: [
+        ['/', 'الصفحة الرئيسية'],
+        ['/work/', 'معرض الأعمال'],
+        ['/contact/', 'تواصل معنا'],
+      ],
     },
 
     hero: {
@@ -661,9 +705,9 @@ const dict = {
       sub: 'نماذج من أعمال قمنا بتنفيذها وتسليمها لعملائنا في مختلف مدن المملكة — من مستلزمات الضيافة والتغليف إلى الهدايا الترويجية.',
       cta: 'استعراض كافة الأعمال',
       items: [
-        { img: 'portfolio/p80.jpeg', cat: 'المقاهي والمطاعم', name: 'أكواب مخصصة للعلامات التجارية' },
-        { img: 'portfolio/p85.jpeg', cat: 'أكواب ومشروبات', name: 'أكواب ورقية مزدوجة عازلة للحرارة' },
-        { img: 'portfolio/p34.jpeg', cat: 'هدايا ترويجية', name: 'وحدات تخزين USB مخصصة للشركات' },
+        { img: 'work/branded-paper-cups-cafe-collection.webp', cat: 'المقاهي والمطاعم', name: 'أكواب مخصصة للعلامات التجارية' },
+        { img: 'work/double-wall-paper-cup-floral-print.webp', cat: 'أكواب ومشروبات', name: 'أكواب ورقية مزدوجة عازلة للحرارة' },
+        { img: 'work/corporate-usb-gift-tins.webp', cat: 'هدايا ترويجية', name: 'وحدات تخزين USB مخصصة للشركات' },
       ],
     },
 
@@ -685,10 +729,11 @@ const dict = {
       lead: 'انطلقت مسيرة «آرت زون» عام 2016 برؤية واضحة: تمكين العلامات التجارية والشركات في المملكة من الحصول على أعلى معايير الجودة وسرعة الإنجاز بأنسب الأسعار، من خلال خطوط إنتاج متكاملة في قلب مدينة الدمام.',
       p1: 'بدلاً من الاعتماد على سلاسل الوسطاء، حرصنا على الاستثمار المباشر في البنية التحتية الصناعية: أحدث مكائن الطباعة والقص والتشطيب الدقيق، بإشراف كوادر فنية متخصصة تضمن أدق التفاصيل وتلتزم بأعلى مقاييس الجودة.',
       p2: 'واليوم، نفخر بتقديم حلول تصنيعية متكاملة تشمل المطبوعات التجارية، والتغليف الفاخر، ومستلزمات الضيافة والمقاهي، واللوحات الإعلانية والهدايا الترويجية، مع توفير خدمات الشحن والتوصيل لكافة مدن ومناطق المملكة. كما نعتز بثقة أكثر من 500 علامة تجارية رائدة اختارت «آرت زون» شريكاً رسمياً لطباعة هويتها.',
+      pressAlt: 'خط إنتاج الطباعة في مصنع آرت زون للطباعة بالدمام',
       floorKicker: 'من خطوط الإنتاج',
       photos: [
-        { img: 'portfolio/p75.jpeg', caption: 'خط الطباعة العريضة والتجهيزات' },
-        { img: 'portfolio/p77.jpeg', caption: 'معرض نماذج المنتجات' },
+        { img: 'work/wide-format-printer-plant.webp', caption: 'خط الطباعة العريضة والتجهيزات' },
+        { img: 'work/product-display-wall.webp', caption: 'معرض نماذج المنتجات' },
       ],
       valuesKicker: 'قيمنا في العمل',
       valuesTitle: 'ركائزنا الأساسية في التصنيع والجودة.',
@@ -746,29 +791,28 @@ const dict = {
 
 const LangContext = createContext(null)
 
+export const LANG_PREF_KEY = 'az-lang'
+
+/* The language comes from the URL (/ = Arabic, /en/ = English) so every
+   language version is its own crawlable page. The toggle navigates to the
+   counterpart URL and remembers the choice for the next visit to "/". */
 export function LangProvider({ children }) {
-  const [lang, setLang] = useState(() => {
-    let saved = null
-    try {
-      saved = localStorage.getItem('az-lang')
-    } catch {
-      /* storage blocked (privacy mode / sandboxed iframe) — fall through */
-    }
-    if (saved === 'en' || saved === 'ar') return saved
-    return 'ar'
-  })
+  const { lang, page, navigate } = useRoute()
 
   useEffect(() => {
     document.documentElement.lang = lang
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr'
-    try {
-      localStorage.setItem('az-lang', lang)
-    } catch {
-      /* non-fatal */
-    }
   }, [lang])
 
-  const toggle = () => setLang((l) => (l === 'en' ? 'ar' : 'en'))
+  const toggle = () => {
+    const next = lang === 'en' ? 'ar' : 'en'
+    try {
+      localStorage.setItem(LANG_PREF_KEY, next)
+    } catch {
+      /* storage blocked (privacy mode / sandboxed iframe) — non-fatal */
+    }
+    navigate(pathFor(page === 'notfound' ? 'home' : page, next))
+  }
 
   return (
     <LangContext.Provider value={{ lang, t: dict[lang], toggle }}>
@@ -776,6 +820,8 @@ export function LangProvider({ children }) {
     </LangContext.Provider>
   )
 }
+
+export { dict }
 
 export function useI18n() {
   return useContext(LangContext)

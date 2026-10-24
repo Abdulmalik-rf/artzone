@@ -1,8 +1,10 @@
 import { useI18n } from '../i18n.jsx'
+import { useHref } from '../router.jsx'
 import './WorkPreview.css'
 
 export default function WorkPreview() {
   const { t } = useI18n()
+  const href = useHref()
   const items = t.workPreview.items
 
   return (
@@ -20,7 +22,7 @@ export default function WorkPreview() {
               {t.workPreview.sub}
             </p>
           </div>
-          <a href="#/work" className="btn btn--ghost wp-cta" data-reveal>
+          <a href={href('/work/')} className="btn btn--ghost wp-cta" data-reveal>
             {t.workPreview.cta}
           </a>
         </div>
@@ -29,15 +31,17 @@ export default function WorkPreview() {
           {items.map((item, i) => (
             <a
               key={item.img}
-              href="#/work"
+              href={href('/work/')}
               className="wp-card"
               data-reveal
               style={{ transitionDelay: `${i * 80}ms` }}
             >
               <span className="wp-frame cropmarks">
                 <img
-                  src={`./img/${item.img}`}
+                  src={`/img/${item.img}`}
                   alt={item.name}
+                  width="880"
+                  height="1100"
                   className="wp-img"
                   loading="lazy"
                 />
@@ -50,7 +54,7 @@ export default function WorkPreview() {
           ))}
         </div>
 
-        <a href="#/work" className="btn btn--ghost wp-cta-mobile" data-reveal>
+        <a href={href('/work/')} className="btn btn--ghost wp-cta-mobile" data-reveal>
           {t.workPreview.cta}
         </a>
       </div>

@@ -1,8 +1,10 @@
 import { useI18n } from '../i18n.jsx'
+import { useHref } from '../router.jsx'
 import './About.css'
 
 export default function About() {
   const { t } = useI18n()
+  const href = useHref()
   const a = t.about
 
   return (
@@ -33,8 +35,10 @@ export default function About() {
 
           <figure className="ab-wide cropmarks" data-reveal>
             <img
-              src="./img/about-press.webp"
-              alt={a.kicker}
+              src="/img/about-press.webp"
+              alt={a.pressAlt}
+              width="2752"
+              height="1536"
               className="ab-wide-img"
               loading="lazy"
             />
@@ -54,8 +58,10 @@ export default function About() {
                 >
                   <span className="ab-shot-frame">
                     <img
-                      src={`./img/${photo.img}`}
+                      src={`/img/${photo.img}`}
                       alt={photo.caption}
+                      width="1280"
+                      height="720"
                       className="ab-shot-img"
                       loading="lazy"
                     />
@@ -125,10 +131,10 @@ export default function About() {
             <p className="ab-cta-sub">{a.cta.sub}</p>
           </div>
           <div className="ab-cta-actions" data-reveal>
-            <a href="#quote" className="btn btn--ink">
+            <a href={href('#quote')} className="btn btn--ink">
               {a.cta.primary}
             </a>
-            <a href="#/contact" className="btn btn--ghost">
+            <a href={href('/contact/')} className="btn btn--ghost">
               {a.cta.secondary}
             </a>
           </div>

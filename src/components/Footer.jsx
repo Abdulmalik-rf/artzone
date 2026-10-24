@@ -1,9 +1,11 @@
 import { useI18n } from '../i18n.jsx'
 import { WA_DISPLAY, PHONE_HREF } from '../lib/wa.js'
+import { useHref } from '../router.jsx'
 import './Footer.css'
 
 export default function Footer() {
   const { t } = useI18n()
+  const href = useHref()
   const year = new Date().getFullYear()
 
   return (
@@ -15,8 +17,8 @@ export default function Footer() {
       <div className="container">
         <div className="ft-grid">
           <div className="ft-brand">
-            <a href="#top" className="ft-id">
-              <img src="./logo.png" alt="Art Zone Printing" className="ft-logo" />
+            <a href={href('/')} className="ft-id">
+              <img src="/logo.webp" alt="Art Zone Printing" width="46" height="46" className="ft-logo" loading="lazy" />
               <span className="ft-wordmark">
                 {t.brand.name}<i className="mono">{t.brand.tag}</i>
               </span>
@@ -25,8 +27,8 @@ export default function Footer() {
           </div>
 
           <nav className="ft-nav" aria-label={t.nav.menuLabel}>
-            {t.nav.footerLinks.map(([href, label], i) => (
-              <a key={href} href={href} className="ft-link">
+            {t.nav.footerLinks.map(([to, label], i) => (
+              <a key={to} href={href(to)} className="ft-link">
                 <span className="ft-no mono">0{i + 1}</span>
                 {label}
               </a>
@@ -53,7 +55,7 @@ export default function Footer() {
 
         <div className="ft-rule">
           <p className="ft-copy">
-            © {year} {t.footer.rights}
+            © <span suppressHydrationWarning>{year}</span> {t.footer.rights}
           </p>
           <a className="ft-phone mono" href={PHONE_HREF} dir="ltr">
             {WA_DISPLAY}

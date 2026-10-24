@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import { useI18n } from './i18n.jsx'
 import { useRoute } from './router.jsx'
 import { waLink } from './lib/wa.js'
+import { track } from './lib/track.js'
 import Navbar from './components/Navbar.jsx'
 import Hero from './components/Hero.jsx'
 import Marquee from './components/Marquee.jsx'
@@ -15,6 +16,7 @@ import Footer from './components/Footer.jsx'
 import Work from './pages/Work.jsx'
 import About from './pages/About.jsx'
 import Contact from './pages/Contact.jsx'
+import NotFound from './pages/NotFound.jsx'
 
 function WhatsAppGlyph({ size = 26 }) {
   return (
@@ -39,16 +41,33 @@ function Home() {
   )
 }
 
-const PAGES = { home: Home, work: Work, about: About, contact: Contact }
+const PAGES = { home: Home, work: Work, about: About, contact: Contact, notfound: NotFound }
 
 export default function App() {
   const { lang, t } = useI18n()
   const { page, anchor } = useRoute()
 
-  /* per-page document title */
+  /* per-page title + description on client-side navigation (the full
+     <head> for each URL is prerendered at build time) */
   useEffect(() => {
     document.title = t.titles[page] || t.titles.home
+    document
+      .querySelector('meta[name="description"]')
+      ?.setAttribute('content', t.seo[page] || t.seo.home)
   }, [t, page])
+
+  /* conversion tracking: every WhatsApp / phone link on the site */
+  useEffect(() => {
+    const onClick = (e) => {
+      const a = e.target.closest('a[href]')
+      if (!a) return
+      const url = a.getAttribute('href')
+      if (url.startsWith('https://wa.me/')) track('whatsapp_click', { link_text: a.textContent.trim() })
+      else if (url.startsWith('tel:')) track('phone_click', { link_text: a.textContent.trim() })
+    }
+    document.addEventListener('click', onClick)
+    return () => document.removeEventListener('click', onClick)
+  }, [])
 
   /* scroll management: pages open at top; home anchors scroll to section.
      Same-page anchor clicks scroll smoothly; arriving from another page

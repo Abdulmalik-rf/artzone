@@ -1,5 +1,6 @@
 import { useI18n } from '../i18n.jsx'
 import { waLink } from '../lib/wa.js'
+import { useHref } from '../router.jsx'
 import './Hero.css'
 
 /* press registration mark (crosshair + circle) */
@@ -15,6 +16,7 @@ function RegMark({ className }) {
 
 export default function Hero() {
   const { t } = useI18n()
+  const href = useHref()
   const { showcase, stats } = t.hero
 
   return (
@@ -42,7 +44,7 @@ export default function Hero() {
             </p>
 
             <div className="hr-ctas" data-reveal style={{ transitionDelay: '210ms' }}>
-              <a href="#quote" className="btn btn--ink">
+              <a href={href('#quote')} className="btn btn--ink">
                 {t.hero.ctaQuote}
               </a>
               <a
@@ -62,7 +64,9 @@ export default function Hero() {
 
             <figure className="hr-show cropmarks">
               <img
-                src="./img/hero-products.webp"
+                src="/img/hero-products.webp"
+                width="1856"
+                height="2304"
                 alt={showcase.alt}
                 className="hr-show-img"
                 fetchPriority="high"

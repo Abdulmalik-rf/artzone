@@ -85,6 +85,7 @@ button {
 
 img {
   max-width: 100%;
+  height: auto; /* width/height attributes reserve space; CSS keeps the layout */
   display: block;
 }
 
@@ -275,20 +276,22 @@ section {
   margin: 0;
 }
 
-/* ---------- scroll reveal ---------- */
-[data-reveal] {
+/* ---------- scroll reveal ----------
+   Only hidden once JS is running (html.js is set inline in <head>), so the
+   prerendered HTML stays readable without JavaScript. */
+.js [data-reveal] {
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-[data-reveal].is-in {
+.js [data-reveal].is-in {
   opacity: 1;
   transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  [data-reveal] {
+  .js [data-reveal] {
     opacity: 1;
     transform: none;
     transition: none;

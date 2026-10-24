@@ -1,5 +1,6 @@
 node_modules/
 dist/
+dist-ssr/
 .claude/
 *.log
 .DS_Store

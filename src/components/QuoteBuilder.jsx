@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { useI18n } from '../i18n.jsx'
 import { waLink } from '../lib/wa.js'
+import { track } from '../lib/track.js'
 import './QuoteBuilder.css'
 
 export default function QuoteBuilder() {
@@ -36,6 +37,10 @@ export default function QuoteBuilder() {
     const lines = [q.msg.greeting]
     rows.forEach(([label, value]) => {
       if (value) lines.push(`${label}: ${value}`)
+    })
+    track('quote_submit', {
+      product: productIdx >= 0 ? q.productOptions[productIdx] : '',
+      timeline: deadlineIdx >= 0 ? q.deadlineOptions[deadlineIdx] : '',
     })
     window.open(waLink(lines.join('\n')), '_blank', 'noopener,noreferrer')
   }
@@ -174,7 +179,9 @@ export default function QuoteBuilder() {
 
               <div className="qb-ticket-head">
                 <span className="qb-ticket-heading mono">{q.previewHeading}</span>
-                <span className="qb-ticket-no mono">{jobNo}</span>
+                <span className="qb-ticket-no mono" suppressHydrationWarning>
+                  {jobNo}
+                </span>
               </div>
 
               <dl className="qb-ticket-rows">

@@ -66,9 +66,11 @@ export default function Hero() {
 
             <figure className="hr-show cropmarks">
               <img
-                src="/img/hero-products.webp"
-                width="1856"
-                height="2304"
+                src="/img/hero-products-840.webp"
+                srcSet="/img/hero-products-560.webp 560w, /img/hero-products-840.webp 840w, /img/hero-products-1120.webp 1120w"
+                sizes="(max-width: 1020px) min(calc(100vw - 32px), 500px), 520px"
+                width="1120"
+                height="1390"
                 alt={showcase.alt}
                 className="hr-show-img"
                 fetchPriority="high"

@@ -424,6 +424,316 @@ export const GUIDES = [
       ],
     },
   },
+
+  {
+    slug: 'print-finishes',
+    published: '2026-10-25',
+    updated: '2026-10-25',
+    services: ['business-cards', 'boxes', 'stickers-labels'],
+    image: 'product-display-wall',
+    ar: {
+      title: 'دليل تشطيبات الطباعة: البصمة واليوﭬي الموضعي والسلوفان المخملي والقص | آرت زون',
+      description: 'ما الفرق بين البصمة الحرارية (الفويل) واليوﭬي الموضعي والسلوفان اللامع والمطفي والمخملي والقص بالقالب (الدايكت)؟ متى تستخدم كل تشطيب وكيف تجهّز الملف له.',
+      h1: 'دليل تشطيبات الطباعة: البصمة واليوﭬي الموضعي والسلوفان والقص',
+      summary: 'التشطيبات خطوات تُنفَّذ بعد الطباعة لحماية المطبوع وإبراز الهوية. السلوفان يغلّف السطح كاملاً بلمسة لامعة أو مطفية أو مخملية، والبصمة الحرارية تضيف لمعة معدنية ذهبية أو فضية أو هولوغرافية، واليوﭬي الموضعي يضيف لمعة شفافة بارزة على عناصر محددة، والقص بالقالب (الدايكت) يمنح المطبوع شكلاً خاصاً.',
+      blocks: [
+        { h: 'التشطيبات بنظرة سريعة' },
+        {
+          table: {
+            head: ['التشطيب', 'ماذا يفعل', 'الأنسب له'],
+            rows: [
+              ['السلوفان اللامع', 'طبقة شفافة لامعة تحمي السطح وتُبرز الألوان', 'المنيوهات، الأغلفة، المطبوعات كثيرة الاستخدام'],
+              ['السلوفان المطفي', 'طبقة غير عاكسة بمظهر هادئ وأنيق', 'البروشورات وبطاقات الأعمال والأغلفة'],
+              ['السلوفان المخملي (سوفت تاتش)', 'ملمس ناعم يشبه المخمل', 'بطاقات الأعمال الفاخرة وعلب الهدايا'],
+              ['البصمة الحرارية (فويل)', 'رقاقة معدنية تُثبَّت بالحرارة والضغط بقالب', 'الشعارات والعناوين على الكروت والعلب'],
+              ['اليوﭬي الموضعي (Spot UV)', 'طلاء شفاف لامع وبارز على عناصر محددة', 'إبراز الشعار فوق سطح مطفي أو مخملي'],
+              ['القص بالقالب (دايكت)', 'قص المطبوع بشكل خاص بقالب', 'العلب، الملصقات المشكّلة، البطاقات ذات الحواف الخاصة'],
+            ],
+          },
+        },
+        { h: 'السلوفان: لامع أم مطفي أم مخملي؟' },
+        {
+          p: 'السلوفان طبقة رقيقة تُلصق على سطح المطبوع كاملاً، فتحميه من الرطوبة والخدوش وتطيل عمره. اللامع يُبرز الألوان ويعكس الضوء، والمطفي أهدأ وأسهل في القراءة تحت الإضاءة القوية، أما المخملي فيمنح ملمساً ناعماً فاخراً يلاحظه العميل بمجرد لمس البطاقة أو العلبة.',
+        },
+        {
+          p: 'يُستحسن الانتباه إلى أن الأسطح المخملية الداكنة قد تُظهر آثار الأصابع والخدوش مع الاستخدام الكثيف، لذلك تناسب المطبوعات الفاخرة أكثر من المطبوعات كثيرة التداول.',
+        },
+        { h: 'البصمة الحرارية (الفويل)' },
+        {
+          p: 'تُنقل رقاقة معدنية رقيقة إلى الورق بقالب ساخن، فتظهر العناصر بلمعة ذهبية أو فضية أو هولوغرافية لا تحققها أحبار الطباعة العادية. تُستخدم عادةً للشعار والعناوين وأختام الضمان.',
+        },
+        {
+          ul: [
+            'جهّزوا عناصر البصمة كرسوم متجهة (Vector)، لا كصور.',
+            'تجنّبوا الخطوط والنصوص الدقيقة جداً، فقد لا تُطبع البصمة فيها بوضوح.',
+            'ضعوا عناصر البصمة في طبقة مستقلة بلون واحد.',
+          ],
+        },
+        { h: 'اليوﭬي الموضعي (Spot UV)' },
+        {
+          p: 'طلاء شفاف لامع يُطبَّق على أجزاء محددة فقط من التصميم، ويجف بالأشعة فوق البنفسجية فيبدو بارزاً قليلاً عند اللمس. يظهر أجمل ما يكون فوق السلوفان المطفي أو المخملي، لأن التباين بين اللمعة والسطح الهادئ هو ما يلفت الانتباه.',
+        },
+        { h: 'القص بالقالب (الدايكت)' },
+        {
+          p: 'يُصنع قالب بحدود الشكل المطلوب ليقص المطبوع ويثنيه بدقة، وهو أساس تصنيع العلب والملصقات المشكّلة والبطاقات ذات الأشكال الخاصة. في الملصقات يمكن قص الملصق دون قص ورقة الظهر (القص النصفي) ليسهل نزعه.',
+        },
+        {
+          ul: [
+            'ارسموا خط القص في طبقة مستقلة بلون خاص، ولا يُطبع.',
+            'اتركوا هامش نزف حول خط القص، وأبقوا النصوص بعيدة عنه.',
+            'في العلب، اطلبوا القالب (الديلاين) الخاص بالمقاس قبل التصميم.',
+          ],
+        },
+        { h: 'تشكيلات شائعة' },
+        {
+          ul: [
+            'بطاقة أعمال فاخرة: سلوفان مخملي + يوﭬي موضعي على الشعار + بصمة ذهبية على الاسم.',
+            'علبة هدايا: سلوفان مطفي + بصمة ذهبية للشعار + قص بالقالب.',
+            'منيو مطعم: سلوفان لامع لحمايته من الاستخدام اليومي.',
+          ],
+        },
+        {
+          p: 'يضيف كل تشطيب مرحلة إنتاج إضافية، فيؤثر في التكلفة ومدة التنفيذ حسب الكمية. ولمعرفة تجهيز الملفات بالتفصيل راجعوا دليل تجهيز ملفات التصميم للطباعة.',
+        },
+      ],
+      faq: [
+        {
+          q: 'هل يمكن الجمع بين البصمة واليوﭬي الموضعي على البطاقة نفسها؟',
+          a: 'نعم، وهو من أكثر التشكيلات استخداماً للبطاقات الفاخرة، بشرط أن يكون لكل تشطيب طبقته المستقلة في الملف.',
+        },
+        {
+          q: 'ما الفرق بين اليوﭬي الموضعي والسلوفان اللامع؟',
+          a: 'السلوفان اللامع يغطي سطح المطبوع كاملاً، أما اليوﭬي الموضعي فيُطبَّق على عناصر مختارة فقط ويكون بارزاً قليلاً.',
+        },
+        {
+          q: 'هل تزيد التشطيبات مدة التنفيذ؟',
+          a: 'نعم، فكل تشطيب مرحلة إنتاج إضافية. نحدد لكم الموعد الدقيق مع عرض السعر حسب الكمية ونوع التشطيب.',
+        },
+      ],
+    },
+    en: {
+      title: 'Print Finishes Guide: Foil, Spot UV, Soft-Touch & Die-Cutting | Art Zone',
+      description: 'Hot foil, spot UV, gloss, matte and soft-touch lamination, and die-cutting explained: what each finish does, where to use it, and how to prepare the file.',
+      h1: 'Print finishes explained: foil, spot UV, lamination and die-cutting',
+      summary: 'Finishes are steps after printing that protect a piece and lift the brand. Lamination covers the whole surface in gloss, matte or soft-touch; hot foil adds metallic gold, silver or holographic shine; spot UV adds a raised clear gloss to selected elements; and die-cutting gives the piece a custom shape.',
+      blocks: [
+        { h: 'Finishes at a glance' },
+        {
+          table: {
+            head: ['Finish', 'What it does', 'Best for'],
+            rows: [
+              ['Gloss lamination', 'Clear glossy film that protects and makes colour pop', 'Menus, covers, heavily handled print'],
+              ['Matte lamination', 'Non-reflective film with a calm, refined look', 'Brochures, business cards, covers'],
+              ['Soft-touch lamination', 'Velvety feel in the hand', 'Premium business cards and gift boxes'],
+              ['Hot foil', 'Metallic foil fixed with a heated die', 'Logos and titles on cards and boxes'],
+              ['Spot UV', 'Raised clear gloss on selected elements', 'A logo shining over a matte or soft-touch surface'],
+              ['Die-cutting', 'Cuts the piece to a custom shape with a die', 'Boxes, shaped stickers, cards with special edges'],
+            ],
+          },
+        },
+        { h: 'Lamination: gloss, matte or soft-touch?' },
+        {
+          p: 'Lamination is a thin film bonded over the whole printed surface; it protects against moisture and scuffs and makes the piece last longer. Gloss makes colours pop and reflects light, matte is calmer and easier to read under strong light, and soft-touch gives a velvety feel customers notice the moment they pick up the card or box.',
+        },
+        {
+          p: 'Dark soft-touch surfaces can show fingerprints and scuffs with heavy handling, so they suit premium pieces better than print that is passed around all day.',
+        },
+        { h: 'Hot foil' },
+        {
+          p: 'A thin metallic foil is transferred onto the paper with a heated die, giving gold, silver or holographic shine that ordinary inks cannot. It is typically used for logos, titles and security seals.',
+        },
+        {
+          ul: [
+            'Prepare foil elements as vector artwork, not images.',
+            'Avoid very fine lines and tiny text; foil may not hold cleanly in them.',
+            'Put foil elements on their own layer in a single colour.',
+          ],
+        },
+        { h: 'Spot UV' },
+        {
+          p: 'A clear gloss coating applied only to chosen parts of the design and cured with ultraviolet light, so it feels slightly raised. It looks best over matte or soft-touch lamination: the contrast between gloss and the calm surface is what catches the eye.',
+        },
+        { h: 'Die-cutting' },
+        {
+          p: 'A die is made in the outline of the shape to cut and crease the piece precisely. It is the basis of boxes, shaped stickers and cards with custom shapes. For stickers, a kiss-cut cuts through the sticker but not the backing, so it peels off easily.',
+        },
+        {
+          ul: [
+            'Draw the cut line on its own layer in a spot colour; it is not printed.',
+            'Leave bleed around the cut line and keep text away from it.',
+            'For boxes, ask for the template (die-line) for your size before designing.',
+          ],
+        },
+        { h: 'Popular combinations' },
+        {
+          ul: [
+            'Premium business card: soft-touch + spot UV on the logo + gold foil on the name.',
+            'Gift box: matte lamination + gold foil logo + die-cut.',
+            'Restaurant menu: gloss lamination to survive daily handling.',
+          ],
+        },
+        {
+          p: 'Each finish adds a production step, which affects cost and lead time depending on quantity. For file preparation in detail, see the guide to preparing print-ready files.',
+        },
+      ],
+      faq: [
+        {
+          q: 'Can foil and spot UV go on the same card?',
+          a: 'Yes. It is one of the most popular premium combinations, as long as each finish has its own layer in the file.',
+        },
+        {
+          q: 'What is the difference between spot UV and gloss lamination?',
+          a: 'Gloss lamination covers the whole surface; spot UV is applied only to chosen elements and is slightly raised.',
+        },
+        {
+          q: 'Do finishes add to the lead time?',
+          a: 'Yes, each finish is an extra production step. We confirm the exact date with the quote, based on quantity and finish.',
+        },
+      ],
+    },
+  },
+
+  {
+    slug: 'paper-types-weights',
+    published: '2026-10-25',
+    updated: '2026-10-25',
+    services: ['business-cards', 'paper-bags', 'boxes'],
+    image: 'kraft-paper-bags-ile-rousseau',
+    ar: {
+      title: 'دليل أنواع الورق وأوزانه (جرام): أي ورق يناسب مطبوعتك؟ | آرت زون',
+      description: 'دليل أوزان الورق بالجرام لكل متر مربع وأنواعه: الكوشيه اللامع والمطفي، الورق غير المطلي، ورق الكتان، الكرافت والكرتون. ما الوزن المناسب للكروت والبروشورات والعلب والأكياس؟',
+      h1: 'دليل أنواع الورق وأوزانه: أي ورق يناسب مطبوعتك؟',
+      summary: 'يُقاس وزن الورق بالجرام لكل متر مربع (جم/م²). الأوراق المكتبية نحو 80 جم، والبروشورات والنشرات بين 115 و170 جم، والأغلفة والمنيوهات بين 200 و300 جم، وبطاقات الأعمال غالباً 300 إلى 350 جم. ويحدد نوع الورق، مطلي أو غير مطلي أو كرافت، الملمس ومظهر الألوان بقدر ما يحدده الوزن.',
+      blocks: [
+        { h: 'ماذا يعني الوزن بالجرام؟' },
+        {
+          p: 'الرقم يعني وزن متر مربع واحد من الورق. كلما زاد الرقم كان الورق أثقل وأكثر صلابة غالباً، لكن السماكة الفعلية تختلف بين الأنواع: فالورق غير المطلي يبدو أسمك من الكوشيه بالوزن نفسه.',
+        },
+        { h: 'الأوزان الشائعة واستخداماتها' },
+        {
+          table: {
+            head: ['الوزن التقريبي', 'الاستخدام الشائع'],
+            rows: [
+              ['80–120 جم', 'الأوراق الرسمية (الليترهيد)، صفحات المستندات، الأوراق الداخلية للدفاتر'],
+              ['115–170 جم', 'النشرات (الفلايرات)، الصفحات الداخلية للبروشورات والكتالوجات'],
+              ['200–300 جم', 'أغلفة البروشورات والكتالوجات، المنيوهات، البوسترات المقواة'],
+              ['300–350 جم', 'بطاقات الأعمال (الكروت الشخصية)، بطاقات الدعوة، بطاقات التعليق'],
+              ['كرتون مقوى', 'العلب الصغيرة وعلب المنتجات'],
+              ['كرتون مضلّع', 'علب الشحن والتوصيل، ويُقاس بنوع التموج لا بالجرام فقط'],
+            ],
+          },
+        },
+        {
+          p: 'هذه نطاقات تقريبية متعارف عليها في السوق، ويختلف الاختيار النهائي حسب الاستخدام والميزانية والملمس المطلوب.',
+        },
+        { h: 'أنواع الورق' },
+        {
+          ul: [
+            'الكوشيه (الورق المطلي): سطح ناعم يُظهر الألوان زاهية وحادة، ويأتي لامعاً أو مطفياً. الأنسب للبروشورات والكتالوجات والنشرات.',
+            'الورق غير المطلي: ملمس طبيعي ويسهل الكتابة عليه بالقلم، لذلك يُستخدم للأوراق الرسمية والدفاتر والنماذج.',
+            'ورق الكتان المحبب: ملمس منقوش يمنح إحساساً فاخراً لبطاقات الأعمال والدعوات.',
+            'الكرافت: ورق بني طبيعي غير مبيّض، شائع في الأكياس والعلب وبطاقات التعليق للعلامات التي تريد مظهراً طبيعياً.',
+            'الكرتون: المقوى للعلب الصغيرة وعلب المنتجات، والمضلّع لعلب الشحن.',
+            'الفينيل والورق اللاصق: للملصقات، ويتوفر شفافاً وأبيض ومقاوماً للماء.',
+          ],
+        },
+        { h: 'الكوشيه اللامع أم المطفي؟' },
+        {
+          p: 'اللامع يجعل الصور والألوان أكثر حيوية، لكنه يعكس الضوء. المطفي أسهل في القراءة ويمنح مظهراً أهدأ وأرقى، ويُفضَّل للمطبوعات ذات النصوص الكثيرة.',
+        },
+        { h: 'نصائح قبل اختيار الورق' },
+        {
+          ul: [
+            'الأثقل ليس دائماً الأفضل: الورق الثقيل يحتاج إلى تخطيط (ثني مسبق) قبل الطي حتى لا يتشقق عند خط الطي.',
+            'فكّروا في الاستخدام: منيو يُمسك يومياً يحتاج ورقاً أقوى وسلوفاناً، ونشرة توزَّع مرة واحدة يكفيها وزن أخف.',
+            'فكّروا في الشحن: الورق الأثقل يرفع وزن الشحنة وتكلفتها في الكميات الكبيرة.',
+            'اطلبوا العينات: يوفر مصنع آرت زون عينات ملموسة من الخامات مع عرض السعر، لتلمسوا الورق قبل الطباعة.',
+          ],
+        },
+      ],
+      faq: [
+        {
+          q: 'ما وزن الورق المناسب لبطاقات الأعمال؟',
+          a: 'الأكثر شيوعاً بين 300 و350 جم، وتُستخدم أوزان أثقل أو ورق كتان للبطاقات الفاخرة.',
+        },
+        {
+          q: 'ما الفرق بين الكوشيه اللامع والمطفي؟',
+          a: 'اللامع يُبرز الألوان والصور ويعكس الضوء، والمطفي أهدأ وأسهل في القراءة ويناسب النصوص الكثيرة.',
+        },
+        {
+          q: 'هل يمكن رؤية عينات الورق قبل الطلب؟',
+          a: 'نعم، يمكن طلب عينات ملموسة من الخامات مع عرض السعر عبر واتساب.',
+        },
+      ],
+    },
+    en: {
+      title: 'Paper Types and Weights (GSM) Guide: Which Paper for Your Print? | Art Zone',
+      description: 'A guide to paper weights in gsm and paper types: gloss and matte coated, uncoated, linen, kraft and board. Which weight for business cards, brochures, boxes and bags?',
+      h1: 'Paper types and weights: which paper suits your print?',
+      summary: 'Paper weight is measured in grams per square metre (gsm). Office paper is around 80 gsm, flyers and brochure pages 115–170 gsm, covers and menus 200–300 gsm, and business cards usually 300–350 gsm. The paper type — coated, uncoated or kraft — shapes the feel and how colour looks as much as the weight does.',
+      blocks: [
+        { h: 'What does gsm mean?' },
+        {
+          p: 'The number is the weight of one square metre of the paper. A higher number usually means a heavier, stiffer sheet, but actual thickness varies by type: uncoated paper feels thicker than coated paper of the same gsm.',
+        },
+        { h: 'Common weights and their uses' },
+        {
+          table: {
+            head: ['Approx. weight', 'Typical use'],
+            rows: [
+              ['80–120 gsm', 'Letterheads, document pages, notebook inner pages'],
+              ['115–170 gsm', 'Flyers, brochure and catalogue inner pages'],
+              ['200–300 gsm', 'Brochure and catalogue covers, menus, stiff posters'],
+              ['300–350 gsm', 'Business cards, invitations, hang tags'],
+              ['Folding board', 'Small boxes and product packaging'],
+              ['Corrugated board', 'Shipping and delivery boxes; graded by flute, not just gsm'],
+            ],
+          },
+        },
+        {
+          p: 'These are typical market ranges; the final choice depends on use, budget and the feel you want.',
+        },
+        { h: 'Paper types' },
+        {
+          ul: [
+            'Coated (art) paper: a smooth surface that keeps colours vivid and sharp, in gloss or matte. Best for brochures, catalogues and flyers.',
+            'Uncoated paper: a natural feel that takes pen easily, so it is used for letterheads, notebooks and forms.',
+            'Textured linen: an embossed feel that makes business cards and invitations feel premium.',
+            'Kraft: natural, unbleached brown paper, common for bags, boxes and hang tags when a brand wants a natural look.',
+            'Board: folding board for small and product boxes, corrugated board for shipping boxes.',
+            'Vinyl and adhesive stock: for stickers, in clear, white and waterproof versions.',
+          ],
+        },
+        { h: 'Gloss or matte coated?' },
+        {
+          p: 'Gloss makes photos and colours livelier but reflects light. Matte is easier to read and looks calmer and more refined, so it suits text-heavy pieces.',
+        },
+        { h: 'Tips before you choose' },
+        {
+          ul: [
+            'Heavier is not always better: heavy stock needs scoring before folding, or it cracks along the fold.',
+            'Think about use: a menu handled every day needs stronger stock and lamination; a one-off flyer can be lighter.',
+            'Think about shipping: heavier paper adds weight and cost on large runs.',
+            'Ask for swatches: Art Zone provides physical material swatches with the quote, so you can feel the paper before printing.',
+          ],
+        },
+      ],
+      faq: [
+        {
+          q: 'What paper weight suits business cards?',
+          a: 'Most commonly 300–350 gsm; premium cards use heavier stock or textured linen.',
+        },
+        {
+          q: 'What is the difference between gloss and matte coated paper?',
+          a: 'Gloss brings out colours and photos and reflects light; matte is calmer, easier to read and suits text-heavy pieces.',
+        },
+        {
+          q: 'Can I see paper samples before ordering?',
+          a: 'Yes. You can request physical material swatches with your quote on WhatsApp.',
+        },
+      ],
+    },
+  },
 ]
 
 export const GUIDE_SLUGS = GUIDES.map((g) => g.slug)

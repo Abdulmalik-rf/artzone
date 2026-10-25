@@ -46,7 +46,7 @@ const dict = {
     seo: {
       home: 'Art Zone Printing is a print and packaging factory in Dammam, Saudi Arabia, since 2016: paper cups, boxes, bags, business cards, labels, signage and corporate gifts, delivered Kingdom-wide.',
       services: 'Every print and packaging service at the Art Zone Printing plant in Dammam: paper cups, boxes, paper bags, business cards, stickers, signage, banners and corporate gifts.',
-      guides: 'Practical print and packaging guides from the Art Zone Printing prepress team: paper cup sizes, offset vs digital printing, and preparing print-ready files.',
+      guides: 'Practical print and packaging guides from the Art Zone Printing prepress team: paper cup sizes, offset vs digital printing, print-ready files, print finishes, and paper types and weights.',
       work: 'Real jobs from the Art Zone Printing plant in Dammam: branded paper cups, food packaging, illuminated signs and corporate gifts for clients across Saudi Arabia.',
       about: 'Inside the Art Zone Printing plant in Al Badiyah, Dammam: digital, offset, wide-format and finishing lines under one roof since 2016, trusted by 500+ brands.',
       contact: 'Contact Art Zone Printing in Dammam: WhatsApp or call +966 53 573 8136, 18th Street, Al Badiyah. Fast quotes and delivery to every city in Saudi Arabia.',
@@ -508,7 +508,7 @@ const dict = {
     seo: {
       home: 'آرت زون للطباعة: مصنع طباعة وتغليف في الدمام منذ 2016. أكواب ورقية، علب وبوكسات، أكياس، بطاقات أعمال، ملصقات، لوحات إعلانية وهدايا دعائية مع الشحن لكافة مناطق المملكة.',
       services: 'خدمات مصنع آرت زون للطباعة في الدمام: طباعة الأكواب الورقية، العلب والبوكسات، الأكياس الورقية، الكروت الشخصية، الاستيكرات، اللوحات المضيئة، البنرات والهدايا الدعائية.',
-      guides: 'أدلة عملية من فريق التدقيق الفني في آرت زون للطباعة: مقاسات الأكواب الورقية، الفرق بين الأوفست والطباعة الرقمية، وتجهيز ملفات التصميم للطباعة.',
+      guides: 'أدلة عملية من فريق التدقيق الفني في آرت زون للطباعة: مقاسات الأكواب الورقية، الأوفست والطباعة الرقمية، تجهيز ملفات التصميم، تشطيبات الطباعة، وأنواع الورق وأوزانه.',
       work: 'معرض أعمال آرت زون للطباعة: نماذج حقيقية من إنتاج مصنعنا في الدمام تشمل الأكواب الورقية المطبوعة، علب التغليف، اللوحات المضيئة والهدايا الترويجية.',
       about: 'تعرّف على مصنع آرت زون للطباعة في حي البادية بالدمام: خطوط طباعة رقمية وأوفست وطباعة عريضة وتشطيب تحت سقف واحد منذ 2016، بثقة أكثر من 500 علامة تجارية.',
       contact: 'تواصل مع آرت زون للطباعة في الدمام عبر واتساب أو الاتصال على 0535738136، شارع 18، حي البادية. عروض أسعار سريعة وشحن لكافة مناطق المملكة.',

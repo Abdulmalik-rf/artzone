@@ -19,6 +19,10 @@ export const PLANT = [
     file: 'vinyl-cutting-plotter-stickers', w: 1280, h: 720,
     alt: { ar: 'ماكينة قص الفينيل أثناء قص الملصقات في مصنع آرت زون', en: 'Vinyl cutting plotter cutting stickers at the Art Zone plant' },
   },
+  {
+    file: 'product-display-wall', w: 1280, h: 720,
+    alt: { ar: 'رفوف عرض نماذج المنتجات المطبوعة في صالة آرت زون بالدمام', en: 'Shelves of printed product samples in the Art Zone showroom, Dammam' },
+  },
 ]
 
 /* every photo by file name: gallery wall + plant shots */

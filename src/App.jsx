@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import { useI18n } from './i18n.jsx'
 import { useRoute } from './router.jsx'
 import { waLink } from './lib/wa.js'
-import { track } from './lib/track.js'
+import { track, trackAiReferral, trackPageView } from './lib/track.js'
 import { pageMeta } from './lib/meta.js'
 import Navbar from './components/Navbar.jsx'
 import Hero from './components/Hero.jsx'
@@ -64,11 +64,20 @@ export default function App() {
 
   /* per-page title + description on client-side navigation (the full
      <head> for each URL is prerendered at build time) */
+  const firstView = useRef(true)
   useEffect(() => {
     const meta = pageMeta(t, page, slug, lang)
     document.title = meta.title
     document.querySelector('meta[name="description"]')?.setAttribute('content', meta.description)
+    // the first page_view is sent by the gtag snippet itself
+    if (firstView.current) firstView.current = false
+    else trackPageView()
   }, [t, page, slug, lang])
+
+  /* visitors arriving from ChatGPT, Perplexity, Gemini, Copilot… */
+  useEffect(() => {
+    trackAiReferral()
+  }, [])
 
   /* conversion tracking: every WhatsApp / phone link on the site */
   useEffect(() => {

@@ -33,6 +33,7 @@ const TODAY = new Date().toISOString().slice(0, 10)
 const ssr = await import(pathToFileURL(join(SSR_DIR, 'entry-server.js')).href)
 const { render, dict, GALLERY, PAGE_PATHS, pathFor, SERVICES, SLUG_BY_CAP, GUIDES, pageMeta } = ssr
 const { LEGAL_NAME, CR_NUMBER, UNIFIED_NUMBER, VAT_NUMBER, photoByFile } = ssr
+const { GA_ID } = ssr
 const PAGES = Object.keys(PAGE_PATHS)
 /* every indexable route: fixed pages + one per service */
 const ROUTES = [
@@ -336,7 +337,8 @@ function analyticsTags() {
     tags.push(`<meta name="google-site-verification" content="${esc(process.env.GSC_VERIFICATION)}" />`)
   if (process.env.BING_VERIFICATION)
     tags.push(`<meta name="msvalidate.01" content="${esc(process.env.BING_VERIFICATION)}" />`)
-  const ga = process.env.VITE_GA_ID
+  // GA4: the ID lives in src/lib/track.js (env VITE_GA_ID overrides it)
+  const ga = process.env.VITE_GA_ID || GA_ID
   if (ga && /^G-[A-Z0-9]+$/.test(ga)) {
     tags.push(
       `<script async src="https://www.googletagmanager.com/gtag/js?id=${ga}"></script>`,

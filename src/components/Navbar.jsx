@@ -30,7 +30,7 @@ export default function Navbar() {
         <a href={href('/')} className="nb-brand" onClick={() => setOpen(false)}>
           <img src="/logo.webp" alt="Art Zone Printing" width="58" height="58" className="nb-logo" />
           <span className="nb-wordmark">
-            {t.brand.name}<i className="mono">{t.brand.tag}</i>
+            {t.brand.name} <i className="mono">{t.brand.tag}</i>
           </span>
         </a>
 

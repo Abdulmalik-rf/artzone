@@ -1,6 +1,6 @@
 import { useI18n } from '../i18n.jsx'
 import { useHref } from '../router.jsx'
-import { GUIDES } from '../data/guides.js'
+import { GUIDES, guideCover } from '../data/guides.js'
 import './Guides.css'
 
 export default function Guides() {
@@ -36,6 +36,17 @@ export default function Guides() {
               data-reveal
               style={{ transitionDelay: `${i * 70}ms` }}
             >
+              <span className="gd-frame">
+                <img
+                  src={guideCover(g).small}
+                  alt={guideCover(g).alt[lang]}
+                  width="768"
+                  height="432"
+                  className="gd-img"
+                  loading={i > 2 ? 'lazy' : 'eager'}
+                  decoding="async"
+                />
+              </span>
               <span className="gd-no mono">G-{String(i + 1).padStart(2, '0')}</span>
               <h2 className="gd-name">{g[lang].h1}</h2>
               <span className="gd-summary">{g[lang].summary}</span>

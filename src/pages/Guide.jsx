@@ -1,9 +1,8 @@
 import { useI18n } from '../i18n.jsx'
 import { useHref, useRoute } from '../router.jsx'
 import { waLink } from '../lib/wa.js'
-import { getGuide } from '../data/guides.js'
+import { getGuide, guideCover } from '../data/guides.js'
 import { getService } from '../data/services.js'
-import { photoByFile } from '../data/gallery.js'
 import NotFound from './NotFound.jsx'
 import './Guide.css'
 
@@ -54,7 +53,7 @@ export default function Guide() {
 
   const c = g[lang]
   const ui = t.guideUi
-  const photo = photoByFile(g.image)
+  const cover = guideCover(g)
   const services = g.services.map(getService).filter(Boolean)
   const date = (iso) =>
     new Date(`${iso}T12:00:00Z`).toLocaleDateString(lang === 'ar' ? 'ar-SA-u-ca-gregory-nu-latn' : 'en-GB', {
@@ -88,20 +87,21 @@ export default function Guide() {
         </div>
       </header>
 
-      {photo && (
-        <div className="container ga-narrow">
-          <figure className="ga-figure">
-            <img
-              src={`/img/work/${photo.file}.webp`}
-              alt={photo.alt[lang]}
-              width={photo.w}
-              height={photo.h}
-              className="ga-img"
-              decoding="async"
-            />
-          </figure>
-        </div>
-      )}
+      <div className="container ga-narrow">
+        <figure className="ga-figure">
+          <img
+            src={cover.src}
+            srcSet={`${cover.small} 768w, ${cover.src} 1280w`}
+            sizes="(max-width: 860px) calc(100vw - 52px), 800px"
+            alt={cover.alt[lang]}
+            width={cover.w}
+            height={cover.h}
+            className="ga-img"
+            decoding="async"
+          />
+          <figcaption className="ga-fig-note mono">{ui.illustrative}</figcaption>
+        </figure>
+      </div>
 
       <div className="container ga-narrow ga-body">
         {c.blocks.map((b, i) => (

@@ -96,6 +96,13 @@
   border: 1px solid var(--line);
 }
 
+/* marks the cover as an illustration, not the plant or a client job */
+.ga-fig-note {
+  margin-top: 8px;
+  font-size: 0.7rem;
+  color: var(--ink-soft);
+}
+
 /* ---------- body ---------- */
 .ga-body {
   padding-block: 16px 96px;

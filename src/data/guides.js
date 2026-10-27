@@ -10,6 +10,9 @@
      brackets where it helps.
    - Body is a list of blocks: { h } heading, { p } paragraph,
      { ul } bullet list, { table: { head, rows } }.
+   - `cover` is an illustrative (AI-generated) photo in /img/guides/<file>.webp
+     plus a -768 variant; it is captioned as illustrative on the page, never
+     presented as the Art Zone plant or a client job.
    =================================================================== */
 
 export const GUIDES = [
@@ -18,7 +21,10 @@ export const GUIDES = [
     published: '2026-10-25',
     updated: '2026-10-25',
     services: ['paper-cups'],
-    image: 'branded-paper-cups-cafe-collection',
+    cover: {
+      file: 'paper-cup-sizes',
+      alt: { ar: 'أربعة أكواب ورقية بمقاسات متدرجة من الإسبريسو حتى 16 أونز على طاولة مقهى', en: 'Four paper cups in ascending sizes, from espresso to 16 oz, on a café counter' },
+    },
     ar: {
       title: 'دليل مقاسات الأكواب الورقية: أي مقاس يناسب مقهاك؟ | آرت زون',
       description: 'دليل مقاسات الأكواب الورقية بالأونصة والمليلتر: 4 و8 و12 و16 أونز، الفرق بين الكوب السنقل والدبل، وكيف تختار المقاسات وتجهّز تصميم الكوب للطباعة.',
@@ -164,7 +170,10 @@ export const GUIDES = [
     published: '2026-10-25',
     updated: '2026-10-25',
     services: ['business-cards', 'boxes', 'stickers-labels'],
-    image: 'large-format-printer-operator',
+    cover: {
+      file: 'offset-vs-digital',
+      alt: { ar: 'ماكينة طباعة أوفست إلى جانب ماكينة طباعة رقمية في مطبعة حديثة', en: 'An offset press beside a digital production printer in a modern print shop' },
+    },
     ar: {
       title: 'الطباعة الأوفست أم الرقمية (الديجيتال)؟ الفرق ومتى تختار كلاً منهما | آرت زون',
       description: 'ما الفرق بين الطباعة الأوفست والطباعة الرقمية (الديجيتال)؟ مقارنة في التكلفة والسرعة والجودة ومطابقة الألوان، ومتى تختار كلاً منهما للكروت والبروشورات والعلب.',
@@ -294,7 +303,10 @@ export const GUIDES = [
     published: '2026-10-25',
     updated: '2026-10-25',
     services: ['business-cards', 'banners', 'boxes'],
-    image: 'vinyl-cutting-plotter-stickers',
+    cover: {
+      file: 'print-ready-files',
+      alt: { ar: 'مكتب مصمم عليه شاشة تعرض تصميماً بخطوط القص ومروحة ألوان CMYK وبروفة مطبوعة', en: 'A designer’s desk with a print layout showing crop marks, a CMYK swatch fan and a printed proof' },
+    },
     ar: {
       title: 'كيف تجهّز ملف التصميم للطباعة؟ قائمة تدقيق قبل الإرسال | آرت زون',
       description: 'قائمة تدقيق لتجهيز ملف التصميم للطباعة: نظام الألوان CMYK، الدقة 300 نقطة لكل إنش، هوامش القص (النزف) 3 مم، تحويل الخطوط، وتجهيز طبقات البصمة واليوﭬي وخط القص.',
@@ -430,7 +442,10 @@ export const GUIDES = [
     published: '2026-10-25',
     updated: '2026-10-25',
     services: ['business-cards', 'boxes', 'stickers-labels'],
-    image: 'product-display-wall',
+    cover: {
+      file: 'print-finishes',
+      alt: { ar: 'بطاقات أعمال سوداء ببصمة ذهبية ويوﭬي موضعي لامع وعلبة هدايا فاخرة', en: 'Black business cards with gold foil and glossy spot UV, beside a premium gift box' },
+    },
     ar: {
       title: 'دليل تشطيبات الطباعة: البصمة واليوﭬي الموضعي والسلوفان المخملي والقص | آرت زون',
       description: 'ما الفرق بين البصمة الحرارية (الفويل) واليوﭬي الموضعي والسلوفان اللامع والمطفي والمخملي والقص بالقالب (الدايكت)؟ متى تستخدم كل تشطيب وكيف تجهّز الملف له.',
@@ -598,7 +613,10 @@ export const GUIDES = [
     published: '2026-10-25',
     updated: '2026-10-25',
     services: ['business-cards', 'paper-bags', 'boxes'],
-    image: 'kraft-paper-bags-ile-rousseau',
+    cover: {
+      file: 'paper-types-weights',
+      alt: { ar: 'أنواع من الورق: لامع ومطفي وكتان وكرافت وكرتون مضلّع مع دفتر عينات', en: 'Paper stocks fanned out: gloss, matte, linen, kraft and corrugated board with a swatch book' },
+    },
     ar: {
       title: 'دليل أنواع الورق وأوزانه (جرام): أي ورق يناسب مطبوعتك؟ | آرت زون',
       description: 'دليل أوزان الورق بالجرام لكل متر مربع وأنواعه: الكوشيه اللامع والمطفي، الورق غير المطلي، ورق الكتان، الكرافت والكرتون. ما الوزن المناسب للكروت والبروشورات والعلب والأكياس؟',
@@ -737,6 +755,12 @@ export const GUIDES = [
 ]
 
 export const GUIDE_SLUGS = GUIDES.map((g) => g.slug)
+
+/* cover image paths + intrinsic size (all covers are 1280x720) */
+export function guideCover(g) {
+  const base = `/img/guides/${g.cover.file}`
+  return { src: `${base}.webp`, small: `${base}-768.webp`, w: 1280, h: 720, alt: g.cover.alt }
+}
 
 export function getGuide(slug) {
   return GUIDES.find((g) => g.slug === slug) || null

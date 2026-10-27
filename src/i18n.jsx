@@ -13,6 +13,7 @@ const dict = {
       links: [
         ['/services/', 'Services'],
         ['/work/', 'Our Work'],
+        ['/guides/', 'Blog'],
         ['/about/', 'About'],
         ['/contact/', 'Contact'],
       ],
@@ -73,6 +74,7 @@ const dict = {
       home: 'Home',
       guides: 'Guides',
       byline: 'Art Zone Printing prepress team',
+      illustrative: 'Illustrative image',
       published: 'Published',
       updated: 'Updated',
       faq: 'Quick answers',
@@ -477,6 +479,7 @@ const dict = {
       links: [
         ['/services/', 'الخدمات'],
         ['/work/', 'معرض الأعمال'],
+        ['/guides/', 'المدونة'],
         ['/about/', 'عن المصنع'],
         ['/contact/', 'تواصل معنا'],
       ],
@@ -537,6 +540,7 @@ const dict = {
       home: 'الرئيسية',
       guides: 'أدلة الطباعة',
       byline: 'فريق التدقيق الفني — آرت زون للطباعة',
+      illustrative: 'صورة توضيحية',
       published: 'تاريخ النشر',
       updated: 'آخر تحديث',
       faq: 'إجابات سريعة',

@@ -68,6 +68,19 @@
   box-shadow: var(--shadow-hard);
 }
 
+.gd-frame {
+  display: block;
+  margin: -10px -10px 4px;
+}
+
+.gd-img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 3px;
+  border: 1px solid var(--line);
+}
+
 .gd-no {
   font-size: 0.76rem;
   color: var(--magenta-text);

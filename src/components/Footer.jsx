@@ -21,17 +21,19 @@ export default function Footer() {
             <a href={href('/')} className="ft-id">
               <img src="/logo.webp" alt="Art Zone Printing" width="46" height="46" className="ft-logo" loading="lazy" />
               <span className="ft-wordmark">
-                {t.brand.name}<i className="mono">{t.brand.tag}</i>
+                {t.brand.name} <i className="mono">{t.brand.tag}</i>
               </span>
             </a>
             <p className="ft-line">{t.footer.line}</p>
-            {/* name / address / phone, identical on every page */}
+            {/* name / address / phone, identical on every page. The {' '}
+                spaces don't show in the column layout, but keep the lines
+                apart when search engines read the text as a snippet. */}
             <address className="ft-nap">
-              <strong className="ft-nap-name">{t.footer.napName}</strong>
-              <span>{t.contact.address}</span>
+              <strong className="ft-nap-name">{t.footer.napName}</strong>{' '}
+              <span>{t.contact.address}</span>{' '}
               <a href={PHONE_HREF} dir="ltr" className="ft-nap-phone mono">
                 {WA_DISPLAY}
-              </a>
+              </a>{' '}
               <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" className="ft-nap-map">
                 {t.contact.mapCta}
               </a>

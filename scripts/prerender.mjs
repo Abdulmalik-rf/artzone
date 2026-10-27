@@ -222,7 +222,7 @@ function graphFor(page, lang, slug) {
   if (page === 'guide') {
     const g = GUIDE_BY_SLUG[slug]
     const c = g[lang]
-    const image = abs(`/img/work/${g.image}.webp`)
+    const image = abs(`/img/guides/${g.cover.file}.webp`)
     webPage.mainEntity = { '@id': `${url}#article` }
     webPage.primaryImageOfPage = { '@type': 'ImageObject', url: image }
     graph.push(
@@ -359,7 +359,7 @@ function headFor(page, lang, slug, { notFound = false } = {}) {
     page === 'service'
       ? serviceImages(SERVICE_BY_SLUG[slug])[0]
       : page === 'guide'
-        ? abs(`/img/work/${GUIDE_BY_SLUG[slug].image}.webp`)
+        ? abs(`/img/guides/${GUIDE_BY_SLUG[slug].cover.file}.webp`)
         : null
   const ogImage = svcImage ? { url: svcImage } : OG_IMAGE
   const tags = [
@@ -445,7 +445,7 @@ const urlEntries = ROUTES.flatMap(({ page, slug }) =>
           : page === 'service'
             ? serviceImages(SERVICE_BY_SLUG[slug]).map(imageTag)
             : page === 'guide'
-              ? [imageTag(abs(`/img/work/${GUIDE_BY_SLUG[slug].image}.webp`))]
+              ? [imageTag(abs(`/img/guides/${GUIDE_BY_SLUG[slug].cover.file}.webp`))]
               : []
     return [
       '  <url>',

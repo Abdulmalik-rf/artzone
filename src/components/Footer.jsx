@@ -1,5 +1,6 @@
 import { useI18n } from '../i18n.jsx'
 import { WA_DISPLAY, PHONE_HREF, MAPS_URL } from '../lib/wa.js'
+import { CR_NUMBER, VAT_NUMBER } from '../lib/business.js'
 import { useHref } from '../router.jsx'
 import './Footer.css'
 
@@ -67,6 +68,11 @@ export default function Footer() {
         <div className="ft-rule">
           <p className="ft-copy">
             © <span suppressHydrationWarning>{year}</span> {t.footer.rights}
+          </p>
+          <p className="ft-reg">
+            {t.footer.cr} <span className="mono" dir="ltr">{CR_NUMBER}</span>
+            <span aria-hidden="true"> · </span>
+            {t.footer.vat} <span className="mono" dir="ltr">{VAT_NUMBER}</span>
           </p>
           <a className="ft-phone mono" href={PHONE_HREF} dir="ltr">
             {WA_DISPLAY}

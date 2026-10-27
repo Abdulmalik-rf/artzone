@@ -32,6 +32,7 @@ const TODAY = new Date().toISOString().slice(0, 10)
 
 const ssr = await import(pathToFileURL(join(SSR_DIR, 'entry-server.js')).href)
 const { render, dict, GALLERY, PAGE_PATHS, pathFor, SERVICES, SLUG_BY_CAP, GUIDES, pageMeta } = ssr
+const { LEGAL_NAME, CR_NUMBER, UNIFIED_NUMBER, VAT_NUMBER } = ssr
 const PAGES = Object.keys(PAGE_PATHS)
 /* every indexable route: fixed pages + one per service */
 const ROUTES = [
@@ -76,6 +77,7 @@ function businessNode(lang) {
     '@type': 'LocalBusiness',
     '@id': `${SITE}/#business`,
     name: lang === 'ar' ? 'آرت زون للطباعة' : 'Art Zone Printing',
+    legalName: LEGAL_NAME,
     alternateName: [
       lang === 'ar' ? 'Art Zone Printing' : 'آرت زون للطباعة',
       'مطبعة آرت زون',
@@ -87,6 +89,12 @@ function businessNode(lang) {
     logo: abs('/logo-512.png'),
     image: [OG_IMAGE.url, abs('/img/work/showroom-dammam-plant.webp'), abs('/img/work/wide-format-printer-plant.webp')],
     telephone: PHONE,
+    vatID: VAT_NUMBER,
+    taxID: VAT_NUMBER,
+    identifier: [
+      { '@type': 'PropertyValue', propertyID: 'Saudi Commercial Registration (CR)', value: CR_NUMBER },
+      { '@type': 'PropertyValue', propertyID: 'Saudi Unified Establishment Number', value: UNIFIED_NUMBER },
+    ],
     foundingDate: '2016',
     address: {
       '@type': 'PostalAddress',
@@ -474,6 +482,8 @@ writeFileSync(
 Print, packaging and signage manufacturer based in Dammam, Eastern Province, Saudi Arabia. In operation since 2016. Bilingual site: Arabic at the root, English under /en/.
 
 ## Contact
+- Registered (legal) name: ${LEGAL_NAME}
+- Commercial registration (CR): ${CR_NUMBER} · VAT number: ${VAT_NUMBER}
 - Phone & WhatsApp: +966 53 573 8136 (https://wa.me/966535738136)
 - Address: ${en.contact.address}
 - Google Maps: ${GBP_URL}

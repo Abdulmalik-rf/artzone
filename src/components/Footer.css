@@ -173,6 +173,16 @@
 }
 
 /* bottom rule */
+/* commercial registration + VAT numbers */
+.ft-reg {
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+.ft-reg .mono {
+  letter-spacing: 0.02em;
+}
+
 .ft-rule {
   margin-block-start: 56px;
   padding-block: 22px 28px;

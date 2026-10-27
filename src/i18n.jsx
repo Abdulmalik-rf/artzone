@@ -367,6 +367,8 @@ const dict = {
       line: 'Print manufacturer, Dammam — every process under one roof since 2016.',
       rights: 'Art Zone Printing. All rights reserved.',
       napName: 'Art Zone Printing',
+      cr: 'CR',
+      vat: 'VAT No.',
       backToTop: 'Back to top',
     },
 
@@ -829,6 +831,8 @@ const dict = {
       line: 'مصنع طباعة وتغليف وطني في الدمام — كافة مراحل الإنتاج تحت سقف واحد منذ عام 2016.',
       rights: 'آرت زون للطباعة. جميع الحقوق محفوظة.',
       napName: 'آرت زون للطباعة',
+      cr: 'س.ت',
+      vat: 'الرقم الضريبي',
       backToTop: 'العودة للأعلى',
     },
 

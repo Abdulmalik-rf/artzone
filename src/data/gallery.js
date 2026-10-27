@@ -25,9 +25,30 @@ export const PLANT = [
   },
 ]
 
-/* every photo by file name: gallery wall + plant shots */
+/* Illustrative (AI-generated) photos for service pages that have fewer than
+   three real job photos. Files live in /public/img/illustrative/ (1100x825).
+   They are always listed AFTER real photos, tagged «صورة توضيحية» on the page,
+   and kept out of structured data and the image sitemap. Replace them with
+   real job photos as the client sends them. */
+export const ILLUSTRATIVE = [
+  { file: 'bc-premium-foil', alt: { ar: 'بطاقات أعمال كحلية فاخرة ببصمة ذهبية', en: 'Premium navy business cards with gold foil' } },
+  { file: 'bc-stock-fan', alt: { ar: 'بطاقات أعمال على ورق أبيض وكتان وكرافت وأسود مع يوﭬي موضعي', en: 'Business cards on white, linen, kraft and black stock with spot UV' } },
+  { file: 'bc-stationery-set', alt: { ar: 'طقم مطبوعات رسمية: ورق رسمي وظرف وملف وبطاقات أعمال', en: 'Stationery set: letterhead, envelope, folder and business cards' } },
+  { file: 'labels-rolls', alt: { ar: 'لفات ملصقات رول دائرية وبيضاوية ملونة', en: 'Rolls of round and oval colour labels' } },
+  { file: 'labels-jars', alt: { ar: 'برطمانات تمر وعسل وعبوات تجميل بملصقات مع ورقة ملصقات مقصوصة', en: 'Date and honey jars and cosmetic bottles with labels, beside a die-cut sticker sheet' } },
+  { file: 'boxes-food-kraft', alt: { ar: 'علب طعام وحلويات من ورق الكرافت على طاولة مقهى', en: 'Kraft food and pastry boxes on a café counter' } },
+  { file: 'boxes-rigid-gift', alt: { ar: 'علبة هدايا صلبة فاخرة بغطاء مغناطيسي باللون الكحلي', en: 'Premium navy rigid gift box with a magnetic lid' } },
+  { file: 'bags-handles', alt: { ar: 'أكياس ورقية كرافت وبيضاء بمقابض على طاولة متجر', en: 'Kraft and white paper bags with handles on a shop counter' } },
+  { file: 'bags-takeaway', alt: { ar: 'أكياس ورقية للطلبات الخارجية بدون مقابض مع كوب قهوة', en: 'Handle-less kraft takeaway bags beside a coffee cup' } },
+].map((p) => ({ ...p, w: 1100, h: 825, illustrative: true }))
+
+/* every photo by file name (gallery wall, plant shots, illustrative), with
+   its public path in `src` */
 export function photoByFile(file) {
-  return GALLERY.find((g) => g.file === file) || PLANT.find((g) => g.file === file) || null
+  const real = GALLERY.find((g) => g.file === file) || PLANT.find((g) => g.file === file)
+  if (real) return { ...real, src: `/img/work/${file}.webp` }
+  const ill = ILLUSTRATIVE.find((g) => g.file === file)
+  return ill ? { ...ill, src: `/img/illustrative/${file}.webp` } : null
 }
 
 export const GALLERY = [

@@ -10,7 +10,8 @@
      No sizes, minimum quantities or prices until the plant supplies
      them — FAQ answers route those questions to WhatsApp instead.
    - `capTag` links the page to its card in the home capabilities grid.
-   - `images` are file names from src/data/gallery.js (real job photos).
+   - `images` are file names from src/data/gallery.js: real job photos first,
+     then illustrative ones (ILLUSTRATIVE) only where real photos are short.
    =================================================================== */
 
 export const SERVICES = [
@@ -125,7 +126,7 @@ export const SERVICES = [
   {
     slug: 'boxes',
     capTag: '03',
-    images: ['kraft-food-box-ile-rousseau'],
+    images: ['kraft-food-box-ile-rousseau', 'boxes-food-kraft', 'boxes-rigid-gift'],
     related: ['paper-cups', 'paper-bags', 'corporate-gifts'],
     ar: {
       name: 'طباعة العلب والبوكسات',
@@ -224,7 +225,7 @@ export const SERVICES = [
   {
     slug: 'paper-bags',
     capTag: '04',
-    images: ['kraft-paper-bags-ile-rousseau'],
+    images: ['kraft-paper-bags-ile-rousseau', 'bags-handles', 'bags-takeaway'],
     related: ['boxes', 'paper-cups', 'stickers-labels'],
     ar: {
       name: 'طباعة الأكياس الورقية',
@@ -304,7 +305,7 @@ export const SERVICES = [
   {
     slug: 'business-cards',
     capTag: '01',
-    images: [],
+    images: ['bc-premium-foil', 'bc-stock-fan', 'bc-stationery-set'],
     related: ['stickers-labels', 'corporate-gifts', 'banners'],
     ar: {
       name: 'بطاقات الأعمال (الكروت الشخصية) والمطبوعات الرسمية',
@@ -401,7 +402,7 @@ export const SERVICES = [
   {
     slug: 'stickers-labels',
     capTag: '05',
-    images: ['vinyl-cutting-plotter-stickers'],
+    images: ['vinyl-cutting-plotter-stickers', 'labels-rolls', 'labels-jars'],
     related: ['boxes', 'paper-cups', 'business-cards'],
     ar: {
       name: 'الملصقات (الاستيكرات) والليبلات',

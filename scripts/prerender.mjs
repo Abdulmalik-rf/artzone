@@ -32,7 +32,7 @@ const TODAY = new Date().toISOString().slice(0, 10)
 
 const ssr = await import(pathToFileURL(join(SSR_DIR, 'entry-server.js')).href)
 const { render, dict, GALLERY, PAGE_PATHS, pathFor, SERVICES, SLUG_BY_CAP, GUIDES, pageMeta } = ssr
-const { LEGAL_NAME, CR_NUMBER, UNIFIED_NUMBER, VAT_NUMBER } = ssr
+const { LEGAL_NAME, CR_NUMBER, UNIFIED_NUMBER, VAT_NUMBER, photoByFile } = ssr
 const PAGES = Object.keys(PAGE_PATHS)
 /* every indexable route: fixed pages + one per service */
 const ROUTES = [
@@ -156,8 +156,15 @@ const PAGE_TYPE = {
   contact: 'ContactPage',
 }
 
-// all service images live in /img/work/ (gallery photos + plant shots)
-const serviceImages = (svc) => svc.images.map((f) => abs(`/img/work/${f}.webp`))
+// REAL photos only (job photos + plant shots): these go into structured data
+// and the image sitemap. Illustrative AI images are page decoration only.
+const serviceImages = (svc) =>
+  svc.images.map(photoByFile).filter((p) => p && !p.illustrative).map((p) => abs(p.src))
+// share image: first real photo, else the first illustrative one
+const serviceShareImage = (svc) => {
+  const p = svc.images.map(photoByFile).filter(Boolean)
+  return p.length ? abs((p.find((x) => !x.illustrative) || p[0]).src) : null
+}
 
 function graphFor(page, lang, slug) {
   const t = dict[lang]
@@ -357,7 +364,7 @@ function headFor(page, lang, slug, { notFound = false } = {}) {
   // service pages share their first real job photo; everything else the brand card
   const svcImage =
     page === 'service'
-      ? serviceImages(SERVICE_BY_SLUG[slug])[0]
+      ? serviceShareImage(SERVICE_BY_SLUG[slug])
       : page === 'guide'
         ? abs(`/img/guides/${GUIDE_BY_SLUG[slug].cover.file}.webp`)
         : null

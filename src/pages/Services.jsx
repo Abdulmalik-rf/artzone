@@ -46,7 +46,7 @@ export default function Services() {
                 <span className="sv-frame">
                   {photo ? (
                     <img
-                      src={`/img/work/${photo.file}.webp`}
+                      src={photo.src}
                       alt={photo.alt[lang]}
                       width={photo.w}
                       height={photo.h}
@@ -58,6 +58,9 @@ export default function Services() {
                     <span className="sv-img sv-img--plate halftone halftone--magenta" aria-hidden="true">
                       <span className="mono">AZ-{String(i + 1).padStart(2, '0')}</span>
                     </span>
+                  )}
+                  {photo?.illustrative && (
+                    <span className="sv-img-note mono">{t.guideUi.illustrative}</span>
                   )}
                 </span>
                 <span className="sv-body">

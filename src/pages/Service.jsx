@@ -63,7 +63,7 @@ export default function Service() {
               {photos.map((p, i) => (
                 <figure key={p.file} className="sd-photo" data-reveal style={{ transitionDelay: `${i * 70}ms` }}>
                   <img
-                    src={`/img/work/${p.file}.webp`}
+                    src={p.src}
                     alt={p.alt[lang]}
                     width={p.w}
                     height={p.h}
@@ -71,6 +71,7 @@ export default function Service() {
                     loading={i > 1 ? 'lazy' : 'eager'}
                     decoding="async"
                   />
+                  {p.illustrative && <figcaption className="sd-photo-note mono">{t.guideUi.illustrative}</figcaption>}
                 </figure>
               ))}
             </div>

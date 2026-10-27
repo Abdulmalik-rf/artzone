@@ -124,6 +124,22 @@
   border: 1px solid var(--line);
 }
 
+/* tag on AI illustrations so they never read as a client job */
+.sd-photo {
+  position: relative;
+}
+
+.sd-photo-note {
+  position: absolute;
+  inset-block-end: 18px;
+  inset-inline-start: 18px;
+  padding: 3px 8px;
+  border-radius: 3px;
+  background: rgba(22, 19, 46, 0.72);
+  color: var(--paper);
+  font-size: 0.66rem;
+}
+
 .sd-photos--1 .sd-photo-img,
 .sd-photos--3 .sd-photo-img {
   aspect-ratio: 4 / 3;

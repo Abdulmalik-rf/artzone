@@ -64,8 +64,21 @@
 }
 
 .sv-frame {
+  position: relative;
   display: block;
   padding: 10px 10px 0;
+}
+
+/* tag on AI illustrations so they never read as a client job */
+.sv-img-note {
+  position: absolute;
+  inset-block-end: 8px;
+  inset-inline-start: 18px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  background: rgba(22, 19, 46, 0.72);
+  color: var(--paper);
+  font-size: 0.62rem;
 }
 
 .sv-img {

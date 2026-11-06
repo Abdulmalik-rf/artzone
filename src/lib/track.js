@@ -3,7 +3,7 @@
    rather than in a CI secret. Empty = analytics off: scripts/prerender.mjs
    only injects the gtag snippet when it is set. */
 
-export const GA_ID = ''
+export const GA_ID = 'G-JS80W6G6FF'
 
 export function track(event, params = {}) {
   if (typeof window === 'undefined' || typeof window.gtag !== 'function') return

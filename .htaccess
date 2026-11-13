@@ -1,0 +1,47 @@
+# Art Zone Printing — Hostinger (LiteSpeed/Apache) rules
+# Deployed with the static build; every page is a prerendered /path/index.html.
+
+Options -Indexes
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # One canonical host: www and the temporary Hostinger domain -> apex
+  RewriteCond %{HTTP_HOST} ^www\.art-zone-print\.com$ [NC,OR]
+  RewriteCond %{HTTP_HOST} ^royalblue-hamster-323320\.hostingersite\.com$ [NC]
+  RewriteRule ^(.*)$ https://art-zone-print.com/$1 [R=301,L]
+
+  # /work/index.html -> /work/  (only on direct requests, not internal lookups)
+  RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?] [NC]
+  RewriteRule ^(.*/)?index\.html$ /$1 [R=301,L]
+
+  # Trailing slash for page paths: /work -> /work/
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteCond %{REQUEST_URI} !/$
+  RewriteRule ^(.*)$ /$1/ [R=301,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  # hashed build assets never change
+  <FilesMatch "^.+-[A-Za-z0-9_-]{8,}\.(js|css|woff2?)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(webp|jpe?g|png|ico|svg)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+  # pages and crawl files: always revalidate so deploys show up immediately
+  <FilesMatch "\.(html|xml|txt|webmanifest)$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+  <FilesMatch "\.(html)$">
+    Header set X-Content-Type-Options "nosniff"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_mime.c>
+  AddType application/manifest+json .webmanifest
+  AddType text/plain .txt
+  AddCharset utf-8 .html .txt .xml .webmanifest
+</IfModule>

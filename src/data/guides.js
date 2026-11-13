@@ -19,19 +19,19 @@ export const GUIDES = [
   {
     slug: 'paper-cup-sizes',
     published: '2026-10-25',
-    updated: '2026-10-25',
+    updated: '2026-11-13',
     services: ['paper-cups', 'cafe-packaging'],
     cover: {
       file: 'paper-cup-sizes',
       alt: { ar: 'أربعة أكواب ورقية بمقاسات متدرجة من الإسبريسو حتى 16 أونز على طاولة مقهى', en: 'Four paper cups in ascending sizes, from espresso to 16 oz, on a café counter' },
     },
     ar: {
-      title: 'دليل مقاسات الأكواب الورقية: أي مقاس يناسب مقهاك؟ | آرت زون',
-      description: 'دليل مقاسات الأكواب الورقية بالأونصة والمليلتر: 4 و8 و12 و16 أونز، الفرق بين الكوب السنقل والدبل، وكيف تختار المقاسات وتجهّز تصميم الكوب للطباعة.',
-      h1: 'دليل مقاسات الأكواب الورقية: أي مقاس يناسب مقهاك؟',
-      summary: 'تُقاس الأكواب الورقية عادةً بالأونصة (oz)، والأونصة تعادل نحو 30 مل. الأكثر شيوعاً في المقاهي أربعة مقاسات: 4 أونز للإسبريسو، و8 أونز للكابتشينو والفلات وايت، و12 أونز للاتيه والمشروبات المعتادة، و16 أونز للأحجام الكبيرة. ويكفي معظم المقاهي مقاسان أو ثلاثة فقط.',
+      title: 'مقاسات الأكواب الورقية بالأونز والمليلتر: دليل اختيار مقاس الكوب | آرت زون',
+      description: 'جدول مقاسات الأكواب الورقية (قياسات وأحجام الأكواب) بالأونز والمليلتر من 4 إلى 20 أونز، مع القطر والارتفاع التقريبي، ومقاسات الأكواب الباردة، والفرق بين السنقل والدبل، وتجهيز تصميم الكوب للطباعة.',
+      h1: 'مقاسات الأكواب الورقية بالأونز والمليلتر: أي مقاس يناسب مقهاك؟',
+      summary: 'تُقاس الأكواب الورقية (وتُسمّى أيضاً قياسات أو أحجام الأكواب) عادةً بالأونصة (oz)، والأونصة تعادل نحو 30 مل. الأكثر شيوعاً في المقاهي أربعة مقاسات: 4 أونز (نحو 120 مل) للإسبريسو، و8 أونز (نحو 240 مل) للكابتشينو والفلات وايت، و12 أونز (نحو 355 مل) للاتيه والمشروبات المعتادة، و16 أونز (نحو 475 مل) للأحجام الكبيرة. ويكفي معظم المقاهي مقاسان أو ثلاثة فقط.',
       blocks: [
-        { h: 'المقاسات الشائعة وما يُقدَّم فيها' },
+        { h: 'جدول مقاسات الأكواب الورقية بالمليلتر' },
         {
           p: 'يشير مقاس الكوب إلى سعته حتى الحافة تقريباً، لذلك تكون كمية المشروب المقدَّم أقل قليلاً من السعة المكتوبة. وتختلف السعة الفعلية بفارق بسيط بين مصنّع وآخر، فالأرقام التالية تقريبية.',
         },
@@ -40,14 +40,35 @@ export const GUIDES = [
             head: ['المقاس', 'السعة التقريبية', 'الاستخدام الشائع'],
             rows: [
               ['4 أونز', 'نحو 120 مل', 'الإسبريسو، القهوة السعودية، عينات التذوق'],
+              ['6 أونز', 'نحو 180 مل', 'الكورتادو والمشروبات الصغيرة في المقاهي المختصة'],
               ['8 أونز', 'نحو 240 مل', 'الكابتشينو، الفلات وايت، الشاي'],
-              ['12 أونز', 'نحو 355 مل', 'اللاتيه، الأمريكانو، المشروب الساخن المعتاد'],
+              ['12 أونز', 'نحو 355 مل', 'اللاتيه، الأمريكانو، المشروب الساخن المعتاد (المقاس الوسط)'],
               ['16 أونز', 'نحو 475 مل', 'الأحجام الكبيرة من اللاتيه والموكا'],
+              ['20 أونز', 'نحو 590 مل', 'الأحجام الكبيرة جداً، والمشروبات الباردة'],
+            ],
+          },
+        },
+        { h: 'أبعاد الكوب: القطر والارتفاع' },
+        {
+          p: 'عند السؤال عن «مقاس الكوب» يُقصد أحياناً أبعاده لا سعته، وهي مهمة لاختيار الغطاء والكمّ وحامل الأكواب. الأبعاد التالية شائعة في السوق لكنها تختلف بين المصنّعين، فاطلبوا المواصفات الدقيقة قبل الطلب.',
+        },
+        {
+          table: {
+            head: ['المقاس', 'قطر الحافة (تقريبي)', 'الارتفاع (تقريبي)'],
+            rows: [
+              ['4 أونز', 'نحو 62 ملم', 'نحو 60 ملم'],
+              ['8 أونز', 'نحو 80 ملم', 'نحو 92 ملم'],
+              ['12 أونز', 'نحو 90 ملم', 'نحو 110 ملم'],
+              ['16 أونز', 'نحو 90 ملم', 'نحو 135 ملم'],
             ],
           },
         },
         {
-          p: 'أما المشروبات الباردة فتُقدَّم غالباً في أكواب بلاستيكية شفافة بمقاسات أكبر مع غطاء مسطح أو مقبب، لأن الثلج يشغل جزءاً من السعة.',
+          p: 'لاحظوا أن كوبي 12 و16 أونز يشتركان غالباً في قطر الحافة نفسه، فيمكن أن يستخدما الغطاء نفسه، وهذا يبسّط المخزون.',
+        },
+        { h: 'مقاسات أكواب المشروبات الباردة' },
+        {
+          p: 'تُقدَّم المشروبات الباردة غالباً في أكواب بلاستيكية شفافة بمقاسات أكبر، أشيعها 12 و16 و20 أونز، مع غطاء مسطح للمشروبات العادية أو غطاء مقبب للمشروبات التي تعلوها الكريمة. ويُختار مقاس أكبر من المشروب الساخن المقابل لأن الثلج يشغل جزءاً من السعة.',
         },
         { h: 'الكوب السنقل أم الدبل؟' },
         {
@@ -85,8 +106,20 @@ export const GUIDES = [
           a: 'الأونصة السائلة تعادل نحو 29.6 مل، فيتسع الكوب 8 أونز لنحو 240 مل حتى الحافة، ويُقدَّم فيه عادةً أقل من ذلك قليلاً.',
         },
         {
+          q: 'كم مليلتر في الكوب 12 أونز؟',
+          a: 'يتسع الكوب 12 أونز لنحو 355 مل حتى الحافة، وهو المقاس الوسط الأكثر استخداماً للاتيه والأمريكانو.',
+        },
+        {
+          q: 'ما مقاسات الكوب الصغير والوسط والكبير؟',
+          a: 'في أغلب المقاهي يكون الصغير 8 أونز (نحو 240 مل)، والوسط 12 أونز (نحو 355 مل)، والكبير 16 أونز (نحو 475 مل). ولا يوجد معيار موحّد، فكل مقهى يحدد أحجامه حسب قائمته.',
+        },
+        {
           q: 'ما المقاس المناسب للقهوة السعودية؟',
           a: 'تُقدَّم القهوة السعودية بكميات صغيرة، لذلك تُستخدم لها عادةً الأكواب الصغيرة بمقاس 4 أونز أو أقل.',
+        },
+        {
+          q: 'هل يصلح الكوب الورقي للمشروبات الباردة؟',
+          a: 'الأكواب الورقية مصممة أساساً للمشروبات الساخنة، وتُستخدم للمشروبات الباردة عادةً أكواب بلاستيكية شفافة أو أكواب ورقية مخصصة للبارد مقاومة للتكثّف.',
         },
         {
           q: 'ما أقل كمية لطباعة الأكواب في آرت زون؟',
@@ -95,12 +128,12 @@ export const GUIDES = [
       ],
     },
     en: {
-      title: 'Paper Cup Sizes Guide: Which Size Suits Your Café? | Art Zone',
-      description: 'A guide to paper cup sizes in ounces and millilitres (4, 8, 12 and 16 oz), single vs double wall, how to choose sizes for your menu and how to prepare cup artwork for print.',
-      h1: 'Paper cup sizes: which size suits your café?',
-      summary: 'Paper cups are usually sized in fluid ounces (oz); one ounce is about 30 ml. Four sizes cover most cafés: 4 oz for espresso, 8 oz for cappuccino and flat white, 12 oz for lattes and regular drinks, and 16 oz for large drinks. Most cafés need only two or three of them.',
+      title: 'Paper Cup Sizes in oz and ml: Chart, Dimensions & How to Choose | Art Zone',
+      description: 'A paper cup size chart in ounces and millilitres from 4 to 20 oz, with typical rim diameter and height, cold cup sizes, single vs double wall, and how to prepare cup artwork for print.',
+      h1: 'Paper cup sizes in oz and ml: which size suits your café?',
+      summary: 'Paper cups are usually sized in fluid ounces (oz); one ounce is about 30 ml. Four sizes cover most cafés: 4 oz (about 120 ml) for espresso, 8 oz (about 240 ml) for cappuccino and flat white, 12 oz (about 355 ml) for lattes and regular drinks, and 16 oz (about 475 ml) for large drinks. Most cafés need only two or three of them.',
       blocks: [
-        { h: 'Common sizes and what goes in them' },
+        { h: 'Paper cup size chart in ml' },
         {
           p: 'A cup size refers to its capacity filled roughly to the brim, so the drink you serve is a little less than the stated size. Actual capacity also varies slightly between manufacturers, so treat these figures as approximate.',
         },
@@ -109,14 +142,35 @@ export const GUIDES = [
             head: ['Size', 'Approx. capacity', 'Typical use'],
             rows: [
               ['4 oz', 'about 120 ml', 'Espresso, Saudi coffee, tasting samples'],
+              ['6 oz', 'about 180 ml', 'Cortado and small specialty drinks'],
               ['8 oz', 'about 240 ml', 'Cappuccino, flat white, tea'],
-              ['12 oz', 'about 355 ml', 'Latte, americano, the regular hot drink'],
+              ['12 oz', 'about 355 ml', 'Latte, americano, the regular (medium) hot drink'],
               ['16 oz', 'about 475 ml', 'Large lattes and mochas'],
+              ['20 oz', 'about 590 ml', 'Extra-large drinks and cold drinks'],
+            ],
+          },
+        },
+        { h: 'Cup dimensions: rim diameter and height' },
+        {
+          p: '“Cup size” sometimes means the dimensions rather than the capacity, and they matter when you choose lids, sleeves and carriers. The figures below are common in the market but vary between manufacturers, so ask for the exact specification before you order.',
+        },
+        {
+          table: {
+            head: ['Size', 'Rim diameter (approx.)', 'Height (approx.)'],
+            rows: [
+              ['4 oz', 'about 62 mm', 'about 60 mm'],
+              ['8 oz', 'about 80 mm', 'about 92 mm'],
+              ['12 oz', 'about 90 mm', 'about 110 mm'],
+              ['16 oz', 'about 90 mm', 'about 135 mm'],
             ],
           },
         },
         {
-          p: 'Cold drinks usually go into larger clear plastic cups with a flat or dome lid, because ice takes up part of the volume.',
+          p: 'Note that 12 oz and 16 oz cups often share the same rim diameter, so they can use the same lid, which keeps stock simple.',
+        },
+        { h: 'Cold cup sizes' },
+        {
+          p: 'Cold drinks usually go into clear plastic cups in larger sizes, most often 12, 16 and 20 oz, with a flat lid for regular drinks or a dome lid for drinks topped with cream. Pick a size up from the matching hot drink, because ice takes up part of the volume.',
         },
         { h: 'Single wall or double wall?' },
         {
@@ -154,8 +208,20 @@ export const GUIDES = [
           a: 'One fluid ounce is about 29.6 ml, so an 8 oz cup holds about 240 ml to the brim and is usually served a little below that.',
         },
         {
+          q: 'How many ml is a 12 oz cup?',
+          a: 'A 12 oz cup holds about 355 ml to the brim. It is the most common medium size, used for lattes and americanos.',
+        },
+        {
+          q: 'What are small, medium and large cup sizes?',
+          a: 'In most cafés small is 8 oz (about 240 ml), medium is 12 oz (about 355 ml) and large is 16 oz (about 475 ml). There is no fixed standard; each café sets its sizes around its menu.',
+        },
+        {
           q: 'Which size is used for Saudi coffee?',
           a: 'Saudi coffee is served in small amounts, so small cups of 4 oz or less are typically used.',
+        },
+        {
+          q: 'Can paper cups be used for cold drinks?',
+          a: 'Paper cups are designed mainly for hot drinks. Cold drinks usually go into clear plastic cups, or paper cups made for cold drinks that resist condensation.',
         },
         {
           q: 'What is the minimum cup order at Art Zone?',
@@ -168,23 +234,30 @@ export const GUIDES = [
   {
     slug: 'offset-vs-digital-printing',
     published: '2026-10-25',
-    updated: '2026-10-25',
-    services: ['business-cards', 'boxes', 'stickers-labels'],
+    updated: '2026-11-13',
+    services: ['business-cards', 'boxes', 'stickers-labels', 'banners'],
     cover: {
       file: 'offset-vs-digital',
       alt: { ar: 'ماكينة طباعة أوفست إلى جانب ماكينة طباعة رقمية في مطبعة حديثة', en: 'An offset press beside a digital production printer in a modern print shop' },
     },
     ar: {
-      title: 'الطباعة الأوفست أم الرقمية (الديجيتال)؟ الفرق ومتى تختار كلاً منهما | آرت زون',
-      description: 'ما الفرق بين الطباعة الأوفست والطباعة الرقمية (الديجيتال)؟ مقارنة في التكلفة والسرعة والجودة ومطابقة الألوان، ومتى تختار كلاً منهما للكروت والبروشورات والعلب.',
-      h1: 'الطباعة الأوفست أم الرقمية (الديجيتال)؟ الفرق ومتى تختار كلاً منهما',
-      summary: 'الطباعة الرقمية (الديجيتال) تطبع مباشرة من الملف دون ألواح، فهي الأنسب للكميات الصغيرة والطلبات العاجلة والطباعة المخصصة لكل نسخة. أما الأوفست فتحتاج إلى تجهيز ألواح، لكن تكلفة القطعة تنخفض كلما زادت الكمية، مع ثبات أعلى في الألوان، فهي الأنسب للكميات الكبيرة.',
+      title: 'طباعة الأوفست والطباعة الرقمية (الديجيتال): ما الفرق ومتى تختار كلاً منهما؟ | آرت زون',
+      description: 'ما هي طباعة الأوفست؟ وما هي الطباعة الرقمية (الديجيتال)؟ شرح طريقة عمل كل منهما، ومقارنة في التكلفة والسرعة والجودة ومطابقة الألوان، ومتى تختار كلاً منهما للكروت والبروشورات والعلب.',
+      h1: 'طباعة الأوفست أم الطباعة الرقمية (الديجيتال)؟ الفرق ومتى تختار كلاً منهما',
+      summary: 'طباعة الأوفست تنقل الحبر من ألواح معدنية إلى أسطوانة مطاطية ثم إلى الورق، فتحتاج إلى تجهيز مسبق، لكن تكلفة القطعة تنخفض كلما زادت الكمية مع ثبات أعلى في الألوان، فهي الأنسب للكميات الكبيرة. أما الطباعة الرقمية (الديجيتال) فتطبع مباشرة من الملف دون ألواح، فهي الأنسب للكميات الصغيرة والطلبات العاجلة والطباعة المخصصة لكل نسخة.',
       blocks: [
-        { h: 'كيف تعمل كل طريقة؟' },
+        { h: 'ما هي طباعة الأوفست؟' },
         {
-          p: 'في الطباعة الرقمية تنتقل الصورة من الملف إلى الورق مباشرة بالحبر أو الحبر الجاف (التونر)، دون ألواح أو تجهيز مسبق للماكينة. أما في الأوفست فيُنقل التصميم أولاً إلى ألواح معدنية، لوح لكل لون، ثم ينتقل الحبر من اللوح إلى أسطوانة مطاطية ومنها إلى الورق.',
+          p: 'طباعة الأوفست (وتُكتب أحياناً «اوفسيت») هي الطريقة الأكثر استخداماً لطباعة الكميات التجارية الكبيرة من الورق والكرتون. تقوم على مبدأ أن الماء والحبر الزيتي لا يمتزجان: تُنقل صورة كل لون إلى لوح معدني مسطح يُعالَج بحيث تجذب مناطق التصميم الحبر وتجذب بقية المساحة الماء، فيلتصق الحبر بمناطق التصميم فقط، ثم ينتقل من اللوح إلى أسطوانة مطاطية (البطانية) ومنها إلى الورق. ومن هنا جاء اسمها، فكلمة «أوفست» تعني الإزاحة أو النقل غير المباشر، لأن الحبر لا ينتقل من اللوح إلى الورق مباشرة.',
         },
-        { h: 'مقارنة سريعة' },
+        {
+          p: 'تُطبع معظم الألوان في الأوفست بأربعة ألواح للألوان الأساسية (CMYK)، ويمكن إضافة لوح خامس للون خاص من ألوان الهوية (بانتون) عندما تكون دقة اللون مهمة.',
+        },
+        { h: 'ما هي الطباعة الرقمية (الديجيتال)؟' },
+        {
+          p: 'الطباعة الرقمية تنقل التصميم من ملف الحاسب إلى الورق مباشرة، دون ألواح أو تجهيز مسبق للماكينة. وتعمل المطابع الرقمية إما بالحبر الجاف (التونر) بتقنية قريبة من الطابعات الليزرية، أو بالحبر السائل بتقنية النفث (إنكجت). ولأن كل نسخة تُطبع من الملف مباشرة، يمكن أن تختلف كل نسخة عن الأخرى، كطباعة اسم أو رقم مختلف على كل بطاقة.',
+        },
+        { h: 'الفرق بين طباعة الأوفست والطباعة الرقمية: مقارنة سريعة' },
         {
           table: {
             head: ['المعيار', 'الطباعة الرقمية (الديجيتال)', 'الأوفست'],
@@ -233,19 +306,38 @@ export const GUIDES = [
           q: 'أيهما أرخص لطباعة 500 بطاقة أعمال؟',
           a: 'يعتمد ذلك على الورق والتشطيب، لكن الكميات الصغيرة تكون غالباً أوفر بالطباعة الرقمية لأنها لا تحتاج إلى تجهيز ألواح. أرسلوا التفاصيل عبر واتساب لنقارن لكم.',
         },
+        {
+          q: 'ما معنى كلمة أوفست في الطباعة؟',
+          a: 'تعني الإزاحة أو النقل غير المباشر: ينتقل الحبر من اللوح المعدني إلى أسطوانة مطاطية أولاً ثم إلى الورق، بدلاً من أن يلامس اللوح الورق مباشرة.',
+        },
+        {
+          q: 'هل تُطبع العلب والبوكسات بالأوفست أم بالطباعة الرقمية؟',
+          a: 'تُطبع علب الكرتون بالكميات التجارية عادةً بالأوفست لثبات الألوان وانخفاض تكلفة القطعة، بينما تناسب الطباعة الرقمية العينات والكميات الصغيرة جداً. ونقترح لكم الطريقة الأنسب حسب الكمية والتشطيب.',
+        },
+        {
+          q: 'ما المقصود بالمطابع الرقمية؟',
+          a: 'هي ماكينات طباعة إنتاجية تطبع من الملف مباشرة بالحبر الجاف (التونر) أو الحبر السائل، دون ألواح، وتُستخدم للكميات الصغيرة والمتوسطة والطلبات العاجلة والمطبوعات المخصصة لكل نسخة.',
+        },
       ],
     },
     en: {
-      title: 'Offset vs Digital Printing: Differences and When to Use Each | Art Zone',
-      description: 'Offset vs digital printing compared on cost, speed, quality and colour matching, with when to choose each for business cards, brochures and boxes.',
+      title: 'Offset vs Digital Printing: What Each Is and When to Use It | Art Zone',
+      description: 'What is offset printing, and what is digital printing? How each method works, compared on cost, speed, quality and colour matching, with when to choose each for business cards, brochures and boxes.',
       h1: 'Offset vs digital printing: the difference and when to use each',
-      summary: 'Digital printing prints straight from the file with no plates, so it suits short runs, urgent jobs and personalised copies. Offset needs plates and press setup, but the cost per piece falls as quantity rises and colour stays more consistent, so it suits large runs.',
+      summary: 'Offset printing transfers ink from metal plates to a rubber blanket and then onto paper. It needs setup, but the cost per piece falls as quantity rises and colour stays more consistent, so it suits large runs. Digital printing prints straight from the file with no plates, so it suits short runs, urgent jobs and personalised copies.',
       blocks: [
-        { h: 'How each method works' },
+        { h: 'What is offset printing?' },
         {
-          p: 'Digital printing puts the image from the file directly onto paper with ink or toner, with no plates or press setup. Offset first transfers the design onto metal plates, one per colour; ink then moves from the plate to a rubber blanket and from the blanket to the paper.',
+          p: 'Offset printing (offset lithography) is the most widely used method for large commercial runs on paper and board. It relies on oil-based ink and water not mixing: each colour is transferred to a flat metal plate treated so that the image areas attract ink and the rest attracts water. The inked image then moves from the plate to a rubber blanket and from the blanket to the paper. That indirect transfer is where the name comes from: the plate never touches the paper.',
         },
-        { h: 'Quick comparison' },
+        {
+          p: 'Most offset work uses four plates for the process colours (CMYK). A fifth plate can carry a special brand colour (Pantone) when exact colour matters.',
+        },
+        { h: 'What is digital printing?' },
+        {
+          p: 'Digital printing sends the design from the computer file straight to paper, with no plates or press setup. Digital presses use either dry toner, much like a laser printer, or liquid ink (inkjet). Because every copy is printed from the file, each one can be different, such as a different name or number on every card.',
+        },
+        { h: 'Offset vs digital: quick comparison' },
         {
           table: {
             head: ['Factor', 'Digital', 'Offset'],
@@ -293,6 +385,18 @@ export const GUIDES = [
         {
           q: 'Which is cheaper for 500 business cards?',
           a: 'It depends on stock and finish, but small quantities are usually cheaper digitally because there are no plates to set up. Send the details on WhatsApp and we will compare for you.',
+        },
+        {
+          q: 'What does “offset” mean in printing?',
+          a: 'It means indirect transfer: ink moves from the metal plate to a rubber blanket first and then onto the paper, instead of the plate touching the paper directly.',
+        },
+        {
+          q: 'Are boxes printed offset or digitally?',
+          a: 'Commercial runs of cartons are usually printed offset for consistent colour and a lower cost per piece, while digital suits samples and very short runs. We suggest the right method for your quantity and finish.',
+        },
+        {
+          q: 'What is a digital press?',
+          a: 'A production printing machine that prints straight from the file with toner or liquid ink and no plates, used for short and medium runs, urgent jobs and personalised print.',
         },
       ],
     },

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { useI18n } from './i18n.jsx'
 import { useRoute } from './router.jsx'
-import { waLink } from './lib/wa.js'
+import { usePageWaLink } from './lib/usePageWaLink.js'
 import { track, trackAiReferral, trackPageView } from './lib/track.js'
 import { pageMeta } from './lib/meta.js'
 import Navbar from './components/Navbar.jsx'
@@ -61,6 +61,7 @@ const PAGES = {
 export default function App() {
   const { lang, t } = useI18n()
   const { page, slug, anchor } = useRoute()
+  const waHref = usePageWaLink()
 
   /* per-page title + description on client-side navigation (the full
      <head> for each URL is prerendered at build time) */
@@ -136,7 +137,7 @@ export default function App() {
       </main>
       <Footer />
       <a
-        href={waLink()}
+        href={waHref}
         target="_blank"
         rel="noopener noreferrer"
         className="wa-float"

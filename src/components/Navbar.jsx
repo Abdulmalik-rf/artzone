@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 import { useI18n } from '../i18n.jsx'
-import { waLink } from '../lib/wa.js'
+import { usePageWaLink } from '../lib/usePageWaLink.js'
 import { useHref } from '../router.jsx'
 import './Navbar.css'
 
 export default function Navbar() {
   const { t, toggle } = useI18n()
+  const waHref = usePageWaLink()
   const href = useHref()
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
@@ -73,7 +74,7 @@ export default function Navbar() {
           <a href={href('#quote')} className="btn btn--ink" onClick={() => setOpen(false)}>
             {t.nav.quote}
           </a>
-          <a href={waLink()} target="_blank" rel="noopener noreferrer" className="btn btn--wa">
+          <a href={waHref} target="_blank" rel="noopener noreferrer" className="btn btn--wa">
             {t.nav.whatsapp}
           </a>
         </div>

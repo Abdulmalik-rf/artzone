@@ -1,5 +1,5 @@
 import { useI18n } from '../i18n.jsx'
-import { waLink } from '../lib/wa.js'
+import { usePageWaLink } from '../lib/usePageWaLink.js'
 import { useHref } from '../router.jsx'
 import './Hero.css'
 
@@ -16,6 +16,7 @@ function RegMark({ className }) {
 
 export default function Hero() {
   const { t } = useI18n()
+  const waHref = usePageWaLink()
   const href = useHref()
   const { showcase, stats } = t.hero
 
@@ -50,7 +51,7 @@ export default function Hero() {
                 {t.hero.ctaQuote}
               </a>
               <a
-                href={waLink()}
+                href={waHref}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn--wa"

@@ -1,5 +1,6 @@
 import { useI18n } from '../i18n.jsx'
-import { WA_DISPLAY, PHONE_HREF, MAPS_URL, MAPS_EMBED, waLink } from '../lib/wa.js'
+import { WA_DISPLAY, PHONE_HREF, MAPS_URL, MAPS_EMBED } from '../lib/wa.js'
+import { usePageWaLink } from '../lib/usePageWaLink.js'
 import { useHref } from '../router.jsx'
 import './Contact.css'
 
@@ -14,10 +15,11 @@ function WaGlyph({ size = 18 }) {
 export default function Contact() {
   const { t } = useI18n()
   const href = useHref()
+  const waHref = usePageWaLink()
   const c = t.contactPage
 
   const channelMeta = {
-    wa: { value: WA_DISPLAY, ltr: true, href: waLink(), newTab: true, btnClass: 'btn--wa' },
+    wa: { value: WA_DISPLAY, ltr: true, href: waHref, newTab: true, btnClass: 'btn--wa' },
     call: { value: WA_DISPLAY, ltr: true, href: PHONE_HREF, newTab: false, btnClass: 'btn--ink' },
     visit: { value: t.contact.address, ltr: false, href: MAPS_URL, newTab: true, btnClass: 'btn--ghost' },
   }

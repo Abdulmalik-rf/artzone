@@ -1,9 +1,10 @@
 import { useI18n } from '../i18n.jsx'
-import { waLink } from '../lib/wa.js'
+import { usePageWaLink } from '../lib/usePageWaLink.js'
 import './Materials.css'
 
 export default function Materials() {
   const { t } = useI18n()
+  const waHref = usePageWaLink()
   const { chips } = t.materials
 
   return (
@@ -54,7 +55,7 @@ export default function Materials() {
           <span className="mt-scissor" aria-hidden="true">
             &#9986;
           </span>
-          <a href={waLink()} target="_blank" rel="noopener noreferrer" className="btn btn--ghost mt-cta">
+          <a href={waHref} target="_blank" rel="noopener noreferrer" className="btn btn--ghost mt-cta">
             {t.materials.cta}
           </a>
         </div>

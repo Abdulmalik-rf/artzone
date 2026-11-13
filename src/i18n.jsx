@@ -81,7 +81,14 @@ const dict = {
       services: 'Related services',
       readAlso: 'Guides on this topic',
       ctaWa: 'Ask the prepress team on WhatsApp',
-      waMsg: 'Hello Art Zone, I have a question after reading:',
+      waMsg: 'Hello Art Zone, I am contacting you from your website with a question after reading:',
+    },
+
+    /* WhatsApp starter messages (see lib/usePageWaLink.js) */
+    wa: {
+      general: 'Hello Art Zone, I am contacting you from your website about your printing services.',
+      quote: 'Hello Art Zone, I am contacting you from your website and would like a quote.',
+      work: 'Hello Art Zone, I am contacting you from your website and would like something similar to the work in your portfolio.',
     },
 
     serviceUi: {
@@ -103,7 +110,7 @@ const dict = {
       photos: 'From the floor',
       ctaWa: 'Request a quote on WhatsApp',
       ctaQuote: 'Build a job ticket',
-      waMsg: 'Hello Art Zone, I would like a quote for:',
+      waMsg: 'Hello Art Zone, I am contacting you from your website and would like a quote for:',
       ready: {
         title: 'Ready to price your order?',
         sub: 'Send the product, quantity and deadline — the sales desk replies during working hours.',
@@ -345,7 +352,7 @@ const dict = {
       previewHeading: 'TICKET PREVIEW',
       previewEmpty: '—',
       msg: {
-        greeting: 'Hello Art Zone — new job ticket:',
+        greeting: 'Hello Art Zone — new job ticket from your website:',
         product: 'Product',
         qty: 'Quantity',
         material: 'Material / finish',
@@ -547,7 +554,14 @@ const dict = {
       services: 'خدمات ذات صلة',
       readAlso: 'أدلة حول هذه الخدمة',
       ctaWa: 'استشر فريق التدقيق الفني عبر واتساب',
-      waMsg: 'السلام عليكم، لدي استفسار بعد قراءة:',
+      waMsg: 'السلام عليكم، أتواصل معكم عبر موقعكم الإلكتروني ولدي استفسار بعد قراءة:',
+    },
+
+    /* رسائل واتساب الافتتاحية (انظر lib/usePageWaLink.js) */
+    wa: {
+      general: 'السلام عليكم، أتواصل معكم عبر موقعكم الإلكتروني للاستفسار عن خدمات الطباعة.',
+      quote: 'السلام عليكم، أتواصل معكم عبر موقعكم الإلكتروني وأرغب في الحصول على عرض سعر.',
+      work: 'السلام عليكم، أتواصل معكم عبر موقعكم الإلكتروني وأرغب في تنفيذ عمل مشابه لما في معرض أعمالكم.',
     },
 
     serviceUi: {
@@ -569,7 +583,7 @@ const dict = {
       photos: 'من أعمال المصنع',
       ctaWa: 'طلب عرض سعر عبر واتساب',
       ctaQuote: 'تعبئة نموذج الطلب',
-      waMsg: 'السلام عليكم، أرغب في عرض سعر لـ:',
+      waMsg: 'السلام عليكم، أتواصل معكم عبر موقعكم الإلكتروني وأرغب في عرض سعر لـ:',
       ready: {
         title: 'هل أنتم جاهزون لتسعير طلبكم؟',
         sub: 'أرسلوا نوع المنتج والكمية والموعد المطلوب، ويرد فريق المبيعات خلال ساعات العمل.',
@@ -811,7 +825,7 @@ const dict = {
       previewHeading: 'معاينة تفاصيل الطلب',
       previewEmpty: '—',
       msg: {
-        greeting: 'السلام عليكم ورحمة الله — طلب عرض سعر جديد من آرت زون:',
+        greeting: 'السلام عليكم ورحمة الله — طلب عرض سعر جديد عبر موقعكم الإلكتروني:',
         product: 'المنتج',
         qty: 'الكمية',
         material: 'الخامة والمواصفات',

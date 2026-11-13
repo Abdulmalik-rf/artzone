@@ -228,3 +228,20 @@
     transition: none;
   }
 }
+
+/* link from an industry row to its service page */
+.nd-link {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: var(--magenta-text);
+}
+
+.nd-link:hover {
+  text-decoration: underline;
+}
+
+[dir='rtl'] .nd-link-arrow {
+  display: inline-block;
+  transform: scaleX(-1);
+}

@@ -12,9 +12,161 @@
    - `capTag` links the page to its card in the home capabilities grid.
    - `images` are file names from src/data/gallery.js: real job photos first,
      then illustrative ones (ILLUSTRATIVE) only where real photos are short.
+   - Optional per-language blocks rendered by pages/Service.jsx:
+     `kit`    {title, intro, items: [{slug, text}]} — a bundle of other
+              services, each card linking to that service page;
+     `picker` {title, intro, items: [{use, pick, slug?}]} — "which one
+              suits you" rows, optionally linking to another service.
    =================================================================== */
 
 export const SERVICES = [
+  {
+    slug: 'cafe-packaging',
+    images: [
+      'branded-paper-cups-cafe-collection',
+      'kraft-food-box-ile-rousseau',
+      'kraft-paper-bags-ile-rousseau',
+      'ile-rousseau-cafe-illuminated-sign',
+    ],
+    related: ['signage', 'business-cards', 'banners'],
+    ar: {
+      name: 'مطبوعات وتغليف المقاهي والمطاعم',
+      short: 'حزمة متكاملة للمقهى أو المطعم: أكواب وعلب وأكياس وملصقات بهوية واحدة من مصنع واحد.',
+      title: 'تجهيز مطبوعات وتغليف المقاهي في الدمام — أكواب وبوكسات وأكياس واستيكرات | آرت زون',
+      description: 'حزمة تغليف متكاملة للمقاهي والمطاعم في الدمام: أكواب ورقية سنقل ودبل، علب الوجبات والحلويات (البوكسات)، أكياس ورقية، وملصقات بالشعار، تُنتج بهوية موحّدة الألوان وتُشحن لكافة مدن المملكة.',
+      h1: 'تجهيز مطبوعات وتغليف المقاهي والمطاعم في الدمام',
+      summary: 'يجهّز مصنع آرت زون للطباعة في الدمام ما يحتاجه المقهى أو المطعم من مطبوعات وتغليف في طلب واحد: الأكواب الورقية والبلاستيكية، وعلب الوجبات والحلويات والقهوة، والأكياس الورقية، والملصقات (الاستيكرات) بالشعار. تُنتج جميعها في المصنع نفسه فتصلكم بهوية موحّدة الألوان، مع بروفة رقمية لاعتمادها قبل الطباعة، وشحن لكافة مدن المملكة.',
+      kit: {
+        title: 'محتويات الحزمة',
+        intro: 'اختاروا القطع التي يحتاجها مشروعكم، وتُنتج جميعها بالهوية نفسها في طلب واحد.',
+        items: [
+          { slug: 'paper-cups', text: 'أكواب ورقية بجدار مفرد (سنقل) ومزدوج (دبل) للمشروبات الساخنة، وأكواب بلاستيكية شفافة للباردة، مع أكمام عازلة مطبوعة.' },
+          { slug: 'boxes', text: 'علب الوجبات والحلويات (بوكسات الحلا) وعلب القهوة، من الكرتون أو ورق الكرافت الطبيعي.' },
+          { slug: 'paper-bags', text: 'أكياس كرافت بدون مقابض للطلبات الخارجية، وأكياس بمقابض لمنتجات المقهى والهدايا.' },
+          { slug: 'stickers-labels', text: 'ملصقات بالشعار لإغلاق العلب والأكياس، وملصقات مقاومة للماء للعبوات التي تُحفظ في الثلاجة.' },
+          { slug: 'signage', text: 'لوحة المحل المضيئة بحروف بارزة، لتكتمل هوية المقهى من الواجهة إلى الكوب.' },
+        ],
+      },
+      options: [
+        'حزمة متكاملة من الأكواب والعلب والأكياس والملصقات بهوية واحدة',
+        'أكواب ورقية سنقل ودبل وأكواب بلاستيكية شفافة',
+        'علب الوجبات والحلويات والقهوة',
+        'أكياس ورقية للطلبات الخارجية والمنتجات',
+        'ملصقات بالشعار للعلب والأكياس والعبوات',
+      ],
+      materials: [
+        'أحبار آمنة ومعتمدة لعبوات الأغذية',
+        'ورق كرافت طبيعي وكرتون',
+        'أحبار صديقة للبيئة للأكياس الورقية',
+        'ألوان هوية متطابقة بين جميع القطع',
+      ],
+      audience: [
+        'المقاهي الجديدة قبل الافتتاح',
+        'المقاهي المختصة ومحامص القهوة',
+        'المطاعم وخدمات الطلبات الخارجية',
+        'محلات الحلويات',
+      ],
+      faq: [
+        {
+          q: 'ماذا تشمل حزمة مطبوعات وتغليف المقهى؟',
+          a: 'تشمل الأكواب الورقية والبلاستيكية، وعلب الوجبات والحلويات والقهوة، والأكياس الورقية، والملصقات بالشعار، ويمكن إضافة لوحة المحل. تختارون القطع التي تحتاجونها فقط.',
+        },
+        {
+          q: 'هل يمكن طلب الأكواب والعلب والأكياس في طلب واحد؟',
+          a: 'نعم، تُنتج الأكواب والعلب والأكياس في المصنع نفسه، فتصلكم بهوية متطابقة الألوان في طلب واحد، بعد اعتمادكم البروفة الرقمية لكل قطعة.',
+        },
+        {
+          q: 'ما أقل كمية يمكن طلبها؟',
+          a: 'تختلف أقل كمية حسب كل قطعة ومقاسها وطريقة طباعتها. أرسلوا قائمة القطع والكميات التقريبية عبر واتساب، ونزوّدكم بالحد الأدنى لكل قطعة وعرض السعر خلال ساعات العمل.',
+        },
+        {
+          q: 'متى أبدأ الطلب قبل موعد افتتاح المقهى؟',
+          a: 'تختلف مدة التنفيذ حسب القطع والكميات والتشطيبات، ويبدأ الإنتاج فور اعتماد البروفة. ننصح بالتواصل مبكراً وإرسال موعد الافتتاح مع الطلب، ونحدد لكم موعد التسليم بدقة مع عرض السعر.',
+        },
+        {
+          q: 'هل تجهّزون التصميم من شعار المقهى؟',
+          a: 'نعم، يجهّز فريق التدقيق الفني ملفات الطباعة لكل قطعة من شعاركم وهويتكم، ويرسل بروفة رقمية لاعتمادها قبل بدء الإنتاج.',
+        },
+        {
+          q: 'هل الأحبار والخامات مناسبة للأطعمة والمشروبات؟',
+          a: 'نعم، تُطبع الأكواب بأحبار آمنة ومعتمدة لعبوات الأغذية، وتُستخدم في علب الطعام خامات مخصصة للتغليف الغذائي.',
+        },
+        {
+          q: 'هل توصلون الطلبات خارج الدمام؟',
+          a: 'نعم، نشحن الطلبات إلى كافة مدن ومحافظات المملكة مع رقم تتبع لكل شحنة.',
+        },
+      ],
+    },
+    en: {
+      name: 'Café & Restaurant Packaging',
+      short: 'One bundle for your café or restaurant: cups, boxes, bags and stickers in one brand, from one plant.',
+      title: 'Café Packaging & Print in Dammam — Cups, Boxes, Bags & Stickers | Art Zone',
+      description: 'A complete packaging bundle for cafés and restaurants in Dammam: single and double-wall paper cups, food and dessert boxes, paper bags and logo stickers, colour-matched and delivered across Saudi Arabia.',
+      h1: 'Café and restaurant packaging in Dammam',
+      summary: 'Art Zone Printing makes everything a café or restaurant needs to print and pack in one order at its plant in Dammam: paper and plastic cups, food, dessert and coffee boxes, paper bags and logo stickers. Everything is produced on the same floor, so it arrives colour-matched. You approve a digital proof before anything is printed, and we deliver to every city in Saudi Arabia.',
+      kit: {
+        title: "What's in the pack",
+        intro: 'Pick the items your business needs; all of them are produced in the same brand, in one order.',
+        items: [
+          { slug: 'paper-cups', text: 'Single-wall and double-wall paper cups for hot drinks, clear plastic cups for cold drinks, and printed cup sleeves.' },
+          { slug: 'boxes', text: 'Food, dessert and coffee boxes in board or natural kraft.' },
+          { slug: 'paper-bags', text: 'Handle-less kraft bags for takeaway, and bags with handles for retail products and gifts.' },
+          { slug: 'stickers-labels', text: 'Logo stickers to seal boxes and bags, and waterproof labels for packs kept in the fridge.' },
+          { slug: 'signage', text: 'An illuminated shop sign with raised letters, so the brand runs from the front of the shop to the cup.' },
+        ],
+      },
+      options: [
+        'A complete bundle of cups, boxes, bags and stickers in one brand',
+        'Single and double-wall paper cups and clear plastic cups',
+        'Food, dessert and coffee boxes',
+        'Paper bags for takeaway and products',
+        'Logo stickers for boxes, bags and packs',
+      ],
+      materials: [
+        'Food-safe inks approved for food packaging',
+        'Natural kraft and board',
+        'Eco-friendly inks for paper bags',
+        'Brand colours matched across every item',
+      ],
+      audience: [
+        'New cafés getting ready to open',
+        'Specialty cafés and coffee roasters',
+        'Restaurants and takeaway services',
+        'Dessert shops',
+      ],
+      faq: [
+        {
+          q: 'What is in the café packaging bundle?',
+          a: 'Paper and plastic cups, food, dessert and coffee boxes, paper bags and logo stickers, with a shop sign as an option. You choose only the items you need.',
+        },
+        {
+          q: 'Can I order cups, boxes and bags in one order?',
+          a: 'Yes. Cups, boxes and bags are produced on the same floor, so they arrive colour-matched in one order, after you approve a digital proof of each item.',
+        },
+        {
+          q: 'What is the minimum order?',
+          a: 'It depends on each item, its size and print method. Send the list of items and rough quantities on WhatsApp and we will reply with the minimum for each item and a quote during working hours.',
+        },
+        {
+          q: 'How early should I order before my café opens?',
+          a: 'Lead time depends on the items, quantities and finishes, and production starts as soon as you approve the proof. Contact us early and include your opening date; we confirm the delivery date with the quote.',
+        },
+        {
+          q: 'Can you prepare the designs from my café logo?',
+          a: 'Yes. Our prepress team prepares the print file for every item from your logo and brand, and sends a digital proof for approval before production.',
+        },
+        {
+          q: 'Are the inks and materials suitable for food and drinks?',
+          a: 'Yes. Cups are printed with food-safe inks approved for food packaging, and food boxes use materials made for food packaging.',
+        },
+        {
+          q: 'Do you deliver outside Dammam?',
+          a: 'Yes, we ship to every city in Saudi Arabia, with tracking on every shipment.',
+        },
+      ],
+    },
+  },
+
   {
     slug: 'paper-cups',
     capTag: '02',
@@ -24,7 +176,7 @@ export const SERVICES = [
       'hot-cup-with-lid-ile-rousseau',
       'clear-plastic-cup-ile-rousseau',
     ],
-    related: ['boxes', 'paper-bags', 'stickers-labels'],
+    related: ['cafe-packaging', 'boxes', 'paper-bags'],
     ar: {
       name: 'طباعة الأكواب الورقية والبلاستيكية',
       short: 'أكواب ورقية بجدار مفرد ومزدوج (دبل) وأكواب بلاستيكية شفافة، مطبوعة بهوية المقهى أو المطعم.',
@@ -127,7 +279,7 @@ export const SERVICES = [
     slug: 'boxes',
     capTag: '03',
     images: ['kraft-food-box-ile-rousseau', 'boxes-food-kraft', 'boxes-rigid-gift'],
-    related: ['paper-cups', 'paper-bags', 'corporate-gifts'],
+    related: ['cafe-packaging', 'paper-bags', 'corporate-gifts'],
     ar: {
       name: 'طباعة العلب والبوكسات',
       short: 'علب الوجبات والحلويات والقهوة، علب الشحن، والعلب الفاخرة من الكرتون المقوى والفوركس والأكريليك.',
@@ -142,6 +294,18 @@ export const SERVICES = [
         'علب الفوركس والأكريليك للعرض والإهداء',
         'تغليف العبايات والمنتجات للمشاريع المنزلية بكميات مرنة',
       ],
+      picker: {
+        title: 'أي علبة تناسب منتجكم؟',
+        intro: 'اختيار العلبة يبدأ من استخدامها. هذه أكثر الطلبات شيوعاً، ويساعدكم فريق المبيعات في اختيار الأنسب عبر واتساب.',
+        items: [
+          { use: 'وجبات المطاعم والطلبات الخارجية', pick: 'علب الوجبات من الكرتون أو ورق الكرافت الطبيعي، مع أكياس ورقية بدون مقابض بالهوية نفسها.', slug: 'cafe-packaging' },
+          { use: 'الحلويات (بوكسات الحلا)', pick: 'علب حلويات مطبوعة بالشعار، مع ملصق بالشعار لإغلاق العلبة.', slug: 'stickers-labels' },
+          { use: 'القهوة والمحامص', pick: 'علب القهوة المطبوعة بهوية المقهى أو المحمصة، وتُطلب مع الأكواب لتصل بألوان متطابقة.', slug: 'paper-cups' },
+          { use: 'الشحن والمتاجر الإلكترونية', pick: 'علب الشحن والتوصيل من الكرتون المضلّع، مطبوعة بالشعار.' },
+          { use: 'الهدايا والمنتجات الفاخرة', pick: 'علب الكرتون المقوى (هارد كفر) بالبصمة الحرارية أو السلوفان المخملي، أو علب الفوركس والأكريليك للعرض.', slug: 'corporate-gifts' },
+          { use: 'المشاريع المنزلية والعبايات', pick: 'بكجات العبايات والمنتجات بكميات إنتاج مرنة.' },
+        ],
+      },
       materials: [
         'كرتون مضلّع ومقوى',
         'ورق كرافت طبيعي',
@@ -172,6 +336,22 @@ export const SERVICES = [
           q: 'كم تستغرق مدة التنفيذ؟',
           a: 'تختلف المدة حسب نوع العلبة والكمية والتشطيب، ويبدأ الإنتاج فور اعتماد البروفة. نحدد لكم موعد التسليم بدقة مع عرض السعر.',
         },
+        {
+          q: 'ما المعلومات المطلوبة للحصول على عرض سعر للعلب؟',
+          a: 'نوع العلبة واستخدامها، ومقاس المنتج أو المقاس التقريبي للعلبة، والكمية، والشعار أو ملف التصميم، وموعد التسليم المطلوب. أرسلوها عبر واتساب، ويرد فريق المبيعات خلال ساعات العمل.',
+        },
+        {
+          q: 'هل يمكن طلب العلب مع الأكواب والأكياس بهوية واحدة؟',
+          a: 'نعم، تُنتج العلب والأكواب والأكياس في المصنع نفسه، فتصلكم بهوية متطابقة الألوان في طلب واحد.',
+        },
+        {
+          q: 'هل تصمّمون العلبة من الشعار؟',
+          a: 'نعم، يجهّز فريق التدقيق الفني تصميم العلبة وقالب القص من شعاركم ومقاس منتجكم، ويرسل بروفة رقمية لاعتمادها قبل الإنتاج.',
+        },
+        {
+          q: 'هل توصلون العلب خارج الدمام؟',
+          a: 'نعم، نشحن الطلبات إلى كافة مدن ومحافظات المملكة مع رقم تتبع لكل شحنة.',
+        },
       ],
     },
     en: {
@@ -188,6 +368,18 @@ export const SERVICES = [
         'Forex and acrylic display and gift boxes',
         'Abaya and product packaging for home businesses, in flexible quantities',
       ],
+      picker: {
+        title: 'Which box suits your product?',
+        intro: 'Choosing a box starts with how it will be used. These are the most common orders, and the sales desk can help you choose on WhatsApp.',
+        items: [
+          { use: 'Restaurant meals and takeaway', pick: 'Food boxes in board or natural kraft, with handle-less paper bags in the same brand.', slug: 'cafe-packaging' },
+          { use: 'Desserts and pastries', pick: 'Printed dessert boxes, sealed with a logo sticker.', slug: 'stickers-labels' },
+          { use: 'Coffee and roasters', pick: 'Coffee boxes printed in your café or roastery brand, ordered with your cups so the colours match.', slug: 'paper-cups' },
+          { use: 'Shipping and online stores', pick: 'Corrugated shipping and delivery boxes printed with your logo.' },
+          { use: 'Gifts and premium products', pick: 'Rigid (hardcover) boxes with hot foil or soft-touch laminate, or Forex and acrylic display boxes.', slug: 'corporate-gifts' },
+          { use: 'Home businesses and abayas', pick: 'Abaya and product packaging in flexible quantities.' },
+        ],
+      },
       materials: [
         'Corrugated and rigid board',
         'Natural kraft',
@@ -218,6 +410,22 @@ export const SERVICES = [
           q: 'How long does production take?',
           a: 'It depends on the box type, quantity and finish. Production starts as soon as you approve the proof, and we confirm the delivery date with the quote.',
         },
+        {
+          q: 'What do you need from me for a box quote?',
+          a: 'The box type and what it is for, your product size or the rough box size, the quantity, your logo or design file, and the delivery date you need. Send them on WhatsApp and the sales desk replies during working hours.',
+        },
+        {
+          q: 'Can boxes be ordered together with cups and bags in one brand?',
+          a: 'Yes. Boxes, cups and bags are produced on the same floor, so they arrive colour-matched in one order.',
+        },
+        {
+          q: 'Can you design the box from my logo?',
+          a: 'Yes. Our prepress team prepares the box design and cutting die from your logo and product size, and sends a digital proof for approval before production.',
+        },
+        {
+          q: 'Do you deliver boxes outside Dammam?',
+          a: 'Yes, we ship to every city in Saudi Arabia, with tracking on every shipment.',
+        },
       ],
     },
   },
@@ -226,7 +434,7 @@ export const SERVICES = [
     slug: 'paper-bags',
     capTag: '04',
     images: ['kraft-paper-bags-ile-rousseau', 'bags-handles', 'bags-takeaway'],
-    related: ['boxes', 'paper-cups', 'stickers-labels'],
+    related: ['cafe-packaging', 'boxes', 'paper-cups'],
     ar: {
       name: 'طباعة الأكياس الورقية',
       short: 'أكياس ورقية بمقابض أو بدونها بكافة المقاسات، مطبوعة بأحبار صديقة للبيئة.',

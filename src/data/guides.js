@@ -20,7 +20,7 @@ export const GUIDES = [
     slug: 'paper-cup-sizes',
     published: '2026-10-25',
     updated: '2026-10-25',
-    services: ['paper-cups'],
+    services: ['paper-cups', 'cafe-packaging'],
     cover: {
       file: 'paper-cup-sizes',
       alt: { ar: 'أربعة أكواب ورقية بمقاسات متدرجة من الإسبريسو حتى 16 أونز على طاولة مقهى', en: 'Four paper cups in ascending sizes, from espresso to 16 oz, on a café counter' },

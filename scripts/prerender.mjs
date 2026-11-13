@@ -507,6 +507,7 @@ ${en.caps.items
   })
   .join('\n')}
 - Banner & Wide-Format Printing (${SERVICE_BY_SLUG.banners.ar.name}): ${SERVICE_BY_SLUG.banners.en.short} — ${abs(pathFor('service', 'en', 'banners'))}
+- Café & Restaurant Packaging bundle (${SERVICE_BY_SLUG['cafe-packaging'].ar.name}): ${SERVICE_BY_SLUG['cafe-packaging'].en.short} — ${abs(pathFor('service', 'en', 'cafe-packaging'))}
 
 ## Guides
 ${GUIDES.map((g) => `- [${g.en.h1}](${abs(pathFor('guide', 'en', g.slug))}): ${g.en.summary}`).join('\n')}

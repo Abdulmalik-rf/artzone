@@ -298,6 +298,8 @@ const dict = {
       items: [
         {
           name: 'Cafés & restaurants',
+          slug: 'cafe-packaging',
+          linkText: 'See the café packaging bundle',
           desc: 'Everything restaurants and cafés need — cups, brochures and all kinds of food-grade boxes.',
         },
         {
@@ -771,6 +773,8 @@ const dict = {
       items: [
         {
           name: 'المقاهي والمطاعم والضيافة',
+          slug: 'cafe-packaging',
+          linkText: 'تعرّفوا على حزمة تغليف المقاهي',
           desc: 'حلول متكاملة لقطاع الأغذية والمشروبات تشمل الأكواب الورقية والبلاستيكية، علب الوجبات، وأوراق التغليف المعتمدة غذائياً.',
         },
         {

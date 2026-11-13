@@ -1,8 +1,10 @@
 import { useI18n } from '../i18n.jsx'
+import { useHref } from '../router.jsx'
 import './Industries.css'
 
 export default function Industries() {
   const { t } = useI18n()
+  const href = useHref()
 
   return (
     <section id="industries" className="nd">
@@ -53,6 +55,11 @@ export default function Industries() {
                 <div className="nd-body">
                   <h3 className="nd-name">{item.name}</h3>
                   <p className="nd-desc">{item.desc}</p>
+                  {item.slug && (
+                    <a href={href(`/services/${item.slug}/`)} className="nd-link">
+                      {item.linkText} <span className="nd-link-arrow" aria-hidden="true">→</span>
+                    </a>
+                  )}
                 </div>
               </div>
             </li>

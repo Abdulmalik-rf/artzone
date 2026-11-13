@@ -104,6 +104,70 @@ export default function Service() {
         </div>
       </section>
 
+      {/* ---------- bundle: what's in the pack ---------- */}
+      {c.kit && (
+        <section className="sd-kit-band">
+          <div className="container">
+            <h2 className="sec-title sd-h2" data-reveal>
+              {c.kit.title}
+            </h2>
+            <p className="sec-sub sd-band-sub" data-reveal>
+              {c.kit.intro}
+            </p>
+            <ol className="sd-kit">
+              {c.kit.items.map((item, i) => {
+                const k = getService(item.slug)
+                if (!k) return null
+                return (
+                  <li key={item.slug} className="sd-kit-item" data-reveal style={{ transitionDelay: `${i * 60}ms` }}>
+                    <a href={href(`/services/${item.slug}/`)} className="sd-kit-link">
+                      <span className="sd-kit-no mono">{String(i + 1).padStart(2, '0')}</span>
+                      <span className="sd-kit-name">{k[lang].name}</span>
+                      <span className="sd-kit-text">{item.text}</span>
+                      <span className="sd-rel-arrow mono" aria-hidden="true">
+                        →
+                      </span>
+                    </a>
+                  </li>
+                )
+              })}
+            </ol>
+          </div>
+        </section>
+      )}
+
+      {/* ---------- picker: which one suits you ---------- */}
+      {c.picker && (
+        <section className="sd-picker-band">
+          <div className="container">
+            <h2 className="sec-title sd-h2" data-reveal>
+              {c.picker.title}
+            </h2>
+            <p className="sec-sub sd-band-sub" data-reveal>
+              {c.picker.intro}
+            </p>
+            <dl className="sd-picker" data-reveal>
+              {c.picker.items.map((item) => {
+                const link = item.slug && getService(item.slug)
+                return (
+                  <div key={item.use} className="sd-pick">
+                    <dt className="sd-pick-use">{item.use}</dt>
+                    <dd className="sd-pick-what">
+                      {item.pick}
+                      {link && (
+                        <a href={href(`/services/${item.slug}/`)} className="sd-pick-link">
+                          {link[lang].name} <span aria-hidden="true" className="sd-pick-arrow">→</span>
+                        </a>
+                      )}
+                    </dd>
+                  </div>
+                )
+              })}
+            </dl>
+          </div>
+        </section>
+      )}
+
       {/* ---------- ordering steps ---------- */}
       <section className="sd-process-band">
         <div className="container">

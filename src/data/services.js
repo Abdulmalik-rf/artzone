@@ -438,8 +438,8 @@ export const SERVICES = [
     ar: {
       name: 'طباعة الأكياس الورقية',
       short: 'أكياس ورقية بمقابض أو بدونها بكافة المقاسات، مطبوعة بأحبار صديقة للبيئة.',
-      title: 'طباعة أكياس ورقية بالشعار في الدمام — كرافت بمقابض وبدون | آرت زون',
-      description: 'تصنيع وطباعة الأكياس الورقية بالشعار في الدمام للمطاعم والمقاهي والمتاجر: كافة المقاسات، بمقابض أو بدونها، بأحبار صديقة للبيئة وشحن لكافة مناطق المملكة.',
+      title: 'مصنع أكياس ورقية في الدمام — طباعة أكياس كرافت بالشعار بمقابض وبدون | آرت زون',
+      description: 'تصنيع وطباعة الأكياس الورقية بالشعار في الدمام للمطاعم والمقاهي والمتاجر والمتاجر الإلكترونية: أكياس كرافت بمقابض أو بدونها بكافة المقاسات، بأحبار صديقة للبيئة، مع بروفة رقمية وشحن لكافة مدن المملكة.',
       h1: 'طباعة الأكياس الورقية بالشعار في الدمام',
       summary: 'يصنّع مصنع آرت زون للطباعة في الدمام الأكياس الورقية ويطبعها بهوية علامتكم للمطاعم والمقاهي والمتاجر ومحلات التجزئة، بكافة المقاسات، بمقابض أو بدونها، وبأحبار صديقة للبيئة، مع شحن الطلبات لكافة مدن المملكة.',
       options: [
@@ -448,6 +448,17 @@ export const SERVICES = [
         'أكياس بكافة المقاسات حسب المنتج',
         'طباعة بلون الهوية أو بعدة ألوان',
       ],
+      picker: {
+        title: 'أي كيس يناسب نشاطكم؟',
+        intro: 'اختيار الكيس يبدأ من استخدامه. هذه أكثر الطلبات شيوعاً، ويساعدكم فريق المبيعات في اختيار المقاس المناسب عبر واتساب.',
+        items: [
+          { use: 'المطاعم والطلبات الخارجية', pick: 'أكياس كرافت بدون مقابض، تُطلب مع علب الوجبات لتصل بالهوية نفسها.', slug: 'boxes' },
+          { use: 'المقاهي', pick: 'أكياس بدون مقابض للطلبات الخارجية، وأكياس بمقابض لمنتجات المقهى، مع الأكواب والملصقات بالألوان نفسها.', slug: 'cafe-packaging' },
+          { use: 'المتاجر ومحلات التجزئة', pick: 'أكياس بمقابض بمقاس منتجاتكم، مطبوعة بلون الهوية أو بعدة ألوان.' },
+          { use: 'المتاجر الإلكترونية والمشاريع المنزلية', pick: 'أكياس بالشعار تُرسل مع الطلبات، وتُطلب مع علب الشحن والملصقات.', slug: 'stickers-labels' },
+          { use: 'الهدايا والفعاليات', pick: 'أكياس بمقابض للهدايا والتوزيعات، مع علب الهدايا بالهوية نفسها.', slug: 'corporate-gifts' },
+        ],
+      },
       materials: [
         'ورق كرافت طبيعي',
         'أحبار صديقة للبيئة',
@@ -471,13 +482,29 @@ export const SERVICES = [
           q: 'هل يمكن طباعة الأكياس مع العلب والأكواب بنفس الهوية؟',
           a: 'نعم، ننتج الأكياس والعلب والأكواب في المصنع نفسه، فتصلكم بهوية متطابقة الألوان في طلب واحد.',
         },
+        {
+          q: 'ما المعلومات المطلوبة لعرض سعر الأكياس؟',
+          a: 'نوع الكيس (بمقابض أو بدونها)، والمقاس أو المنتج الذي سيوضع فيه، والكمية، وعدد ألوان الطباعة، والشعار أو ملف التصميم، وموعد التسليم المطلوب. أرسلوها عبر واتساب، ويرد فريق المبيعات خلال ساعات العمل.',
+        },
+        {
+          q: 'كم تستغرق مدة التنفيذ؟',
+          a: 'تختلف المدة حسب المقاس والكمية وعدد الألوان، ويبدأ الإنتاج فور اعتماد البروفة. نحدد لكم موعد التسليم بدقة مع عرض السعر.',
+        },
+        {
+          q: 'هل تصمّمون الكيس من الشعار؟',
+          a: 'نعم، يجهّز فريق التدقيق الفني تصميم الكيس من شعاركم، ويرسل بروفة رقمية لاعتمادها قبل الإنتاج.',
+        },
+        {
+          q: 'هل توصلون الأكياس خارج الدمام؟',
+          a: 'نعم، نشحن الطلبات إلى كافة مدن ومحافظات المملكة مع رقم تتبع لكل شحنة.',
+        },
       ],
     },
     en: {
       name: 'Paper Bag Printing',
       short: 'Paper bags with or without handles in every size, printed with eco-friendly inks.',
-      title: 'Custom Printed Paper Bags in Dammam — Kraft, With or Without Handles | Art Zone',
-      description: 'Branded paper bag printing in Dammam for restaurants, cafés and shops: every size, with or without handles, eco-friendly inks, delivered across Saudi Arabia.',
+      title: 'Paper Bag Supplier in Saudi Arabia — Custom Printed Kraft Bags | Art Zone',
+      description: 'Custom printed paper bags made at our plant in Dammam for restaurants, cafés, shops and online stores: kraft bags with or without handles in every size, eco-friendly inks, delivered across Saudi Arabia.',
       h1: 'Custom printed paper bags in Dammam',
       summary: 'Art Zone Printing makes and prints branded paper bags at its plant in Dammam for restaurants, cafés, shops and retailers: every size, with or without handles, printed with eco-friendly inks and delivered to every city in Saudi Arabia.',
       options: [
@@ -486,6 +513,17 @@ export const SERVICES = [
         'Every size, made to fit your product',
         'Brand-colour or multi-colour printing',
       ],
+      picker: {
+        title: 'Which bag suits your business?',
+        intro: 'Choosing a bag starts with how it will be used. These are the most common orders, and the sales desk can help you pick the right size on WhatsApp.',
+        items: [
+          { use: 'Restaurants and takeaway', pick: 'Handle-less kraft bags, ordered with your food boxes so they arrive in the same brand.', slug: 'boxes' },
+          { use: 'Cafés', pick: 'Handle-less bags for takeaway and bags with handles for retail products, colour-matched with your cups and stickers.', slug: 'cafe-packaging' },
+          { use: 'Shops and retailers', pick: 'Bags with handles sized to your products, printed in your brand colour or in full colour.' },
+          { use: 'Online stores and home businesses', pick: 'Logo bags that go out with every order, ordered with your shipping boxes and stickers.', slug: 'stickers-labels' },
+          { use: 'Gifts and events', pick: 'Bags with handles for gifts and giveaways, matched to your gift boxes.', slug: 'corporate-gifts' },
+        ],
+      },
       materials: ['Natural kraft paper', 'Eco-friendly inks'],
       audience: [
         'Restaurants and cafés',
@@ -505,6 +543,22 @@ export const SERVICES = [
         {
           q: 'Can bags be printed together with boxes and cups?',
           a: 'Yes. Bags, boxes and cups are all produced on the same floor, so they arrive colour-matched in one order.',
+        },
+        {
+          q: 'What do you need from me for a bag quote?',
+          a: 'The bag type (with or without handles), the size or the product it will carry, the quantity, the number of print colours, your logo or design file, and the delivery date you need. Send them on WhatsApp and the sales desk replies during working hours.',
+        },
+        {
+          q: 'How long does production take?',
+          a: 'It depends on the size, quantity and number of colours. Production starts as soon as you approve the proof, and we confirm the delivery date with the quote.',
+        },
+        {
+          q: 'Can you design the bag from my logo?',
+          a: 'Yes. Our prepress team prepares the bag design from your logo and sends a digital proof for approval before production.',
+        },
+        {
+          q: 'Do you deliver bags outside Dammam?',
+          a: 'Yes, we ship to every city in Saudi Arabia, with tracking on every shipment.',
         },
       ],
     },
@@ -809,12 +863,14 @@ export const SERVICES = [
     ar: {
       name: 'طباعة البنرات والطباعة العريضة',
       short: 'طباعة البنرات وتركيبها، أسوار المشاريع، وطباعة الكانفاس والأقمشة على خط الطباعة العريضة.',
-      title: 'طباعة بنرات في الدمام — تركيب بنرات وأسوار مشاريع وكانفاس | آرت زون',
-      description: 'طباعة البنرات وتركيبها في الدمام على خط الطباعة العريضة: بنرات الواجهات والفعاليات، أسوار المشاريع الإنشائية، لوحات الكانفاس والأقمشة، وملصقات الواجهات الزجاجية.',
+      title: 'طباعة بنرات ورول أب وباك دروب في الدمام — مع التركيب | آرت زون',
+      description: 'طباعة البنرات في الدمام على خط الطباعة العريضة مع التركيب: بنرات فليكس للواجهات، رول أب للمعارض، باك دروب للمسارح والفعاليات، أسوار المشاريع، ولوحات الكانفاس. شحن لكافة مدن المملكة.',
       h1: 'طباعة البنرات والطباعة العريضة في الدمام',
-      summary: 'يطبع مصنع آرت زون للطباعة في الدمام البنرات على خط الطباعة العريضة ويتولى تركيبها، وينفّذ أسوار المشاريع الإنشائية والخشبية، ولوحات الكانفاس والأقمشة الجدارية، وملصقات الواجهات الزجاجية، إضافة إلى تجهيز مطبوعات المعارض والفعاليات.',
+      summary: 'يطبع مصنع آرت زون للطباعة في الدمام البنرات على خط الطباعة العريضة ويتولى تركيبها، ويجهّز بنرات الرول أب وخلفيات الباك دروب للمعارض والمسارح والفعاليات، وينفّذ أسوار المشاريع الإنشائية والخشبية، ولوحات الكانفاس والأقمشة الجدارية، وملصقات الواجهات الزجاجية.',
       options: [
-        'بنرات للواجهات والمحلات والفعاليات مع التركيب',
+        'بنرات فليكس للواجهات والمحلات والفعاليات مع التركيب',
+        'بنرات رول أب للمعارض والمكاتب ونقاط البيع',
+        'خلفيات باك دروب للمسارح والمؤتمرات والفعاليات',
         'أسوار المشاريع الإنشائية والخشبية',
         'لوحات كانفاس وأقمشة جدارية',
         'ملصقات الواجهات الزجاجية',
@@ -837,6 +893,10 @@ export const SERVICES = [
           a: 'نعم، ننفّذ أسوار المشاريع الإنشائية والخشبية مع طباعة التغطيات وتركيبها.',
         },
         {
+          q: 'هل تطبعون رول أب وباك دروب للمعارض والفعاليات؟',
+          a: 'نعم، نطبع بنرات الرول أب وخلفيات الباك دروب للمسارح والمؤتمرات والمعارض بألوان ثابتة وواضحة. أرسلوا المقاس وموعد الفعالية عبر واتساب لنؤكد موعد التسليم.',
+        },
+        {
           q: 'ما المعلومات المطلوبة لعرض سعر البنر؟',
           a: 'المقاس المطلوب، ومكان التركيب (داخلي أو خارجي)، والتصميم أو الشعار، والكمية. أرسلوها عبر واتساب ونرد بعرض السعر.',
         },
@@ -845,13 +905,15 @@ export const SERVICES = [
     en: {
       name: 'Banner & Wide-Format Printing',
       short: 'Banner printing and installation, project hoardings, and canvas and fabric printing on the wide-format line.',
-      title: 'Banner Printing in Dammam — Installation, Hoardings & Canvas | Art Zone',
-      description: 'Banner printing and installation in Dammam on our wide-format line: façade and event banners, construction hoardings, canvas and fabric wall prints, and window graphics.',
+      title: 'Banner, Roll-Up & Backdrop Printing in Dammam — Installed | Art Zone',
+      description: 'Banner printing in Dammam on our wide-format line: flex banners for shopfronts, roll-up banners for exhibitions, stage and event backdrops, project hoarding boards and canvas, installed on site.',
       h1: 'Banner and wide-format printing in Dammam',
-      summary: 'Art Zone Printing prints banners on its wide-format line in Dammam and installs them, builds construction and timber project hoardings, prints canvas and fabric wall art and window graphics, and produces print for exhibitions and events.',
+      summary: 'Art Zone Printing prints banners on its wide-format line in Dammam and installs them, makes roll-up banners and stage and event backdrops for exhibitions and conferences, builds construction and timber project hoardings, and prints canvas and fabric wall art and window graphics.',
       options: [
-        'Façade, shop and event banners, installed',
-        'Construction and timber project hoardings',
+        'Flex banners for shopfronts, shops and events, installed',
+        'Roll-up banners for exhibitions, offices and points of sale',
+        'Stage, conference and event backdrops',
+        'Construction and timber project hoarding boards',
         'Canvas and fabric wall prints',
         'Window graphics',
         'Exhibition and event print',
@@ -868,6 +930,10 @@ export const SERVICES = [
         {
           q: 'Do you build project hoardings?',
           a: 'Yes. We build construction and timber hoardings, and print and install their graphics.',
+        },
+        {
+          q: 'Do you print roll-up banners and backdrops for events?',
+          a: 'Yes. We print roll-up banners and stage, conference and exhibition backdrops in sharp, lasting colour. Send the size and your event date on WhatsApp and we will confirm delivery.',
         },
         {
           q: 'What do you need for a banner quote?',
